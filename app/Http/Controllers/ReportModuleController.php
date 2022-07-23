@@ -84,28 +84,26 @@ class ReportModuleController extends Controller {
     }
 
     public function allPayments() {
-        $curl = curl_init();
-        curl_setopt_array( $curl, array(
-            CURLOPT_URL => 'https://tella.envio.africa/api/all-payment',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET',
-            CURLOPT_HTTPHEADER => array(
-                'Accept: application/json'
-            ),
-        ) );
-        $response = curl_exec( $curl );
-        curl_close( $curl );
-        $result = json_decode( $response );
+        $result = json_decode( Http::get( 'https://tella.envio.africa/api/all-payment' ) );
+
         $totalAmount = 0;
         foreach ( $result as $item ) {
             $totalAmount += $item->amount;
         }
         // dd( $result );
+        return view( 'all-payments', [ 'totalAmount' => $totalAmount, 'data' => $result ] );
+    }
+    public function allPaymentFilter(Request $request) {
+
+         $result =  ( new ApiController )->post( 'https://tella.envio.africa/api/all-payment-date', array(
+            'startDate' => $request->startDate,
+            'endDate' => $request->endDate
+        ) );
+        $totalAmount = 0;
+        foreach ( $result as $item ) {
+            $totalAmount += $item->amount;
+        }
+
         return view( 'all-payments', [ 'totalAmount' => $totalAmount, 'data' => $result ] );
     }
 
@@ -149,7 +147,6 @@ class ReportModuleController extends Controller {
             if ( $value->Vehicle->investorname != '' || $value->Vehicle->investorname != null ) {
                 $resultz[] = $value ;
                 $totalAmount +=  $value->needpayment;
-
             }
         }
         return view( 'critical-payments', [ 'totalAmount' => $totalAmount, 'data' => $resultz ] );
@@ -228,7 +225,6 @@ class ReportModuleController extends Controller {
         $date = Carbon::today()->format( 'Y-m-d' );
         $weekstart = Carbon::now()->startOfWeek( Carbon::SUNDAY )->format( 'Y-m-d' );
         $weekend =  Carbon::now()->startOfWeek( Carbon::SATURDAY )->format( 'Y-m-d' );
-
         // aLlpayment
         $result = Http::get( 'https://tella.envio.africa/api/all-payment' );
         $result = json_decode( $result );
@@ -237,7 +233,6 @@ class ReportModuleController extends Controller {
             $totalAmount += $item->amount;
         }
         // return $totalAmount;
-
         $depotx = ( new VMSAPI )->getVehicleOverDue( Carbon::yesterday()->format( 'Y-m-d' ), 1000 );
         $depot = 0;
         foreach ( $depotx->Data as $value ) {
@@ -253,6 +248,46 @@ class ReportModuleController extends Controller {
         $unpaidAmount = 0;
         $unpaid = $this->DuePayment();
         $unpaidAmount = $unpaid[ 'totalAmount' ];
+        return array(
+            'paid' => number_format( $totalAmount, 2 ),
+            'unpaid' => number_format( $unpaidAmount, 2 ),
+            'income' => number_format( $totalAmount + $unpaidAmount, 2 ),
+            'depot' =>number_format( $depot, 2 ),
+        );
+    }
+
+    public function reportModuleFilter( Request $request ) {
+        // dd( $request->all() );
+        $startDate = Carbon::parse( $request->startDate, 'UTC' )->format( 'Y-m-d' );
+        $endDate = Carbon::parse( $request->endDate, 'UTC' )->format( 'Y-m-d' );
+
+        $result =  ( new ApiController )->post( 'https://tella.envio.africa/api/all-payment-date', array(
+            'startDate' => $startDate,
+            'endDate' => $endDate
+        ) );
+        $totalAmount = 0;
+        foreach ( $result as $item ) {
+            $totalAmount += $item->amount;
+        }
+
+        // return $totalAmount;
+        $depotx = ( new VMSAPI )->getVehicleOverDue( $endDate, 300 );
+        $depot = 0;
+        foreach ( $depotx->Data as $value ) {
+            if ( $value->Vehicle->investorname != '' || $value->Vehicle->investorname != null ) {
+                if ( $value->duetime >= $startDate ) {
+                    $arr[] = $value->duetime ;
+                }
+            }
+        }
+        // echo $startDate;
+        // echo $endDate;
+        // dd( $arr );
+        // get due payment
+        $unpaidAmount = 0;
+        $unpaid = $this->DuePayment();
+        $unpaidAmount = $unpaid[ 'totalAmount' ];
+
         return array(
             'paid' => number_format( $totalAmount, 2 ),
             'unpaid' => number_format( $unpaidAmount, 2 ),
@@ -277,7 +312,7 @@ class ReportModuleController extends Controller {
         $result = array(
             'driverDetail' => ( !empty( $driverDetails ) ) ? $driverDetails->Data : 'null',
             'vehicleDetails' => ( !empty( $vehicleDetails ) ) ? $vehicleDetails->Data : 'null',
-            'vehicleLocation' => ( !empty( $vehicleLocation ) ) ? $vehicleLocation->Data[0] : 'null',
+            'vehicleLocation' => ( !empty( $vehicleLocation ) ) ? $vehicleLocation->Data[ 0 ] : 'null',
             'investorInfo' => ( !empty( $investorInfo ) ) ? $investorInfo->Data : 'null',
         );
         return view( 'user-information', [ 'data' => $result ] );

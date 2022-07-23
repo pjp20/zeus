@@ -33,39 +33,34 @@
                                 <li>Past 6 months</li>
                                 <li>Past Year</li>
                             </ul>
-                            <div class="row row-dates">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="">START</label>
-                                        <input type="date" name="" class="form-control" />
+                            <form action="{{ route('reportModuleFilter') }}" method="post">
+                                @csrf
+                                <div class="row row-dates">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">START</label>
+                                            <input type="date" name="startDate" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">STOP</label>
+                                            <input type="date" name="endDate" class="form-control" />
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="">STOP</label>
-                                        <input type="date" name="" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="filterFooter">
-                                <button class="btn text-dark closeBtn"
-                                    style="
-                                    border: none;
-                                    background: transparent;
-                                    font-weight: bold;
-                                  ">
-                                    RESET</button>
-                                <button class="btn ml-3"
-                                    style="
-                                    background: #4a4aff;
-                                    color: #fff;
-                                    border-radius: 8px;
-                                    font-weight: bold;
-                                  ">
-                                    SUBMIT
-                                </button>
-                            </div>
+                                <div class="filterFooter">
+                                    <button class="btn text-dark closeBtn"
+                                        style=" border: none; background: transparent; font-weight: bold; ">
+                                        RESET</button>
+                                    <button type="submit" class="btn ml-3"
+                                        style=" background: #4a4aff; color: #fff; border-radius: 8px; font-weight: bold; ">
+                                        SUBMIT
+                                    </button>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
                     <div class="row mt-3 g-2">

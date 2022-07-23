@@ -20,7 +20,7 @@
 
                             </p>
                         </div>
-                        <div class="filter-calender">
+                        {{-- <div class="filter-calender">
                             <div class="filterIcon">
                                 <img src="{{ asset('assets/images/filter.svg') }}" alt="" />
                             </div>
@@ -28,7 +28,7 @@
                                 <span>FILTER:<b>CUSTOM RANGE</b></span>
                                 <img src="{{ asset('assets/images/calender.png') }}" alt="" />
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <!-- table -->

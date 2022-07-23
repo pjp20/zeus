@@ -11,16 +11,16 @@
                                 <img src="{{ asset('assets/images/arrow-left.svg') }}" alt="" />
                                 Report Module / Total Payments
                                 <span class="ml-2">
-                                     ( <span>&#8358;</span> {{ number_format($totalAmount, 2) }} )
+                                    ( <span>&#8358;</span> {{ number_format($totalAmount, 2) }} )
                                 </span>
                                 / Payment Count
                                 <span class="ml-2">
-                                  (  {{ number_format(count($data) )}} )
+                                    ( {{ number_format(count($data)) }} )
                                 </span>
 
                             </p>
                         </div>
-                        <div class="filter-calender">
+                        <div class="filter-calender reportModuleFilter">
                             <div class="filterIcon">
                                 <img src="{{ asset('assets/images/filter.svg') }}" alt="" />
                             </div>
@@ -29,13 +29,55 @@
                                 <img src="{{ asset('assets/images/calender.png') }}" alt="" />
                             </div>
                         </div>
+                        <div class="filterModal">
+                            <div class="topFilter">
+                                <h3>Super Filter</h3>
+                                <span class="closeBtn">X</span>
+                            </div>
+                            <ul class="filterList">
+                                <li>Default / Live</li>
+                                <li class="activeList">Last Week</li>
+                                <li>Past 30 days</li>
+                                <li>Last 3 months</li>
+                                <li>Past 6 months</li>
+                                <li>Past Year</li>
+                            </ul>
+                            <form action="{{route('allPaymentFilter')}}" method="post">
+                                @csrf
+                                <div class="row row-dates">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">START</label>
+                                            <input type="date" name="startDate" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">STOP</label>
+                                            <input type="date" name="endDate" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filterFooter">
+                                    <button class="btn text-dark closeBtn"
+                                        style=" border: none;background: transparent; font-weight: bold; ">
+                                        RESET</button>
+                                    <button type="submit" class="btn ml-3"
+                                        style=" background: #4a4aff; color: #fff; border-radius: 8px; font-weight: bold; ">
+                                        SUBMIT
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
                     </div>
 
                     <!-- table -->
                     <div class="row pt-2">
                         <div class="col-12">
                             <div class="card-box table-responsive">
-                                <table id="datatable-buttons" class="table table-bordered nowrap" style=" border-collapse: collapse; border-spacing: 0;                     width: 100%;">
+                                <table id="datatable-buttons"
+                                    class="table table-bordered nowrap"style=" border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead class="text-inter">
                                         <tr>
                                             <th>
@@ -52,27 +94,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                            {{-- {{dd($data)}} --}}
+                                        {{-- {{dd($data)}} --}}
 
                                         @foreach ($data as $item)
                                             <tr>
                                                 <td> <input type="checkbox" class="check" /></td>
                                                 <td>
-                                                    {{-- <a
-                                                        href="{{ route('userInfo', ['phone' => $item->driverPhone,
-                                                        'plate' => $item->vehiclePlateNo, 'investorphone' => $item->driverPhone]) }}">
-                                                        {{ $item->vehiclePlateNo }}
-                                                    </a> --}}
-
                                                     <a href="" data-toggle="modal" data-target="#modelId">
                                                         {{ $item->vehiclePlateNo }}
                                                     </a>
-
                                                 </td>
                                                 <td>{{ $item->driverName }}</td>
                                                 <td>{{ $item->driverPhone }}</td>
                                                 <td>ONLINE</td>
-                                                <td><span>&#8358;</span> {{ number_format($item->amount,2) }}</td>
+                                                <td><span>&#8358;</span> {{ number_format($item->amount, 2) }}</td>
                                                 <td>{{ $item->reference }}</td>
                                                 <td>{{ $item->created_at }}</td>
                                                 <td>{{ $item->note }}</td>
@@ -88,14 +123,15 @@
 
 
                 <!-- Modal -->
-                <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                    aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                             <div class="modal-body">
                                 Body

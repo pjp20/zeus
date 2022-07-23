@@ -43,14 +43,15 @@ Route::get('control-panel', [ControlPanelController::class, 'index']);
 Route::controller(ReportModuleController::class)->group(function () {
     Route::get('report-module',  'index');
     Route::get('reportModule',  'reportModule')->name("reportModule");
+    Route::post('reportModuleFilter',  'reportModuleFilter')->name("reportModuleFilter");
     Route::get('all-payments',  'allPayments');
+    Route::post('all-payments-filter',  'allPaymentFilter')->name('allPaymentFilter');
     Route::get('due-payments',  'duePayments');
     Route::get('overdue-payments',  'overduePayments');
     Route::get('critical-payments',  'criticalPayments');
     Route::get('code-red',  'codeRed');
 
-Route::get("user-info/{phone}/{plate}/{investorphone}",  'userInformation')->name("userInfo");
-
+    Route::get("user-info/{phone}/{plate}/{investorphone}",  'userInformation')->name("userInfo");
 });
 
 
