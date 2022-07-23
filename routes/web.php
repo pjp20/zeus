@@ -1,0 +1,56 @@
+<?php
+
+use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ControlPanelController;
+use App\Http\Controllers\FinanceOfficeController;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ReportModuleController;
+use App\Http\Controllers\TaskMgtController;
+use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\VehicleMgtController;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+Route::get("/", [HomepageController::class, 'index']);
+
+Route::controller(ReportModuleController::class)->group(function () {
+Route::get("user-management",  'index');
+Route::get("add-user",  'addUser');
+Route::get("user-profile",  'userProfile');
+});
+
+
+Route::get('vehicle-management', [VehicleMgtController::class, 'index']);
+Route::get('finance-office', [FinanceOfficeController::class, 'index']);
+Route::get('task-management', [TaskMgtController::class, 'index']);
+
+
+Route::get('activity-log', [ActivityLogController::class, 'index']);
+Route::get('admin', [AdminController::class, 'index']);
+Route::get('control-panel', [ControlPanelController::class, 'index']);
+
+
+Route::controller(ReportModuleController::class)->group(function () {
+    Route::get('report-module',  'index');
+    Route::get('reportModule',  'reportModule')->name("reportModule");
+    Route::get('all-payments',  'allPayments');
+    Route::get('due-payments',  'duePayments');
+    Route::get('overdue-payments',  'overduePayments');
+    Route::get('critical-payments',  'criticalPayments');
+    Route::get('code-red',  'codeRed');
+
+Route::get("user-info/{phone}/{plate}/{investorphone}",  'userInformation')->name("userInfo");
+
+});
+
+

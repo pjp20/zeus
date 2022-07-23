@@ -1,0 +1,47 @@
+<Modal v-model="superFilterModal" :width="300" :mask-closable="false"
+:styles="{ top: '110px', left: '600px' }">
+<div class="leftTopModal">
+    <p class="leftt">Super Filter</p>
+</div>
+
+<ul class="filterList">
+    <li>Default / Live</li>
+    <li class="activeList">Last Week</li>
+    <li>Past 30 days</li>
+    <li>Last 3 months</li>
+    <li>Past 6 months</li>
+    <li>Past Year</li>
+</ul>
+<div class="row row-dates">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="">START</label>
+            <input type="date" name="" class="form-control" />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="">STOP</label>
+            <input type="date" name="" class="form-control" />
+        </div>
+    </div>
+</div>
+<div slot="footer">
+    <Button @click="superFilterModal = false"
+        style="
+border: none;
+background: transparent;
+font-weight: bold;
+">
+        RESET</Button>
+    <Button
+        style="
+background: #4a4aff;
+color: #fff;
+border-radius: 8px;
+font-weight: bold;
+">
+        SUBMIT
+    </Button>
+</div>
+</Modal>
