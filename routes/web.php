@@ -41,15 +41,24 @@ Route::get('control-panel', [ControlPanelController::class, 'index']);
 
 
 Route::controller(ReportModuleController::class)->group(function () {
-    Route::get('report-module',  'index');
-    Route::get('reportModule',  'reportModule')->name("reportModule");
+    Route::get('report-module',  'index')->name("report-module");
+    // Route::get('reportModule',  'reportModule')->name("reportModule");
     Route::post('reportModuleFilter',  'reportModuleFilter')->name("reportModuleFilter");
-    Route::get('all-payments',  'allPayments');
+    Route::get('reportModuleFilter/{date}',  'reportModuleFilter2')->name("reportModuleFilter2");
+
+    Route::get('all-payments',  'allPayments')->name("all-payments");
     Route::post('all-payments-filter',  'allPaymentFilter')->name('allPaymentFilter');
-    Route::get('due-payments',  'duePayments');
-    Route::get('overdue-payments',  'overduePayments');
-    Route::get('critical-payments',  'criticalPayments');
-    Route::get('code-red',  'codeRed');
+    Route::get('all-payments-filter/{date}',  'allPaymentFilter2')->name('allPaymentFilter2');
+
+
+    Route::get('due-payments',  'duePayments')->name("due-payments");
+
+    Route::get('overdue-payments',  'overduePayments')->name("overdue-payments");
+    Route::get('critical-payments',  'criticalPayments')->name("critical-payments");
+
+    Route::get('code-reds',  'codeRed')->name("code-red");
+    Route::post('code-red-filter',  'codeRedFilter')->name('codeRedFilter');
+    Route::get('code-red-filter/{date}',  'codeRedFilter2')->name('codeRedFilter2');
 
     Route::get("user-info/{phone}/{plate}/{investorphone}",  'userInformation')->name("userInfo");
 });

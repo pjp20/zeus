@@ -15,7 +15,26 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            $controller = new \App\Http\Controllers\ScheduleController();
+            $controller->reportTask();
+            // info("called every minute");
+        })->everySixHours();
+
+        $schedule->call(function () {
+            $controller = new \App\Http\Controllers\ScheduleController();
+            $controller->allVehicleTask();
+            // info("called every minute");
+        })->everySixHours();
+
+        $schedule->call(function () {
+            $controller = new \App\Http\Controllers\ScheduleController();
+            $controller->vehicleStatusTask();
+            // info("called every minute");
+        })->everyTwoHours();
+
+
     }
 
     /**

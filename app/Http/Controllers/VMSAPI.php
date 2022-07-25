@@ -19,9 +19,7 @@ class VMSAPI {
     public $AccessKeyPassword;
     public $systemNo;
 
-    public function __construct() {
-        date_default_timezone_set( 'Asia/Shanghai' );
-
+    function  __construct() {
         $v1 = $this->random_gen( 8 );
         $v2 = $this->random_gen( 4 );
         $v3 = $this->random_gen( 4 );
@@ -35,15 +33,11 @@ class VMSAPI {
 
         $this->AccessKeyId = '20200629201354671525838fd04e2a2';
         $this->AccessKeyPassword = 'a355fd993194430a8bef8153eb6412b2';
-
-        $start_am = strtotime( '0:00:00' );
-        $start_pm = strtotime( '23:00:00' );
-
     }
 
     public function random_gen( $length ) {
         $random = '';
-        srand( ( float ) microtime() * 1000000 );
+        srand( ( float )microtime() * 1000000 );
         $char_list = 'abcdefghijklmnopqrstuvwxyz';
         $char_list .= '1234567890';
         // Add the special characters to $char_list if needed
@@ -92,6 +86,7 @@ class VMSAPI {
         curl_setopt( $ch, CURLOPT_URL, $url );
         $response = curl_exec( $ch );
         $response = json_decode( $response );
+        // return $response;
         $signature = $response->data->signedText;
 
         $url = 'https://connect.envio.com.ng/v1/api/sdk/gateway?Signature=' . $signature . '&' . $sign;
@@ -143,22 +138,22 @@ class VMSAPI {
         return $this->fet( $sign );
     }
 
-    public function getVehiclePosition($plate) {
+    public function getVehiclePosition( $plate ) {
         // get vehicle current postion                                                                                                                $sign = '&SignatureVersion=1.0&SystemNo=13304017475%2C13305015033&Timestamp=1641231328&Version=1.0';
         $sign = 'AccessKeyId=' . $this->AccessKeyId . '&Action=GetVehiclePosition&Format=json&SignatureMethod=HMAC-SHA1&SignatureNonce=' . $this->f . '&SignatureVersion=1.0&SystemNo=' . $plate . '&Timestamp=' . $this->utc . '&Version=1.0';
         return $this->fet( $sign );
     }
 
-    public function getInvestorInfo($phone) {
+    public function getInvestorInfo( $phone ) {
         // get inveestor info by there phone no
         $sign = 'AccessKeyId=' . $this->AccessKeyId . '&Action=GetInvestorInfo&Format=json&SignatureMethod=HMAC-SHA1&SignatureNonce=' . $this->f . '&SignatureVersion=1.0&Timestamp=' . $this->utc . '&Version=1.0&phone=' . $phone;
         return $this->fet( $sign );
     }
 
-    public function get_vehicle_recent_payment($plate)
-    {
-           // fetch due date
-           $sign = 'AccessKeyId=' . $this->AccessKeyId . '&Action=GetVehLastPaymentStatus&Format=json&SignatureMethod=HMAC-SHA1&SignatureNonce=' . $this->f . '&SignatureVersion=1.0&Timestamp=' . $this->utc . '&Version=1.0&vehno=' . $plate;
-           return $this->fet( $sign );
-       }
+    public function get_vehicle_recent_payment( $plate ) {
+        // fetch due date
+        $sign = 'AccessKeyId=' . $this->AccessKeyId . '&Action=GetVehLastPaymentStatus&Format=json&SignatureMethod=HMAC-SHA1&SignatureNonce=' . $this->f . '&SignatureVersion=1.0&Timestamp=' . $this->utc . '&Version=1.0&vehno=' . $plate;
+        return $this->fet( $sign );
+    }
 }
+

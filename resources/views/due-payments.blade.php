@@ -12,11 +12,11 @@
                                 Report Module / Total Payments
                                 <span class="ml-2">
                                     ( <span>&#8358;</span> {{ number_format($totalAmount, 2) }} )
-                               </span>
-                               / Payment Count
-                               <span class="ml-2">
-                                 (  {{ number_format(count($data) )}} )
-                               </span>
+                                </span>
+                                / Payment Count
+                                <span class="ml-2">
+                                    ( {{ number_format(count($data)) }} )
+                                </span>
 
                             </p>
                         </div>
@@ -35,8 +35,7 @@
                     <div class="row pt-2">
                         <div class="col-12">
                             <div class="card-box table-responsive">
-                                <table id="datatable-buttons"
-                                class="table table-bordered nowrap"
+                                <table id="datatable-buttons" class="table table-bordered nowrap"
                                     style="
                     border-collapse: collapse;
                     border-spacing: 0;
@@ -66,15 +65,21 @@
                                                 </td>
                                                 <td>
                                                     <a
-                                                        href="{{ route('userInfo', ['phone' => $item->Vehicle->driverphone, 'plate' => $item->Vehicle->vehno, 'investorphone' => $item->Vehicle->investorphone]) }}">
-                                                        {{ $item->Vehicle->vehno }}
+                                                        href="{{ route('userInfo', ['phone' => $item->driverphone, 'plate' => $item->vehno, 'investorphone' => $item->investorphone]) }}">
+                                                        {{ $item->vehno }}
                                                     </a>
                                                 </td>
-                                                <td>{{ $item->Vehicle->drivername }}</td>
-                                                <td>{{ $item->Vehicle->driverphone }}</td>
-                                                <td> GPS </td>
+                                                <td>{{ $item->drivername }}</td>
+                                                <td>{{ $item->driverphone }}</td>
+                                                <td>
+                                                    @if (!empty($item->time))
+                                                        {{ \Carbon\Carbon::parse($item->time)->diffForHumans() }}
+                                                    @else
+                                                        UNKNOW
+                                                    @endif
+                                                </td>
                                                 <td><span>&#8358;</span> {{ number_format($item->needpayment, 2) }}</td>
-                                                <td>{{ $item->Vehicle->bodytypename }}</td>
+                                                <td>{{ $item->bodytypename }}</td>
                                                 <td>{{ $item->duetime }}</td>
                                                 <td>{{ $item->createtime }}</td>
 
@@ -91,19 +96,19 @@
                 <!-- sub tab -->
                 <ul class="sub-tabs pt-2">
                     <li class="list-payment">
-                        <a href="all-payments">Payments Recieved</a>
+                        <a href=" {{ route('all-payments') }}">Payments Recieved</a>
                     </li>
                     <li class="list-due-payment bbd">
-                        <a href="due-payments">Due Payments</a>
+                        <a href=" {{ route('due-payments') }}">Due Payments</a>
                     </li>
                     <li class="list-overdue-payment">
-                        <a href="overdue-payments">Overdue Payments</a>
+                        <a href=" {{ route('overdue-payments') }}">Overdue Payments</a>
                     </li>
                     <li class="list-critical-payment">
-                        <a href="critical-payments">Critical Payments</a>
+                        <a href=" {{ route('critical-payments') }}">Critical Payments</a>
                     </li>
                     <li class="list-color">
-                        <a href="code-red">Code Red</a>
+                        <a href=" {{ route('code-red') }}">Code Red</a>
                     </li>
                 </ul>
             </div>

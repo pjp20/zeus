@@ -26,12 +26,11 @@
                                 <span class="closeBtn">X</span>
                             </div>
                             <ul class="filterList">
-                                <li>Default / Live</li>
-                                <li class="activeList">Last Week</li>
-                                <li>Past 30 days</li>
-                                <li>Last 3 months</li>
-                                <li>Past 6 months</li>
-                                <li>Past Year</li>
+                                <li> <a href="{{route("report-module")}}">  Default / Live </a></li>
+                                <li> <a href="{{route("reportModuleFilter2",['date' => "30"])}}"> Past 30 days </a> </li>
+                                <li> <a href="{{route("reportModuleFilter2",['date' => "90"])}}"> Last 3 months </a> </li>
+                                <li> <a href="{{route("reportModuleFilter2",['date' => "180"])}}"> Last 6 months </a> </li>
+                                <li> <a href="{{route("reportModuleFilter2",['date' => "365"])}}"> Last Year </a> </li>
                             </ul>
                             <form action="{{ route('reportModuleFilter') }}" method="post">
                                 @csrf
@@ -76,7 +75,7 @@
                                     <div class="leftBottom">
                                         <span class="lft1">REVENUE EXPECTED</span><br />
                                         <span class="lft2 text-inter" id="project"><span>&#8358;</span> <span
-                                                id="load">0</span> </span>
+                                                id="load">{{number_format($income,2)}}</span> </span>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +92,7 @@
                                     <div class="leftBottom">
                                         <span class="lft1">ALL PAYMENT EXPECTED</span><br />
                                         <span class="lft2 text-inter text-dark" id="paidUser"><span>&#8358;</span> <span
-                                                id="load2">0</span> </span>
+                                                id="load2">{{ number_format($paid,2)}}</span> </span>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +109,7 @@
                                     <div class="leftBottom">
                                         <span class="lft1">TOTAL OUTSTANDING PAYMENT</span><br />
                                         <span class="lft2 text-inter text-dark " id="unpaid"> <span>&#8358;</span> <span
-                                                id="load3">0</span> </span>
+                                                id="load3">{{number_format($unpaid,2)}}</span> </span>
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +128,7 @@
                                         <span class="lft1 text-bold black-text">ALL OVERDUE &amp; OUTSTANDING
                                             PAYMENTS</span><br />
                                         <span class="lft2 text-inter" id="depot"> <span>&#8358;</span> <span
-                                                id="load4">0</span> </span>
+                                                id="load4">{{number_format($depot,2)}}</span> </span>
                                     </div>
                                 </div>
                             </div>
@@ -164,7 +163,7 @@
         </div>
         <!-- end content -->
     </div>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#load').html(
                 '<img src="{{ asset('assets/images/loader.gif') }}" width="25" height="25"/>'
@@ -237,5 +236,5 @@
             });
 
         });
-    </script>
+    </script> --}}
 @endsection

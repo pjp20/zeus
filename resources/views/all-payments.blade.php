@@ -35,12 +35,14 @@
                                 <span class="closeBtn">X</span>
                             </div>
                             <ul class="filterList">
-                                <li>Default / Live</li>
-                                <li class="activeList">Last Week</li>
-                                <li>Past 30 days</li>
-                                <li>Last 3 months</li>
-                                <li>Past 6 months</li>
-                                <li>Past Year</li>
+                                <li> <a href="{{route("all-payments")}}">  Default / Live </a></li>
+                                <li> <a href="{{route("allPaymentFilter2",['date' => "7"])}}"> Last Week </a> </li>
+                                <li> <a href="{{route("allPaymentFilter2",['date' => "30"])}}"> Past 30 days </a> </li>
+                                <li> <a href="{{route("allPaymentFilter2",['date' => "90"])}}"> Last 3 months </a> </li>
+                                <li> <a href="{{route("allPaymentFilter2",['date' => "180"])}}"> Last 6 months </a> </li>
+                                <li> <a href="{{route("allPaymentFilter2",['date' => "365"])}}"> Last Year </a> </li>
+
+
                             </ul>
                             <form action="{{route('allPaymentFilter')}}" method="post">
                                 @csrf
@@ -147,19 +149,19 @@
                 <!-- sub tab -->
                 <ul class="sub-tabs pt-2">
                     <li class="list-payment bbd">
-                        <a href="all-payments">Payments Recieved</a>
+                        <a href="{{route("all-payments") }}">Payments Recieved</a>
                     </li>
                     <li class="list-due-payment">
-                        <a href="due-payments">Due Payments</a>
+                        <a href="{{route("due-payments") }}">Due Payments</a>
                     </li>
                     <li class="list-overdue-payment">
-                        <a href="overdue-payments">Overdue Payments</a>
+                        <a href="{{route("overdue-payments") }}">Overdue Payments</a>
                     </li>
                     <li class="list-critical-payment">
-                        <a href="critical-payments">Critical Payments</a>
+                        <a href="{{route("critical-payments") }}">Critical Payments</a>
                     </li>
                     <li class="list-color">
-                        <a href="code-red">Code Red</a>
+                        <a href="{{route("code-red") }}">Code Red</a>
                     </li>
                 </ul>
             </div>
