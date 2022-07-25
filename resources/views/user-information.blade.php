@@ -248,19 +248,29 @@
                                             {{ $data['vehicleDetails']->createtime }}
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    {{-- <div class="row mb-2">
                                         <div class="col-6 side1">Fleet</div>
                                         <div class="col-6 side2">
                                             {{ $data['vehicleDetails']->bodytypename }}
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 
                             <div class="carImage">
-                                <!-- <div class="image-car"></div> -->
-                                <!-- <div class="image-car"></div> -->
-                                <!-- <div class="image-car"></div> -->
+                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                      <div class="carousel-item active">
+                                        <img src="{{asset('assets/images/car-red.png')}}" class="d-block w-100" alt="...">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img src="{{asset('assets/images/car-red.png')}}" class="d-block w-100" alt="...">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img src="{{asset('assets/images/car-red.png')}}" class="d-block w-100" alt="...">
+                                      </div>
+                                    </div>
+                                  </div>
                             </div>
                         </div>
                         {{-- Grantors informations --}}

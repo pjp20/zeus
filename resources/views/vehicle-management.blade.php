@@ -306,11 +306,11 @@
 @endsection
 <style>
     .fleet_section {
-        display: none;
+        /* display: none; */
     }
 
     .track_section {
-        display: none;
+        /* display: none; */
     }
 </style>
 <script>

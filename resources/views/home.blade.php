@@ -7,30 +7,33 @@
                 <!-- text-inter -->
                 <div class="row g-2">
                     <div class="col-sm-6 col-md-6 col-lg-4">
-                        <div class="boxInfo">
-                            <div class="topInfo">
-                                <div class="vectorBox">
-                                    <img src="{{ asset('assets/images/deep-vector.svg') }}" alt="">
+                        <a href="finance-office">
+                            <div class="boxInfo">
+                                <div class="topInfo">
+                                    <div class="vectorBox">
+                                        <img src="{{ asset('assets/images/deep-vector.svg') }}" alt="">
+                                    </div>
+                                    <i class="bx bx-dots-vertical-rounded adjust"></i>
+
                                 </div>
-                                <i class="bx bx-dots-vertical-rounded adjust"></i>
-                            </div>
-                            <div class="bottomInfo">
-                                <div class="leftBottom">
-                                    <span class="lft1">Account Balance</span><br />
-                                    <span class="lft2 text-inter">$5,600,000</span>
-                                </div>
-                                <span
-                                    class="
+                                <div class="bottomInfo">
+                                    <div class="leftBottom">
+                                        <span class="lft1">Account Balance</span><br />
+                                        <span class="lft2 text-inter">$5,600,000</span>
+                                    </div>
+                                    <span
+                                        class="
                     rightBottom
                     bg-light-red
                     red-text
                     font-weight-bold
                   ">
-                                    <i class="bx bx-down-arrow-alt"></i>
-                                    <span>22.5%</span> <span>APRIL</span>
-                                </span>
+                                        <i class="bx bx-down-arrow-alt"></i>
+                                        <span>22.5%</span> <span>APRIL</span>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-4">
                         <div class="boxInfo">
@@ -59,30 +62,32 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-4">
-                        <div class="boxInfo bg-blk text-light">
-                            <div class="topInfo">
-                                <div class="vectorBox2">
-                                    <img src="{{ asset('assets/images/deep-vector.svg') }}" alt="">
+                        <a href="user-management">
+                            <div class="boxInfo bg-blk text-light">
+                                <div class="topInfo">
+                                    <div class="vectorBox2">
+                                        <img src="{{ asset('assets/images/deep-vector.svg') }}" alt="">
+                                    </div>
+                                    <i class="bx bx-dots-vertical-rounded adjust"></i>
                                 </div>
-                                <i class="bx bx-dots-vertical-rounded adjust"></i>
-                            </div>
-                            <div class="bottomInfo">
-                                <div class="leftBottom">
-                                    <span class="lft1 text-light">Total User(s)</span><br />
-                                    <span class="lft2 text-inter text-light">2,400</span>
-                                </div>
-                                <span
-                                    class="
+                                <div class="bottomInfo">
+                                    <div class="leftBottom">
+                                        <span class="lft1 text-light">Total User(s)</span><br />
+                                        <span class="lft2 text-inter text-light">2,400</span>
+                                    </div>
+                                    <span
+                                        class="
                     rightBottom
                     bg-light-dark
                     text-light
                     font-weight-bold
                   ">
-                                    <i class="bx bx-down-arrow-alt"></i>
-                                    <span>22.5%</span> <span>APRIL</span>
-                                </span>
+                                        <i class="bx bx-down-arrow-alt"></i>
+                                        <span>22.5%</span> <span>APRIL</span>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 

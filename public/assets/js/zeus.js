@@ -2,6 +2,8 @@ let overview = document.querySelector(".list-overview");
 let fleet = document.querySelector(".list-fleet");
 let track = document.querySelector(".list-track");
 
+
+
 let overviewSection = document.querySelector('.overview_section');
 let fleetSection = document.querySelector('.fleet_section');
 let trackSection = document.querySelector('.track_section');
@@ -53,3 +55,28 @@ track.addEventListener('click', () => {
     fleet.classList.remove("bbd");
     track.classList.add("bbd");
 })
+
+let listGeneral = document.querySelector('.list-general');
+let listTransaction = document.querySelector('.list-transaction');
+let listRemittance = document.querySelector('.list-remittance');
+
+function listGeneralOverview() {
+    // listGeneral.classList.add('bbd');
+    // listTransaction.classList.remove('bdd');
+    // listRemittance.classList.remove('bdd');
+    alert('hi');
+}
+function listFleetTransaction() {
+    // listTransaction.classList.add('bdd');
+    // listGeneral.classList.remove('bbd');
+    // listRemittance.classList.remove('bdd');
+    alert('hi');
+
+}
+function listRemittanceOverview() {
+    // listTransaction.classList.remove('bdd');
+    // listGeneral.classList.remove('bbd');
+    // listRemittance.classList.add('bdd');
+    alert('hi');
+
+}

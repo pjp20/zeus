@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 
 class ReportModuleController extends Controller {
+    public function userMgt(){
+        return view('user-management');
+    }
     public function index() {
         $date = Carbon::today()->format( 'Y-m-d' );
         $weekstart = Carbon::now()->startOfWeek( Carbon::SUNDAY )->format( 'Y-m-d' );

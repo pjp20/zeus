@@ -11,13 +11,12 @@
                     </div>
                 </div>
                 <ul class="sub-tabs">
-                    <li class="list-overview bbd" @click="activeOverview">
+                    <li class="list-general bbd" onclick="listGeneralOverview()">
                         General Overview
                     </li>
-                    <li class="list-fleet" @click="activeFleet">Transaction Table</li>
-                    <li class="list-track" @click="activeTrack">Remittance Table</li>
+                    <li class="list-transaction" onclick="listFleetTransaction()">Transaction Table</li>
+                    <li class="list-remittance" onclick="listRemittanceOverview()">Remittance Table</li>
                 </ul>
-
                 <!-- overview -->
                 <div v-show="overview_section">
                     <div class="row mt-3 g-2">
@@ -286,3 +285,5 @@
         <!-- end content -->
     </div>
 @endsection
+
+<script></script>

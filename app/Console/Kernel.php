@@ -20,19 +20,19 @@ class Kernel extends ConsoleKernel
             $controller = new \App\Http\Controllers\ScheduleController();
             $controller->reportTask();
             // info("called every minute");
-        })->everySixHours();
+        })->everyMinute();
 
-        $schedule->call(function () {
-            $controller = new \App\Http\Controllers\ScheduleController();
-            $controller->allVehicleTask();
-            // info("called every minute");
-        })->everySixHours();
+        // $schedule->call(function () {
+        //     $controller = new \App\Http\Controllers\ScheduleController();
+        //     $controller->allVehicleTask();
+        //     // info("called every minute");
+        // })->everyMinute();
 
-        $schedule->call(function () {
-            $controller = new \App\Http\Controllers\ScheduleController();
-            $controller->vehicleStatusTask();
-            // info("called every minute");
-        })->everyTwoHours();
+        // $schedule->call(function () {
+        //     $controller = new \App\Http\Controllers\ScheduleController();
+        //     $controller->vehicleStatusTask();
+        //     // info("called every minute");
+        // })->everyMinute();
 
 
     }
