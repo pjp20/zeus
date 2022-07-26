@@ -27,6 +27,7 @@
                             </div>
                             <ul class="filterList">
                                 <li> <a href="{{route("report-module")}}">  Default / Live </a></li>
+                                <li> <a href="{{route("reportModuleFilter2",['date' => "7"])}}"> Last Week </a> </li>
                                 <li> <a href="{{route("reportModuleFilter2",['date' => "30"])}}"> Past 30 days </a> </li>
                                 <li> <a href="{{route("reportModuleFilter2",['date' => "90"])}}"> Last 3 months </a> </li>
                                 <li> <a href="{{route("reportModuleFilter2",['date' => "180"])}}"> Last 6 months </a> </li>

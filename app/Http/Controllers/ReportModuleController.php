@@ -14,11 +14,14 @@ class ReportModuleController extends Controller {
     public function index() {
         $date = Carbon::today()->format( 'Y-m-d' );
         $weekstart = Carbon::now()->startOfWeek( Carbon::SUNDAY )->format( 'Y-m-d' );
-        $weekend =  Carbon::now()->startOfWeek( Carbon::SATURDAY )->format( 'Y-m-d' );
+        $weekend =  Carbon::now()->endOfWeek( Carbon::SATURDAY )->format( 'Y-m-d' );
         // // aLlpayment
+
+        // return Carbon::now()->endOfWeek( Carbon::SUNDAY )->format( 'Y-m-d H:i:s' );
+
         $result =  ( new ApiController )->post( 'https://tella.envio.africa/api/all-payment-date', array(
-            'startDate' => Carbon::now()->subDays( 7 )->startOfDay()->format( 'Y-m-d H:i:s' ),
-            'endDate' =>Carbon::today()->format( 'Y-m-d H:i:s' ),
+            'startDate' => Carbon::now()->startOfWeek( Carbon::SUNDAY )->format( 'Y-m-d H:i:s' ),
+            'endDate' => Carbon::now()->endOfWeek( Carbon::SATURDAY )->format( 'Y-m-d H:i:s' ),
         ) );
 
         $paidUsers = 0;
@@ -26,15 +29,18 @@ class ReportModuleController extends Controller {
             $paidUsers += $item->amount;
         }
         // return $paidUsers;
-        $depotx = ( new VMSAPI )->getVehicleOverDue( Carbon::yesterday()->startOfDay()->format( 'Y-m-d' ), 1000 );
+
+        $depotx = ( new VMSAPI )->getVehicleOverDue( $weekend, 1000 );
+
+        // return $depotx;
         $depot = 0;
-        $overdueOneWeek = Carbon::now()->subDays( 9 )->startOfDay()->format( 'Y-m-d' );
+        // $overdueOneWeek = Carbon::now()->subDays( +7 )->startOfDay()->format( 'Y-m-d' );
         foreach ( $depotx->Data as $value ) {
             if ( $value->Vehicle->investorname != '' || $value->Vehicle->investorname != null ) {
-                if ( $value->duetime >= $overdueOneWeek ) {
+                if ( $value->duetime >= $weekstart ) {
                     // from sunday till today
                     $depot += $value->needpayment;
-                    $arr[] = $value->duetime ;
+                    // $arr[] = $value->duetime ;
                 }
             }
         }
@@ -43,9 +49,9 @@ class ReportModuleController extends Controller {
         $unpaid = $this->DuePayment();
         $unpaidAmount = $unpaid[ 'totalAmount' ];
 
-        $income  = $paidUsers + $unpaidAmount;
-        $depot =  $depot + $unpaidAmount;
-        return view( 'report-module', [ 'paid' => $paidUsers, 'unpaid' => $unpaidAmount, 'income' => $income, 'depot' => $depot ] );
+        $income  = $paidUsers + $depot;
+        // $depot =  $depot + $unpaidAmount;
+        return view( 'report-module', [ 'paid' => $paidUsers, 'unpaid' => $depot, 'income' => $income, 'depot' => $unpaidAmount +$depot ] );
     }
 
     public function allPayments() {
