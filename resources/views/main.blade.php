@@ -29,8 +29,10 @@
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />
     <link href="assets/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
+    <!-- C3 Chart css -->
+    <link href="assets/libs/c3/c3.min.css" rel="stylesheet" type="text/css" />
 
-    <script type = "text/javascript"    src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">  </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 
 </head>
@@ -90,6 +92,13 @@
 
 <!-- Datatables init -->
 <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
-<script>
+<!--C3 Chart-->
+<script src="{{asset('assets/libs/d3/d3.min.js')}}"></script>
+<script src="{{asset('assets/libs/c3/c3.min.js')}}"></script>
 
-</script>
+<!-- Init js -->
+<script src="assets/js/pages/c3.init.js"></script>
+<!-- Chart JS -->
+<script src="{{asset('assets/libs/chart-js/Chart.bundle.min.js')}}"></script>
+
+<script src="{{asset('assets/js/chartjs.init.js')}}"></script>

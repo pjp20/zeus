@@ -63,14 +63,11 @@
                 </li>
             </ul>
             <a class="baseExit" href="/user-profile">
-                <li class="bg-light-dark">
+                <li class="footer-profile">
                     <div class="leftBase">
                         <img src="{{ asset('assets/images/dp.png') }}" alt="" />
                     </div>
-                    <div class="rightBase">
-                        <p class="admin-name">Sharafadeen Mubarak</p>
-                        <p class="designation">Product Manager</p>
-                    </div>
+                    <span class="admin-name">{{ auth()->user()->name }}</span>
                 </li>
             </a>
         </div>

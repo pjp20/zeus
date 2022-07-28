@@ -1,6 +1,6 @@
 @extends('main')
 @section('content')
-    <div class="content-page">
+    <div class="content-page bg-light-grey">
         <div class="content">
             <!-- Start Content-->
             <div class="container-fluid mt-10">
@@ -26,11 +26,13 @@
                                 <span class="closeBtn">X</span>
                             </div>
                             <ul class="filterList">
-                                <li> <a href="{{route("report-module")}}">  Default / Live </a></li>
-                                <li> <a href="{{route("reportModuleFilter2",['date' => "30"])}}"> Past 30 days </a> </li>
-                                <li> <a href="{{route("reportModuleFilter2",['date' => "90"])}}"> Last 3 months </a> </li>
-                                <li> <a href="{{route("reportModuleFilter2",['date' => "180"])}}"> Last 6 months </a> </li>
-                                <li> <a href="{{route("reportModuleFilter2",['date' => "365"])}}"> Last Year </a> </li>
+                                <li> <a href="{{ route('report-module') }}"> Default / Live </a></li>
+                                <li> <a href="{{ route('reportModuleFilter2', ['date' => '30']) }}"> Past 30 days </a> </li>
+                                <li> <a href="{{ route('reportModuleFilter2', ['date' => '90']) }}"> Last 3 months </a>
+                                </li>
+                                <li> <a href="{{ route('reportModuleFilter2', ['date' => '180']) }}"> Last 6 months </a>
+                                </li>
+                                <li> <a href="{{ route('reportModuleFilter2', ['date' => '365']) }}"> Last Year </a> </li>
                             </ul>
                             <form action="{{ route('reportModuleFilter') }}" method="post">
                                 @csrf
@@ -75,7 +77,7 @@
                                     <div class="leftBottom">
                                         <span class="lft1">REVENUE EXPECTED</span><br />
                                         <span class="lft2 text-inter" id="project"><span>&#8358;</span> <span
-                                                id="load">{{number_format($income,2)}}</span> </span>
+                                                id="load">{{ number_format($income, 2) }}</span> </span>
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +94,7 @@
                                     <div class="leftBottom">
                                         <span class="lft1">ALL PAYMENT EXPECTED</span><br />
                                         <span class="lft2 text-inter text-dark" id="paidUser"><span>&#8358;</span> <span
-                                                id="load2">{{ number_format($paid,2)}}</span> </span>
+                                                id="load2">{{ number_format($paid, 2) }}</span> </span>
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +111,7 @@
                                     <div class="leftBottom">
                                         <span class="lft1">TOTAL OUTSTANDING PAYMENT</span><br />
                                         <span class="lft2 text-inter text-dark " id="unpaid"> <span>&#8358;</span> <span
-                                                id="load3">{{number_format($unpaid,2)}}</span> </span>
+                                                id="load3">{{ number_format($unpaid, 2) }}</span> </span>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +130,7 @@
                                         <span class="lft1 text-bold black-text">ALL OVERDUE &amp; OUTSTANDING
                                             PAYMENTS</span><br />
                                         <span class="lft2 text-inter" id="depot"> <span>&#8358;</span> <span
-                                                id="load4">{{number_format($depot,2)}}</span> </span>
+                                                id="load4">{{ number_format($depot, 2) }}</span> </span>
                                     </div>
                                 </div>
                             </div>
@@ -136,6 +138,9 @@
                     </div>
                     <!-- graph -->
                     <div class="graph-section2">
+                        <h4 class="header-title">REVENUE BY TREND</h4>
+
+                        <div id="chart" dir="ltr"></div>
                         {{-- <img src="{{ asset('assets/images/stats.svg') }}" alt="" /> --}}
                     </div>
                 </div>

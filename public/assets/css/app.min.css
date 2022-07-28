@@ -98,7 +98,9 @@ body {
     background: #fff;
     min-height: 93vh;
 }
-
+.bg-light-grey{
+    background: #e5e5e500;
+}
 .left-side-menu {
     width: 240px;
     background: var(--deepPurple);
@@ -6270,15 +6272,20 @@ thead {
 
 .leftBase, .rightBase {
     display: flex;
-    padding: 10px 2px;
+    /* padding: 10px 2px; */
     justify-content: center;
-    flex-direction: column;
+    /* flex-direction: column; */
+    height: 40px;
+    align-items: center;
+    background: red;
+    margin-right: 3px;
+
 }
 
 .leftBase {
     height: 40px;
     width: 40px;
-    background: #fff;
+    /* background: #fff; */
     border-radius: 50%;
 }
 
@@ -6550,11 +6557,14 @@ thead {
 }
 
 .bg-light-dark {
-    border-radius: 24px;
-    padding: 4px 5px;
-    background: #232A50;
+
     /* background: rgba(255, 255, 255, 0.1); */
 
+}
+.footer-profile{
+    border-radius: 24px;
+    padding: 14px 8px;
+    background: #232A50;
 }
 
 .rightBottom {

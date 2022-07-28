@@ -11,7 +11,7 @@
                             Vehicle Management
                         </p>
                     </div>
-                    <a href="/add-user"  class="addBtn addNew">ADD NEW</a>
+                    <a href="/add-user" class="addBtn addNew">ADD NEW</a>
                 </div>
                 <ul class="sub-tabs">
                     <li class="list-overview bbd">Overview</li>
@@ -104,8 +104,12 @@
 
                     <div class="row mt-3 g-2">
                         <div class="col-sm-6 col-md-12 col-lg-8 mb-3">
-                            <div class="graph-section bg-light">
-                                <img src="{{ asset('assets/images/bars.svg') }}" alt="">
+                            <div class="graph-section">
+                                <h4 class="header-title text-inter font-weight-bolder">
+                                    Analysis by Location
+                                </h4>
+                                <canvas id="myChart"></canvas>
+                                {{-- <img src="{{ asset('assets/images/bars.svg') }}" alt=""> --}}
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-12 col-lg-4">
@@ -303,16 +307,27 @@
     </div>
     <!-- end content -->
     </div>
+
+    <script>
+  
+        const ctx = document.getElementById("myChart").getContext("2d");
+        const myChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["Abuja", "Portharcort", "Benin", "Lagos"],
+                datasets: [{
+                    label: "Locations",
+                    data: [19, 1, 2, 3],
+                    backgroundColor: "#56CCF2",
+                }, ],
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            },
+        });
+    </script>
 @endsection
-<style>
-    .fleet_section {
-        /* display: none; */
-    }
-
-    .track_section {
-        /* display: none; */
-    }
-</style>
-<script>
-
-</script>
