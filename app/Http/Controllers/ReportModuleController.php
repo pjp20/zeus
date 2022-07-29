@@ -8,8 +8,19 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 
 class ReportModuleController extends Controller {
+
     public function userMgt(){
-        return view('user-management');
+        $response = Http::get('http://test.mygarage.africa/api/user-record');
+
+        $users = json_decode($response->body());
+
+        return view('user-management', compact('users'));
+    }
+    public function addUser(){
+        return view('add-user');
+    }
+    public function userProfile(){
+        return view('user-profile');
     }
     public function index() {
         $date = Carbon::today()->format( 'Y-m-d' );
@@ -143,7 +154,7 @@ class ReportModuleController extends Controller {
         foreach ( $result as $value ) {
             $totalAmount +=  $value->needpayment;
         }
-        return view( 'critical-payments', [ 'totalAmount' => $totalAmount, 'data' => $result ] );
+        return view( 'yritical-payments', [ 'totalAmount' => $totalAmount, 'data' => $result ] );
     }
 
     public function codeRed() {

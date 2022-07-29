@@ -26,7 +26,7 @@
                             <div class="bottomInfo">
                                 <div class="leftBottom">
                                     <span class="lft1 text-light">Total User(s)</span><br />
-                                    <span class="lft2 text-inter text-light">2,400</span>
+                                    <span class="lft2 text-inter text-light">{{ count($users) }}</span>
                                 </div>
                                 <span
                                     class="
@@ -52,7 +52,7 @@
                             <div class="bottomInfo">
                                 <div class="leftBottom">
                                     <span class="lft1">Total Car Owner(s)</span><br />
-                                    <span class="lft2 text-inter">1,700</span>
+                                    <span class="lft2 text-inter">0</span>
                                 </div>
                                 <span
                                     class="
@@ -78,7 +78,7 @@
                             <div class="bottomInfo">
                                 <div class="leftBottom">
                                     <span class="lft1">Total Drivers(s)</span><br />
-                                    <span class="lft2 text-inter">2,100</span>
+                                    <span class="lft2 text-inter">0</span>
                                 </div>
                                 <span
                                     class="
@@ -99,7 +99,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box table-responsive">
-                            <table id="datatable-buttons" class="table table-bordered nowrap"
+                            <table id="datatable" class="table table-bordered nowrap"
                                 style="
                   border-collapse: collapse;
                   border-spacing: 0;
@@ -122,24 +122,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" class="check" />
-                                        </td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>5</td>
-                                        <td>6</td>
-                                        <td>7</td>
-                                        <td>8</td>
-                                        <td>
-                                            <div class="iconBox">
-                                                <i class="icon-options text-dark pt-2"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @foreach ($users as $user)
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="check" />
+                                            </td>
+                                            <td>
+                                                <a href="/user/{{ $user->phone }}">ENV/{{ $user->id }}</a>
+                                            </td>
+                                            <td>{{ $user->category }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->phone }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>6</td>
+                                            <td>7</td>
+                                            <td>{{ $user->created_at }}</td>
+                                            <td>
+                                                <div class="iconBox">
+                                                    <i class="icon-options text-dark pt-2"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                     <tr>
                                         <td>
                                             <input type="checkbox" class="check" />

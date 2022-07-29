@@ -603,7 +603,7 @@ body.enlarged {
     color: #08102E;
 }
 
-.subText {
+.row-top {
     font-family: 'Inter', sans-serif;
     color: #120046;
     font-weight: 600;
@@ -6872,17 +6872,18 @@ label {
     border-radius: 12px;
     border: 1px solid #ccc;
     display: flex;
-    height: auto;
+    height: 350px;
     flex-direction: column;
     /* background: red; */
     width: 100%;
 }
 
 .info-info {
-    height: 100px;
+    height: 80px;
     width: 100%;
     border-bottom: 1px solid #ccc;
     display: flex;
+    align-items: center;
 }
 
 .border-none {
@@ -6909,12 +6910,13 @@ label {
 
 .info-desc {
     padding: 5px;
-    height: 100px;
-    width: 80%;
+    height: 100%;
+    width: 90%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     color: #000;
+    align-items: flex-start;
 }
 
 .infoTop {
@@ -6934,4 +6936,36 @@ label {
 
 .no-radius {
     border-radius: 0px !important;
+}
+
+.profile{
+    margin-bottom: 30px;
+    border-radius: 12px;
+    align-items: center;
+}
+.profileImage{
+    padding: 10px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 0 20px 20px;
+    border: 1px solid #313a46;
+}
+.profileImage img{
+    box-shadow: 0 0 12px gainsboro;
+    border: 6px solid #fff;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+}
+.top-70{
+    margin-top: 70px;
+}
+.subText {
+    font-family: 'Inter', sans-serif;
+    color: #120046;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
 }

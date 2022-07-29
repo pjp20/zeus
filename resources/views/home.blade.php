@@ -91,7 +91,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-sm-6 col-md-12 col-lg-4">
                         <div class="bottom-row d-block">
                             <p class="sectionTitle text-inter">Activity Log</p>
@@ -103,10 +103,10 @@
                                         </div>
                                     </div>
                                     <div class="info-desc">
-                                        <p class="infoTop">
+                                        <span class="infoTop">
                                             GPS device connection lost for RBC123XC
-                                        </p>
-                                        <p class="infoButtom">16 May, 2022 @ 04:35</p>
+                                        </span>
+                                        <span class="infoButtom">16 May, 2022 @ 04:35</span>
                                     </div>
                                 </div>
                                 <div class="info-info border-none">
@@ -116,10 +116,10 @@
                                         </div>
                                     </div>
                                     <div class="info-desc">
-                                        <p class="infoTop">
+                                        <span class="infoTop">
                                             GPS device connection lost for RBC123XC
-                                        </p>
-                                        <p class="infoButtom">16 May, 2022 @ 04:35</p>
+                                        </span>
+                                        <span class="infoButtom">16 May, 2022 @ 04:35</span>
                                     </div>
                                 </div>
                                 <div class="info-info border-none">
@@ -129,16 +129,16 @@
                                         </div>
                                     </div>
                                     <div class="info-desc">
-                                        <p class="infoTop">
+                                        <span class="infoTop">
                                             GPS device connection lost for RBC123XC
-                                        </p>
-                                        <p class="infoButtom">16 May, 2022 @ 04:35</p>
+                                        </span>
+                                        <span class="infoButtom">16 May, 2022 @ 04:35</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 col-lg-4">
+                    {{-- <div class="col-sm-6 col-md-6 col-lg-4">
                         <div class="bottom-row border-none">
                             <div class="row">
                                 <div class="col-sm-6 col-md-12">
@@ -176,10 +176,13 @@
                                 </div>
                             </div>
                         </div>
+                    </div> --}}
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="bottom-row">
+                        </div>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-4">
                         <div class="bottom-row">
-
                         </div>
                     </div>
                 </div>

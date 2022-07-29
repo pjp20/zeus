@@ -28,9 +28,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get("/", [HomepageController::class, 'index']);
+    Route::get('/users', [HomepageController::class, 'users']);
+    Route::get('/user/{phone}', [HomepageController::class, 'user']);
+
 
     Route::controller(ReportModuleController::class)->group(function () {
-        Route::get("user-management",  'index');
+        Route::get("user-management",  'userMgt');
         Route::get("add-user",  'addUser');
         Route::get("user-profile",  'userProfile');
     });

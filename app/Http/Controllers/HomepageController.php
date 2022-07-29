@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class HomepageController extends Controller
 {
@@ -15,6 +16,22 @@ class HomepageController extends Controller
     {
         return view('home');
     }
+    public function user($phone){
+        $response = Http::get('http://test.mygarage.africa/api/get-user/'.$phone);
+
+        $user = json_decode($response->body());
+
+        return view('user', compact('user'));
+
+    }
+
+    // public function users(){
+    //     $response = Http::get('http://test.mygarage.africa/api/user-record');
+
+    //     $users = json_decode($response->body());
+
+    //     return response()->json($users);
+    // }
 
     /**
      * Show the form for creating a new resource.
