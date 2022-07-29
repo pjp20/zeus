@@ -26,20 +26,20 @@ class HelloWorldCommand extends Command {
     */
 
     public function handle() {
-        info( 'Hello world' );
+        // info( 'Hello world' );
         sleep( 10 );
 
         info( 'all Vehicle start' );
 
-        // $controller = new \App\Http\Controllers\ScheduleController();
-        // $controller->allVehicleTask();
-        // info( 'all Vehicle Done' );
+        $controller = new \App\Http\Controllers\ScheduleController();
+        $controller->allVehicleTask();
+        info( 'all Vehicle Done' );
 
-        // $controller = new \App\Http\Controllers\ScheduleController();
-        // $controller->reportTask();
-        // info( 'all Vehicle Done' );
+        $controller = new \App\Http\Controllers\ScheduleController();
+        $controller->reportTask();
+        info( 'all Vehicle Done' );
 
-        // sleep( 200 );
+        sleep( 2000 );
 
         $controller = new \App\Http\Controllers\ScheduleController();
         $controller->vehicleStatusTask();
