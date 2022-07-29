@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller {
+
+    public function all() {
+        $this->vehicleStatusTask();
+    }
+
     public function reportTask() {
         $sql = DB::table( 'duepayments' )->truncate();
 
@@ -98,7 +103,8 @@ class ScheduleController extends Controller {
                 if ( $vehicleLocation != '' || $vehicleLocation != null ) {
 
                     $result = $vehicleLocation->Data[ 0 ];
-                    DB::table( 'vehicle_status' )->updateOrInsert(
+                    // DB::table( 'vehicle_status' )->updateOrInsert(
+                    DB::table( 'vehicle_status' )->upsert(
                         [
                             'systemno' => $value->systemno,
                             'time' => $result->Time,
@@ -109,6 +115,15 @@ class ScheduleController extends Controller {
                             'locate' => $result->Locate,
                             'miles' => $result->Miles,
                             'created_at' => now(),
+                        ], 'systemno', [
+                            'time' => $result->Time,
+                            'longitude' => $result->Longitude,
+                            'latitude' => $result->Latitude,
+                            'velocity' => $result->Velocity,
+                            'Dtstatus' => $result->DtStatus,
+                            'locate' => $result->Locate,
+                            'miles' => $result->Miles,
+                            'updated_at' => now()
                         ]
                     );
                 }
