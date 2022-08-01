@@ -11,15 +11,15 @@
                     </div>
                 </div>
                 <ul class="sub-tabs">
-                    <li class="list-general bbd" onclick="listGeneralOverview()">
+                    <li class="list-finance-overview bbd">
                         General Overview
                     </li>
-                    <li class="list-transaction" onclick="listFleetTransaction()">Transaction Table</li>
-                    <li class="list-remittance" onclick="listRemittanceOverview()">Remittance Table</li>
+                    <li class="list-finance-transaction">Transaction Table</li>
+                    <li class="list-finance-remittance">Remittance Table</li>
                 </ul>
                 <!-- overview -->
-                <div v-show="overview_section">
-                    <div class="row mt-3 g-2">
+                <div class="finance_general_overview">
+                    <div class="row g-2">
                         <div class="col-sm-6 col-md-12 col-lg-4">
                             <div class="boxInfo">
                                 <div class="topInfo">
@@ -101,7 +101,7 @@
                 </div>
 
                 <!-- fleet -->
-                <div v-show="fleet_section">
+                <div class="finance_transaction_table">
                     <!-- table -->
                     <div class="row">
                         <div class="col-12">
@@ -153,7 +153,7 @@
                 </div>
 
                 <!-- track -->
-                <div class="container-fluid mt-3 g-2" v-show="track_section">
+                <div class="container-fluid mt-3 g-2" class="finance_remittance_table">
                     <div class="row mt-3 g-2">
                         <div class="col-sm-6 col-md-12 col-lg-4">
                             <div class="boxInfo">
@@ -285,5 +285,3 @@
         <!-- end content -->
     </div>
 @endsection
-
-<script></script>

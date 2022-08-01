@@ -14,9 +14,9 @@
                     <a href="/add-user" class="addBtn addNew">ADD NEW</a>
                 </div>
                 <ul class="sub-tabs">
-                    <li class="list-overview bbd">Overview</li>
-                    <li class="list-fleet">Fleet Status</li>
-                    <li class="list-track">Track Web</li>
+                    <li class="vehicle-list-overview bbd">Overview</li>
+                    <li class="vehicle-list-fleet">Fleet Status</li>
+                    <li class="vehicle-list-track">Track Web</li>
                 </ul>
 
                 <!-- overview -->
@@ -296,10 +296,11 @@
                 </div>
             </div>
 
+
             <!-- track -->
             <div class="container-fluid mt-3 g-2 track_section">
                 <div class="track-map">
-                    <img :src="{{ asset('assets/images/big-graph.png') }}" alt="">
+                    <img src="{{ asset('assets/images/big-graph.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -309,7 +310,6 @@
     </div>
 
     <script>
-  
         const ctx = document.getElementById("myChart").getContext("2d");
         const myChart = new Chart(ctx, {
             type: "bar",

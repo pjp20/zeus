@@ -64,7 +64,8 @@
     flex-direction: column;
     background: #fff;
 }
-.header-title{
+
+.header-title {
     padding-left: 20px;
 }
 
@@ -179,7 +180,8 @@
     display: flex;
     padding: 10px;
 }
-.carousel-item img{
+
+.carousel-item img {
     height: 100%;
     border-radius: 8px;
 }
@@ -869,6 +871,17 @@ tr {
     border-radius: 8px;
     font-weight: bold;
 }
-.footer-row{
+
+.footer-row {
     padding: 25px 35px;
+}
+
+
+/* vehicle management links */
+.fleet_section {
+    display: none;
+}
+
+.track_section {
+    display: none;
 }

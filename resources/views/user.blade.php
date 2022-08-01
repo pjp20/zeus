@@ -7,6 +7,7 @@
                     <div class="col-sm-6 col-md-2">
                         <div class="profile">
                             <div class="profileImage">
+                                <img src="{{$user->image}}" alt="">
                             </div>
                         </div>
                     </div>
@@ -16,12 +17,12 @@
                                 <p class="subText">USER DATA</p>
                                 <div class="form-campaign">
                                     <div class="form-group">
-                                        <label for="">First Name</label>
-                                        <input type="text" value="" class="form-control" />
+                                        <label for="">Name</label>
+                                        <input type="text" value="{{ $user->name }}" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <label for="">Email</label>
-                                        <input type="email" value="{{$user->email}}" class="form-control" />
+                                        <input type="email" value="{{ $user->email }}" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <label for="">Gender</label>
@@ -32,11 +33,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Address</label>
-                                        <input type="text" class="form-control" />
+                                        <input type="text" class="form-control" value="{{ $user->address }}" />
                                     </div>
                                     <div class="form-group">
                                         <label for="">NIN</label>
-                                        <input type="number" class="form-control" />
+                                        <input type="number" class="form-control" value="{{ $user->nin }}" />
                                     </div>
 
                                 </div>
@@ -45,23 +46,20 @@
                                 <p class="subText empty">Empty</p>
                                 <div class="form-campaign">
                                     <div class="form-group">
-                                        <label for="">Last Name</label>
-                                        <input type="text" class="form-control" placeholder="" />
-
+                                        <label for="">User Type</label>
+                                        <input type="text" value="{{ $user->category }}" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <label for="">Phone</label>
-                                        <input type="text" class="form-control" placeholder="" />
+                                        <input type="text" class="form-control" value="{{ $user->phone }}" />
                                     </div>
                                     <div class="form-group">
                                         <label for="">Date of Birth</label>
-                                        <input type="date" class="form-control" placeholder="" />
+                                        <input type="date" class="form-control" value="{{ $user->dob }}" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="">State</label>
-                                        <select class="form-control">
-                                            <option value=""></option>
-                                        </select>
+                                        <label for="">Town</label>
+                                        <input type="text" value="{{ $user->town }}" class="form-control" />
                                     </div>
                                 </div>
                             </div>
