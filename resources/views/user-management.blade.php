@@ -100,8 +100,7 @@
                     <div class="col-12">
                         <div class="card-box table-responsive">
                             <table id="datatable" class="table table-bordered nowrap"
-                                style="
-                  border-collapse: collapse;
+                                style=" border-collapse: collapse;
                   border-spacing: 0;
                   width: 100%;
                 ">
@@ -128,7 +127,12 @@
                                                 <input type="checkbox" class="check" />
                                             </td>
                                             <td>
-                                                <a href="/user/{{ $user->phone }}">ENV/{{ $user->id }}</a>
+                                                {{-- <a href="/user/{{ $user->phone }}">
+                                                    ENV/{{ $user->id }}
+                                                </a> --}}
+                                                <a href="{{route("user",['phone' => $user->phone])}}">
+                                                    ENV/{{ $user->id }}
+                                                </a>
                                             </td>
                                             <td>{{ $user->category }}</td>
                                             <td>{{ $user->name }}</td>

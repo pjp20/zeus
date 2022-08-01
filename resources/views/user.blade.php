@@ -14,7 +14,6 @@
                         <div class="row pr-3 pl-3">
                             <div class="col-sm-6 col-md-5">
                                 <p class="subText">USER DATA</p>
-
                                 <div class="form-campaign">
                                     <div class="form-group">
                                         <label for="">First Name</label>

@@ -131,4 +131,51 @@ class ScheduleController extends Controller {
         }
 
     }
+
+    public function userManagement() {
+        DB::table( 'user_management' )->truncate();
+
+        $response = Http::get( 'http://test.mygarage.africa/api/user-record' );
+        $users = json_decode( $response->body() );
+
+        // dd( $users );
+
+        // return view( 'user-management', compact( 'users' ) );
+        // $result = DB::table( 'all_vehicle' )->get();
+
+        foreach ( $users as $value ) {
+            DB::table( 'user_management' )->insert(
+                [
+                    'user_id' => $value->id,
+                    'name' => $value->name,
+                    'email' => $value->email,
+                    'phone' => $value->phone,
+                    'password' => $value->password,
+                    'password2' => $value->password2,
+                    'account' => $value->account,
+                    'address' => $value->address,
+                    'town' => $value->town,
+                    'package' => $value->package,
+                    'acctBal' => $value->acctBal,
+                    'image' => $value->image,
+                    'category' => $value->category,
+                    'accountNumber' => $value->accountNumber,
+                    'sortCode' => $value->sortCode,
+                    'driverId' => $value->driverId,
+                    'transactionPin' => $value->transactionPin,
+                    'nin' => $value->nin,
+                    'dob' => $value->dob,
+                    'refferral' => $value->referral,
+                    'defaultCar' => $value->defaultCar,
+                    'tracking' => $value->tracking,
+                    'repairFinancing' => $value->repairFinancing,
+                    'bolt' =>  $value->bolt,
+                    'insurance' =>  $value->insurance,
+                    'created_at' =>  $value->created_at,
+                    'updated_at' =>  $value->updated_at,
+                ]
+            );
+        }
+
+    }
 }

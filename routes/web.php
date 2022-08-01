@@ -29,10 +29,10 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['auth']], function () {
     Route::get("/", [HomepageController::class, 'index']);
     Route::get('/users', [HomepageController::class, 'users']);
-    Route::get('/user/{phone}', [HomepageController::class, 'user']);
+    Route::get('/user/{phone}', [HomepageController::class, 'user'])->name("user");
 
 
-    Route::controller(ReportModuleController::class)->group(function () {
+    Route::controller(UserManagementController::class)->group(function () {
         Route::get("user-management",  'userMgt');
         Route::get("add-user",  'addUser');
         Route::get("user-profile",  'userProfile');
@@ -76,6 +76,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/test', [App\Http\Controllers\ScheduleController::class, 'all']);
+Route::get('/userManagement', [App\Http\Controllers\ScheduleController::class, 'userManagement']);
 
 
 

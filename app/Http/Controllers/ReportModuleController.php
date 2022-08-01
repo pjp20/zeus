@@ -8,25 +8,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 
 class ReportModuleController extends Controller {
-<<<<<<< HEAD
 
-    public function userMgt(){
-        $response = Http::get('http://test.mygarage.africa/api/user-record');
-
-        $users = json_decode($response->body());
-
-        return view('user-management', compact('users'));
-    }
-    public function addUser(){
-        return view('add-user');
-    }
-    public function userProfile(){
-        return view('user-profile');
-=======
-    public function userMgt() {
-        return view( 'user-management' );
->>>>>>> 1264a6130486ee78098991b0a501872e5c1e35d8
-    }
 
     public function index() {
         $date = Carbon::today()->format( 'Y-m-d' );
