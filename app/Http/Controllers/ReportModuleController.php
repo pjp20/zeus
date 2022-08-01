@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 
 class ReportModuleController extends Controller {
+<<<<<<< HEAD
 
     public function userMgt(){
         $response = Http::get('http://test.mygarage.africa/api/user-record');
@@ -21,7 +22,12 @@ class ReportModuleController extends Controller {
     }
     public function userProfile(){
         return view('user-profile');
+=======
+    public function userMgt() {
+        return view( 'user-management' );
+>>>>>>> 1264a6130486ee78098991b0a501872e5c1e35d8
     }
+
     public function index() {
         $date = Carbon::today()->format( 'Y-m-d' );
         $weekstart = Carbon::now()->startOfWeek( Carbon::SUNDAY )->format( 'Y-m-d' );
@@ -147,8 +153,8 @@ class ReportModuleController extends Controller {
         // dd( $date );
 
         // $result = DB::table( 'duepayments' )->whereBetween( 'duetime', [ $date2, $date ] )->get();
-        $result = DB::table( 'duepayments' )->leftjoin( 'vehicle_status', 'vehicle_status.systemno', 'duepayments.systemno' )->whereBetween( 'duetime', [ $date2, $date ] )->select('duepayments.*','vehicle_status.time' )->get();
-// dd($result);
+        $result = DB::table( 'duepayments' )->leftjoin( 'vehicle_status', 'vehicle_status.systemno', 'duepayments.systemno' )->whereBetween( 'duetime', [ $date2, $date ] )->select( 'duepayments.*', 'vehicle_status.time' )->get();
+        // dd( $result );
         $totalAmount = 0;
 
         foreach ( $result as $value ) {
@@ -161,7 +167,7 @@ class ReportModuleController extends Controller {
         $date = Carbon::now()->subDays( 5 )->endOfDay()->format( 'Y-m-d H:i:s' );
         // $result = DB::table( 'duepayments' )->where( 'duetime', '<', $date )->get();
 
-                $result = DB::table( 'duepayments' )->leftjoin( 'vehicle_status', 'vehicle_status.systemno', 'duepayments.systemno' )->where( 'duetime', '<', $date )->select('duepayments.*','vehicle_status.time' )->get();
+        $result = DB::table( 'duepayments' )->leftjoin( 'vehicle_status', 'vehicle_status.systemno', 'duepayments.systemno' )->where( 'duetime', '<', $date )->select( 'duepayments.*', 'vehicle_status.time' )->get();
 
         $totalAmount = 0;
         foreach ( $result as $value ) {
@@ -343,6 +349,10 @@ class ReportModuleController extends Controller {
         // $investorphone = $request->investorphone;
         // $phone = '08134988013';
         // $plate = 'BWR971XE';
+        // dd( $phone );
+        $str = ltrim($phone, '0');
+
+        $grantor = DB::table( 'gurantors_info' )->where( 'Driver_PHONE', $str )->first();
 
         $driverDetails = ( new VMSAPI )->getDriverInfo( $phone );
         $vehicleDetails = ( new VMSAPI )->getVehicleRecord( $plate );
@@ -355,7 +365,10 @@ class ReportModuleController extends Controller {
             'vehicleDetails' => ( !empty( $vehicleDetails ) ) ? $vehicleDetails->Data : 'null',
             'vehicleLocation' => ( !empty( $vehicleLocation ) ) ? $vehicleLocation->Data[ 0 ] : 'null',
             'investorInfo' => ( !empty( $investorInfo ) ) ? $investorInfo->Data : 'null',
+            'garantor' => ( !empty( $grantor ) ) ? $grantor : 'null',
         );
+
+        // dd( $result );
         return view( 'user-information', [ 'data' => $result ] );
     }
 

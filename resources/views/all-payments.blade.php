@@ -91,7 +91,7 @@
                                             <th>GPS STATUS</th>
                                             <th>AMOUNT</th>
                                             <th>TRANS ID</th>
-                                            <th>DATE</th>
+                                            <th>PAYMENT DATE</th>
                                             <th>DESCRIPTION</th>
                                         </tr>
                                     </thead>
@@ -175,8 +175,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer footer-row">
-                                <button type="button" class="btn w-100 modalWideBtn"
-                                    style=" ">SHARE</button>
+                                <button type="button" class="btn w-100 modalWideBtn" style=" ">SHARE</button>
                             </div>
                         </div>
                     </div>

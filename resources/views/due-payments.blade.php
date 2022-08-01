@@ -52,7 +52,7 @@
                                             <th>GPS STATUS</th>
                                             <th>AMOUNT</th>
                                             <th>FLEET</th>
-                                            <th>PAYMENT DATE</th>
+                                            <th>DUE DATE</th>
                                             <th>LAST PAYMENT DATE</th>
                                         </tr>
                                     </thead>
