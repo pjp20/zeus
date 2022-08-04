@@ -13,14 +13,18 @@ use Illuminate\Support\Facades\DB;
 class ScheduleController extends Controller {
 
     public function all() {
+
         // $this->userManagement();
         // $this->reportTask();
         // $this->allVehicleTask();
         $this->vehicleStatusTask();
     }
 
+ 
     public function reportTask() {
-        $sql = DB::table( 'duepayments' )->truncate();
+        // $sql = DB::table( 'duepayments' )->truncate();
+
+
         $date = Carbon::tomorrow()->startOfDay();
         $page = 1000;
         $result = ( new VMSAPI )->getVehicleOverDue( $date->format( 'Y-m-d' ), $page );

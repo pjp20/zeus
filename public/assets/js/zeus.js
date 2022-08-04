@@ -113,37 +113,27 @@ function listRemittanceOverview() {
     // listRemittance.classList.add('bdd');
     alert('hi');
 
-}
+};
 
 
-let financeGeneralOverivew = document.querySelector('.list-finance-overview');
-let financeTransaction = document.querySelector('.list-finance-transaction');
-let financeRemittance = document.querySelector('.list-finance-remittance');
+// let two = document.querySelector(".listFinanceOverview");
+let two =  document.getElementById('test');
+// let financeTransaction = document.querySelector('.list_finance_transaction');
+// let financeRemittance = document.querySelector('.list_finance_remittance');
 
-let financeDiv = document.querySelector('.finance_general_overview');
-let transactionDiv = document.querySelector('.finance_transaction_table');
-let remittanceDiv = document.querySelector('.finance_remittance_table');
+// let financeDiv = document.querySelector('.finance_general_overview');
+// let transactionDiv = document.querySelector('.finance_transaction_table');
+// let remittanceDiv = document.querySelector('.finance_remittance_table');
 
-financeGeneralOverivew.addEventListener('click', () => {
+// two.addEventListener('click', () => {
 
-    alert('hi');
-    // financeGeneralOverivew.classList.add('bbd');
-    // financeTransaction.classList.remove('bbd');
-    // financeRemittance.classList.remove('bbd');
-});
+//     alert('hi');
+// financeGeneralOverivew.classList.add('bbd');
+// financeTransaction.classList.remove('bbd');
+// financeRemittance.classList.remove('bbd');
+// });
+two.addEventListener('click', () => {
+    alert('hiiii');
+})
 
-financeTransaction.addEventListener('click', () => {
-    alert('hi');
 
-    // financeGeneralOverivew.classList.remove('bbd');
-    // financeTransaction.classList.add('bbd');
-    // financeRemittance.classList.remove('bbd');
-});
-
-financeRemittance.addEventListener('click', () => {
-    alert('hi');
-
-    // financeGeneralOverivew.classList.remove('bbd');
-    // financeTransaction.classList.remove('bbd');
-    // financeRemittance.classList.add('bbd');
-});

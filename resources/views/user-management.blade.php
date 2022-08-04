@@ -130,11 +130,42 @@
                                             <td>{{ $user->phone }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>6</td>
-                                            <td>7</td>
+                                            <td>
+                                                @if ($user->status == 1)
+                                                    <span class="pending">Pending</span>
+                                                @endif
+                                                @if ($user->status == 2)
+                                                    <span class="processing">Processing</span>
+                                                @endif
+                                                @if ($user->status == 3)
+                                                    <span class="activate">Active</span>
+                                                @endif
+                                                @if ($user->status == 4)
+                                                    <span class="assigned">Assigned</span>
+                                                @endif
+                                                @if ($user->status == 5)
+                                                    <span class="suspend">Suspend</span>
+                                                @endif
+
+                                            </td>
                                             <td>{{ $user->created_at }}</td>
                                             <td>
-                                                <div class="iconBox">
-                                                    <i class="icon-options text-dark pt-2"></i>
+                                                <div class="dropdown">
+                                                    <div class="iconBox">
+                                                        <i class="icon-options text-dark pt-2 dropdown-toggle"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item" href="#">Pending</a></li>
+                                                            <li><a class="dropdown-item" href="#">Processing</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item" href="#">Active</a></li>
+                                                            <li><a class="dropdown-item" href="#">Assigned</a></li>
+                                                            <li><a class="dropdown-item" href="#">Suspend</a></li>
+
+                                                        </ul>
+
+                                                    </div>
+
                                                 </div>
                                             </td>
                                         </tr>
