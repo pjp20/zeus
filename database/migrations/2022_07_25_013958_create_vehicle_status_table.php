@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('vehicle_status', function (Blueprint $table) {
             $table->id();
             $table->string("systemno")->unique()->nullable();
+            $table->string("vehno")->nullable();
             $table->string("time")->nullable();
             $table->string("longitude")->nullable();
             $table->string("latitude")->nullable();
@@ -23,6 +24,9 @@ return new class extends Migration
             $table->string("Dtstatus")->nullable();
             $table->string("locate")->nullable();
             $table->bigInteger("miles")->nullable();
+            $table->bigInteger("rate")->nullable();
+            $table->string("fleet")->nullable();
+            $table->string("createtime")->nullable();
             $table->timestamps();
         });
     }

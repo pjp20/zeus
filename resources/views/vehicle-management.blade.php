@@ -33,7 +33,7 @@
                                 <div class="bottomInfo">
                                     <div class="leftBottom">
                                         <span class="lft1">TOTAL VEHICLE(S)</span><br />
-                                        <span class="lft2 text-inter">2,100</span>
+                                        <span class="lft2 text-inter">{{ $allVehicle }}</span>
                                     </div>
                                     <span
                                         class="
@@ -133,7 +133,7 @@
                                 <div class="bottomInfo">
                                     <div class="leftBottom text-light">
                                         <span class="lft1 text-light">OFFLINE DEVICE(S)</span><br />
-                                        <span class="lft2 text-inter text-light">023</span>
+                                        <span class="lft2 text-inter text-light">{{ $allVehicle - $onlineDevice }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +149,7 @@
                                 <div class="bottomInfo">
                                     <div class="leftBottom">
                                         <span class="lft1">ONLINE DEVICE(S)</span><br />
-                                        <span class="lft2 text-inter">345</span>
+                                        <span class="lft2 text-inter">{{$onlineDevice}}</span>
                                     </div>
 
                                 </div>
@@ -236,77 +236,54 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" class="check" />
-                                            </td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
-                                            <td>8</td>
-                                            <td>
-                                                <div class="iconBox">
-                                                    <i class="icon-options text-dark pt-2"></i>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" class="check" />
-                                            </td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
-                                            <td>8</td>
-                                            <td>
-                                                <div class="iconBox">
-                                                    {{-- <div class="iconBox">
-                                                        <Dropdown trigger="click" class="pt-2">
-                                                            <a href="javascript:void(0)">
-                                                                <i class="icon-options text-dark pt-2"></i>
-                                                            </a>
-                                                            <DropdownMenu slot="list">
-                                                                <DropdownItem>
-                                                                    <span>Process</span>
-                                                                </DropdownItem>
-                                                                <DropdownItem>
-                                                                    <span>Active</span>
-                                                                </DropdownItem>
-                                                                <DropdownItem>
-                                                                    <span>Deactivate</span>
-                                                                </DropdownItem>
-                                                            </DropdownMenu>
-                                                        </Dropdown> --}}
-                                                </div>
+                                        @foreach ($status as $item)
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="check" />
+                                                </td>
+                                                <td>{{ $item->vehno }}</td>
+                                                <td>{{ $item->fleet }}</td>
+                                                <td>
+                                                    @if ($item->Dtstatus == 1)
+                                                        <h6 class="text-success text">ONLINE</h6>
+                                                    @else
+                                                        <h6 class="text-warning text">OFFLINE</h6>
+                                                    @endif
+                                                </td>
+                                                <td>{{ number_format($item->miles / 1000) }} KM</td>
+                                                <td>{{ $item->miles }}</td>
+                                                <td>2</td>
+                                                <td>3</td>
+                                                <td>{{ $item->createtime }}</td>
+
+
+                                                <td>
+                                                    <div class="iconBox">
+                                                        <i class="icon-options text-dark pt-2"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+
+                                    </tbody>
+                                </table>
                             </div>
-                            </td>
-                            </tr>
-                            </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <!-- track -->
-            <div class="container-fluid mt-3 g-2 track_section">
-                <div class="track-map">
-                    <img src="{{ asset('assets/images/big-graph.png') }}" alt="">
+                <!-- track -->
+                <div class="container-fluid mt-3 g-2 track_section">
+                    <div class="track-map">
+                        <img src="{{ asset('assets/images/big-graph.png') }}" alt="">
+                    </div>
                 </div>
             </div>
+            <!-- end container-fluid -->
         </div>
-        <!-- end container-fluid -->
-    </div>
-    <!-- end content -->
+        <!-- end content -->
     </div>
 
     <script>

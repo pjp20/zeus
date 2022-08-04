@@ -18,13 +18,55 @@ class HomepageController extends Controller {
     }
 
     public function user( $phone ) {
-        // dd( $phone );
         $user = DB::table( 'user_management' )->where( 'phone', $phone )->first();
-        // dd( $user );
-        // $response = Http::get( 'http://test.mygarage.africa/api/get-user/'.$phone );
-        // $user = json_decode( $response->body() );
-
         return view( 'user', [ 'user' => $user ] );
+    }
+
+    public function editUserAccount( Request $request ) {
+        // dd( $request->all() );
+
+        $content = array(
+            'email' =>  $request->email,
+            'name' =>  $request->name,
+            'phone' =>  $request->phone,
+            'category' => $request->category,
+            'town' =>  $request->town,
+            'address' =>  $request->address,
+            'nin' =>  $request->nin,
+            'dob' =>  $request->dob
+        );
+        $curl = curl_init();
+        curl_setopt_array( $curl, array(
+            CURLOPT_URL => 'https://test.mygarage.africa/api/edit-user-record',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS =>  $content ,
+        ) );
+        $response = curl_exec( $curl );
+        curl_close( $curl );
+        if ( $response == 1 ) {
+            DB::table( 'user_management' )
+            ->where( 'email', $request->email )
+            ->update( [
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'town' => $request->town,
+                'gender' => $request->gender,
+                'category' => $request->category,
+                'address' => $request->address,
+                'nin' => $request->nin,
+                'dob' => $request->dob,
+                'updated_at' =>  now(),
+            ] );
+            return back()->with( 'success', 'Profile updated' );
+        } else {
+            return back()->with( 'Emessage', 'An Error Occured' );
+        }
 
     }
 
@@ -102,3 +144,4 @@ class HomepageController extends Controller {
         //
     }
 }
+
