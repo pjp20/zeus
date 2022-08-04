@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="bottomInfo">
                                     <div class="leftBottom">
-                                        <span class="lft1">ALL PAYMENT EXPECTED</span><br />
+                                        <span class="lft1">ALL PAYMENT EARNED</span><br />
                                         <span class="lft2 text-inter text-dark" id="paidUser"><span>&#8358;</span> <span
                                                 id="load2">{{ number_format($paid, 2) }}</span> </span>
                                     </div>

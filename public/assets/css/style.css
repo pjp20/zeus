@@ -885,3 +885,39 @@ tr {
 .track_section {
     display: none;
 }
+
+.pending {
+    padding: 9px 14px;
+    border-radius: 36px;
+    background: #4d4d4d31;
+    color: #4d4d4d;
+}
+
+.processing {
+    padding: 9px 14px;
+    border-radius: 12px;
+
+    background: #feb20028;
+    color: #feb100;
+}
+
+.activate {
+    padding: 9px 14px;
+    border-radius: 12px;
+    background: rgba(18, 161, 18, 0.216);
+    color: rgb(13, 113, 13);
+}
+
+.assigned {
+    padding: 9px 14px;
+    border-radius: 12px;
+    background: rgba(103, 103, 247, 0.202);
+    color: blue;
+}
+
+.suspend {
+    padding: 9px 14px;
+    border-radius: 12px;
+    background: rgba(245, 101, 101, 0.279);
+    color: rgb(245, 101, 101);
+}
