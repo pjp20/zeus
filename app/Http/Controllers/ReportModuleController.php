@@ -9,19 +9,18 @@ use Illuminate\Support\Facades\DB;
 
 class ReportModuleController extends Controller {
 
-
     public function index() {
         $date = Carbon::today()->format( 'Y-m-d' );
         $weekstart = Carbon::now()->startOfWeek( Carbon::SUNDAY )->format( 'Y-m-d' );
         $weekend =  Carbon::now()->endOfWeek( Carbon::SATURDAY )->format( 'Y-m-d' );
         // // aLlpayment
 
-        // return Carbon::now()->endOfWeek( Carbon::SUNDAY )->format( 'Y-m-d H:i:s' );
+        $result = DB::table( 'tella_payment' )->get();
 
-        $result =  ( new ApiController )->post( 'https://tella.envio.africa/api/all-payment-date', array(
-            'startDate' => Carbon::now()->startOfWeek( Carbon::SUNDAY )->format( 'Y-m-d H:i:s' ),
-            'endDate' => Carbon::now()->endOfWeek( Carbon::SATURDAY )->format( 'Y-m-d H:i:s' ),
-        ) );
+        // $result =  ( new ApiController )->post( 'https://tella.envio.africa/api/all-payment-date', array(
+        //     'startDate' => Carbon::now()->startOfWeek( Carbon::SUNDAY )->format( 'Y-m-d H:i:s' ),
+        //     'endDate' => Carbon::now()->endOfWeek( Carbon::SATURDAY )->format( 'Y-m-d H:i:s' ),
+        // ) );
 
         $paidUsers = 0;
         foreach ( $result as $item ) {
@@ -54,7 +53,12 @@ class ReportModuleController extends Controller {
     }
 
     public function allPayments() {
-        $result = json_decode( Http::get( 'https://tella.envio.africa/api/all-payment' ) );
+        // $result = json_decode( Http::get( 'https://tella.envio.africa/api/all-payment' ) );
+        // $result = DB::table( 'tella_payment' )->get();
+        $result = DB::table( 'tella_payment' )
+        ->leftjoin( 'vehicle_status', 'vehicle_status.vehno', 'tella_payment.vehiclePlateNo' )
+        ->select( 'tella_payment.*', 'vehicle_status.time' )->get();
+
         // dd( $result );
         $totalAmount = 0;
         foreach ( $result as $item ) {
@@ -96,7 +100,11 @@ class ReportModuleController extends Controller {
         // $result = ( new VMSAPI )->defaultOverDue();
         // $result = $result->Data;
         $date = Carbon::now()->subDays( 1 )->endOfDay()->format( 'Y-m-d H:i:s' );
-        $result = DB::table( 'duepayments' )->leftjoin( 'vehicle_status', 'vehicle_status.systemno', 'duepayments.systemno' )->where( 'duetime', '>', $date )->get();
+        $result = DB::table( 'duepayments' )
+        ->leftjoin( 'vehicle_status', 'vehicle_status.systemno', 'duepayments.systemno' )
+        ->where( 'duetime', '>', $date )
+        ->select( 'duepayments.*', 'vehicle_status.time' )
+        ->get();
         // return $result;
         $totalAmount = 0;
         foreach ( $result as  $value ) {
@@ -115,7 +123,11 @@ class ReportModuleController extends Controller {
 
         // dd( $date );
 
-        $result = DB::table( 'duepayments' )->leftjoin( 'vehicle_status', 'vehicle_status.systemno', 'duepayments.systemno' )->whereBetween( 'duetime', [ $date2, $date ] )->get();
+        $result = DB::table( 'duepayments' )
+        ->leftjoin( 'vehicle_status', 'vehicle_status.systemno', 'duepayments.systemno' )
+        ->whereBetween( 'duetime', [ $date2, $date ] )
+        ->select( 'duepayments.*', 'vehicle_status.time' )
+        ->get();
         // $A = DB::table( 'activities' )->join( 'users', 'users.id', 'activities.user_id' )->select( 'activities.*', 'users.name', 'users.phone' )->orderBy( 'activities.id', 'DESC' )->get()->take( 5 );
 
         // dd( $result );
@@ -135,7 +147,10 @@ class ReportModuleController extends Controller {
         // dd( $date );
 
         // $result = DB::table( 'duepayments' )->whereBetween( 'duetime', [ $date2, $date ] )->get();
-        $result = DB::table( 'duepayments' )->leftjoin( 'vehicle_status', 'vehicle_status.systemno', 'duepayments.systemno' )->whereBetween( 'duetime', [ $date2, $date ] )->select( 'duepayments.*', 'vehicle_status.time' )->get();
+        $result = DB::table( 'duepayments' )
+        ->leftjoin( 'vehicle_status', 'vehicle_status.systemno', 'duepayments.systemno' )
+        ->whereBetween( 'duetime', [ $date2, $date ] )
+        ->select( 'duepayments.*', 'vehicle_status.time' )->get();
         // dd( $result );
         $totalAmount = 0;
 
@@ -149,7 +164,10 @@ class ReportModuleController extends Controller {
         $date = Carbon::now()->subDays( 5 )->endOfDay()->format( 'Y-m-d H:i:s' );
         // $result = DB::table( 'duepayments' )->where( 'duetime', '<', $date )->get();
 
-        $result = DB::table( 'duepayments' )->leftjoin( 'vehicle_status', 'vehicle_status.systemno', 'duepayments.systemno' )->where( 'duetime', '<', $date )->select( 'duepayments.*', 'vehicle_status.time' )->get();
+        $result = DB::table( 'duepayments' )
+        ->leftjoin( 'vehicle_status', 'vehicle_status.systemno', 'duepayments.systemno' )
+        ->where( 'duetime', '<', $date )
+        ->select( 'duepayments.*', 'vehicle_status.time' )->get();
 
         $totalAmount = 0;
         foreach ( $result as $value ) {
@@ -332,7 +350,7 @@ class ReportModuleController extends Controller {
         // $phone = '08134988013';
         // $plate = 'BWR971XE';
         // dd( $phone );
-        $str = ltrim($phone, '0');
+        $str = ltrim( $phone, '0' );
 
         $grantor = DB::table( 'gurantors_info' )->where( 'Driver_PHONE', $str )->first();
 

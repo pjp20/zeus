@@ -3,6 +3,9 @@
     <div class="content-page">
         <div class="content">
             <div class="container">
+                <div class="row">
+                    @include('components.message')
+                </div>
                 <div class="row top-70">
                     <div class="col-sm-6 col-md-2">
                         <div class="profile">
@@ -11,9 +14,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        @include('components.message')
-                    </div>
+
                     <div class="col-sm-6 col-md-9 offset-md-1">
                         <form action="{{ route('editUserAccount') }}" method="post">
                             @csrf

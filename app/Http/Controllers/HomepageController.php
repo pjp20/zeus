@@ -14,7 +14,11 @@ class HomepageController extends Controller {
     */
 
     public function index() {
-        return view( 'home' );
+        // dd("hello");
+        $totalvehicle = DB::table( 'all_vehicle' )->count();
+        $totalusers = DB::table( 'user_management' )->count();
+
+        return view( 'home',['totalVehicle' => $totalvehicle, 'totalUsers' => $totalusers]);
     }
 
     public function user( $phone ) {

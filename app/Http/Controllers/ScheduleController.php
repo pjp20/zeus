@@ -13,26 +13,24 @@ use Illuminate\Support\Facades\DB;
 class ScheduleController extends Controller {
 
     public function all() {
-
         // $this->userManagement();
         // $this->reportTask();
         // $this->allVehicleTask();
+        // $this->TellaPayment();
         $this->vehicleStatusTask();
     }
 
- 
     public function reportTask() {
-        // $sql = DB::table( 'duepayments' )->truncate();
+        $sql = DB::table( 'duepayments' )->truncate();
+        // $date = Carbon::tomorrow()->startOfDay();
+        $date =  Carbon::now()->endOfWeek( Carbon::SATURDAY );
 
-
-        $date = Carbon::tomorrow()->startOfDay();
         $page = 1000;
         $result = ( new VMSAPI )->getVehicleOverDue( $date->format( 'Y-m-d' ), $page );
         foreach ( $result->Data as $value ) {
             if ( $value->Vehicle->investorname != '' || $value->Vehicle->investorname != null ) {
                 if ( $value->Vehicle->drivername != '' || $value->Vehicle->investorname != '0000000000' ) {
                     if ( $value->Vehicle->driverphone != '' || $value->Vehicle->driverphone != null ) {
-
                         DB::table( 'duepayments' )->insert(
                             [
                                 'investorname' => $value->Vehicle->investorname,
@@ -42,7 +40,7 @@ class ScheduleController extends Controller {
                                 'driveremail' => $value->Vehicle->driveremail,
                                 'driverphone' => $value->Vehicle->driverphone,
                                 'vehid' => $value->Vehicle->vehid,
-                                'vehno' => $value->Vehicle->vehno,
+                                'vehno' => ( !empty( $value->Vehicle->vehno ) ) ? $value->Vehicle->vehno : 'empty' ,
                                 'systemno' => $value->Vehicle->systemno,
                                 'simid' => $value->Vehicle->simid,
                                 'imei' => $value->Vehicle->imei,
@@ -80,34 +78,33 @@ class ScheduleController extends Controller {
     public function allVehicleTask() {
         $sql = DB::table( 'all_vehicle' )->truncate();
         $result = ( new VMSAPI )->All_record();
-
         foreach ( $result->Data as $value ) {
             if ( $value->investorname != '' || $value->investorname != null ) {
                 if ( $value->drivername != '' || $value->investorname != '0000000000' ) {
-                    if ( $value->driverphone != '' || $value->driverphone != null ) {
-                        if ( $value->systemno != '0000000000' ) {
-                            DB::table( 'all_vehicle' )->insert(
-                                [
-                                    'vehno' => $value->vehno,
-                                    'systemno' => $value->systemno,
-                                    'simid' => $value->simid,
-                                    'bodytypename' => $value->bodytypename,
-                                    'brandname' => $value->brandname,
-                                    'createtime' =>  $value->createtime  ,
-                                    'expirdate' =>  $value->expirdate  ,
-                                    'investorid' =>  $value->investorid,
-                                    'investorname' =>  $value->investorname,
-                                    'investorphonenumber' =>  $value->investorphonenumber,
-                                    'investoremail' =>  $value->investoremail   ,
-                                    'driverid' =>  $value->driverid,
-                                    'drivername' =>  $value->drivername,
-                                    'driverphone' =>  $value->driverphone,
-                                    'driveremail' =>  $value->driveremail ,
-                                    'created_at' => now(),
-                                ]
-                            );
-                        }
+                    // if ( $value->driverphone != '' || $value->driverphone != null ) {
+                    if ( $value->systemno != '0000000000' ) {
+                        DB::table( 'all_vehicle' )->insert(
+                            [
+                                'vehno' => $value->vehno,
+                                'systemno' => $value->systemno,
+                                'simid' => $value->simid,
+                                'bodytypename' => $value->bodytypename,
+                                'brandname' => $value->brandname,
+                                'createtime' =>  $value->createtime  ,
+                                'expirdate' =>  $value->expirdate  ,
+                                'investorid' =>  $value->investorid,
+                                'investorname' =>  $value->investorname,
+                                'investorphonenumber' =>  $value->investorphonenumber,
+                                'investoremail' =>  $value->investoremail   ,
+                                'driverid' =>  $value->driverid,
+                                'drivername' =>  $value->drivername,
+                                'driverphone' =>  $value->driverphone,
+                                'driveremail' =>  $value->driveremail ,
+                                'created_at' => now(),
+                            ]
+                        );
                     }
+                    // }
                 }
             }
         }
@@ -175,15 +172,14 @@ class ScheduleController extends Controller {
 
     public function userManagement() {
         DB::table( 'user_management' )->truncate();
-        $response = Http::get( 'http://test.mygarage.africa/api/user-record' );
-        $users = json_decode( $response->body() );
+        $users =  ( new ApiController )->get( 'http://test.mygarage.africa/api/user-record' );
         foreach ( $users as $value ) {
             DB::table( 'user_management' )->insert(
                 [
                     'user_id' => $value->id,
                     'name' => $value->name,
                     'email' => $value->email,
-                    'phone' => $value->phone,
+                    'phone' => ( !empty( $value->phone ) ) ? $value->phone : 'empty',
                     'password' => $value->password,
                     'password2' => $value->password2,
                     'account' => $value->account,
@@ -206,6 +202,49 @@ class ScheduleController extends Controller {
                     'repairFinancing' => $value->repairFinancing,
                     'bolt' =>  $value->bolt,
                     'insurance' =>  $value->insurance,
+                    'created_at' =>  $value->created_at,
+                    'updated_at' =>  $value->updated_at,
+                ]
+            );
+        }
+
+    }
+
+    public function TellaPayment() {
+        DB::table( 'tella_payment' )->truncate();
+        $users =  ( new ApiController )->get( 'https://tella.envio.africa/api/all-payment' );
+
+        foreach ( $users as $value ) {
+            DB::table( 'tella_payment' )->insert(
+                [
+                    'user_id' => $value->user_id,
+                    'agentId' => $value->agentId,
+                    'agentName' => $value->agentName,
+                    'agentEmail' => $value->agentEmail,
+                    'agentPhone' => $value->agentPhone,
+                    'driverName' => $value->driverName,
+                    'driverPhone' => $value->driverPhone,
+                    'driverEmail' => $value->driverEmail,
+                    'ownerName' => $value->ownerName,
+                    'ownerEmail' => $value->ownerEmail,
+                    'ownerPhone' => $value->ownerPhone,
+                    'vehiclePlateNo' => $value->vehiclePlateNo,
+                    'amount' => $value->amount,
+                    'status' => $value->status,
+                    'note' => $value->note,
+                    'receiptImage' => $value->receiptImage,
+                    'paymentMethod' => $value->paymentMethod,
+                    'reference' => $value->reference,
+                    'year' => $value->year,
+                    'month' => $value->month,
+                    'week' => $value->week,
+                    'day' => $value->day,
+                    'investorName' => $value->investorName,
+                    'acctNumber' => $value->acctNumber,
+                    'sortCode' => $value->sortCode,
+                    'debitAccount' => $value->debitAccount,
+                    'vehicle' => $value->vehicle,
+                    'percentage' => $value->percentage,
                     'created_at' =>  $value->created_at,
                     'updated_at' =>  $value->updated_at,
                 ]

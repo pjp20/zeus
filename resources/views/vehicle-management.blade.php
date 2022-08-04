@@ -33,12 +33,10 @@
                                 <div class="bottomInfo">
                                     <div class="leftBottom">
                                         <span class="lft1">TOTAL VEHICLE(S)</span><br />
-                                        <span class="lft2 text-inter">{{ $allVehicle }}</span>
+                                        <span class="lft2 text-inter">{{ count($allVehicle) }}</span>
                                     </div>
                                     <span
-                                        class="
-                      rightBottom
-                      bg-light-red
+                                        class=" rightBottom bg-light-red
                       red-text
                       font-weight-bold
                     ">
@@ -59,7 +57,8 @@
                                 <div class="bottomInfo">
                                     <div class="leftBottom">
                                         <span class="lft1">ASSIGNED VEHICLE(S)</span><br />
-                                        <span class="lft2 text-inter">1,800</span>
+                                        <span
+                                            class="lft2 text-inter">{{ number_format(count($allVehicle) - $noDriver) }}</span>
                                     </div>
                                     <span
                                         class="
@@ -85,7 +84,7 @@
                                 <div class="bottomInfo">
                                     <div class="leftBottom">
                                         <span class="lft1">UNASSIGNED VEHICLE(S)</span><br />
-                                        <span class="lft2 text-inter">150</span>
+                                        <span class="lft2 text-inter">{{ number_format($noDriver) }}</span>
                                     </div>
                                     <span
                                         class="
@@ -133,7 +132,8 @@
                                 <div class="bottomInfo">
                                     <div class="leftBottom text-light">
                                         <span class="lft1 text-light">OFFLINE DEVICE(S)</span><br />
-                                        <span class="lft2 text-inter text-light">{{ $allVehicle - $onlineDevice }}</span>
+                                        <span
+                                            class="lft2 text-inter text-light">{{ count($allVehicle) - $onlineDevice }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +149,7 @@
                                 <div class="bottomInfo">
                                     <div class="leftBottom">
                                         <span class="lft1">ONLINE DEVICE(S)</span><br />
-                                        <span class="lft2 text-inter">{{$onlineDevice}}</span>
+                                        <span class="lft2 text-inter">{{ $onlineDevice }}</span>
                                     </div>
 
                                 </div>
@@ -192,15 +192,9 @@
                                 <div class="bottomInfo">
                                     <div class="leftBottom">
                                         <span class="lft1">TOTAL MILEAGE</span><br />
-                                        <span class="lft2 text-inter">4,353Km</span>
+                                        <span class="lft2 text-inter">{{ number_format($totalMiles / 1000) }}Km</span>
                                     </div>
-                                    <span
-                                        class="
-                      rightBottom
-                      bg-light-red
-                      red-text
-                      font-weight-bold
-                    ">
+                                    <span class=" rightBottom bg-light-red red-text font-weight-bold ">
                                         <i class="bx bx-down-arrow-alt"></i>
                                         <span>22.5%</span> <span>APRIL</span>
                                     </span>
@@ -214,9 +208,7 @@
                         <div class="col-12">
                             <div class="card-box table-responsive">
                                 <table id="datatable-buttons" class="table table-bordered nowrap"
-                                    style="
-                    border-collapse: collapse;
-                    border-spacing: 0;
+                                    style=" border-collapse: collapse;  border-spacing: 0;
                     width: 100%;
                   ">
                                     <thead class="text-inter">
@@ -244,10 +236,15 @@
                                                 <td>{{ $item->vehno }}</td>
                                                 <td>{{ $item->fleet }}</td>
                                                 <td>
-                                                    @if ($item->Dtstatus == 1)
+                                                    {{-- @if ($item->Dtstatus == 1)
                                                         <h6 class="text-success text">ONLINE</h6>
                                                     @else
                                                         <h6 class="text-warning text">OFFLINE</h6>
+                                                    @endif --}}
+                                                    @if (!empty($item->time))
+                                                        {{ \Carbon\Carbon::parse($item->time)->diffForHumans() }}
+                                                    @else
+                                                        UNKNOW
                                                     @endif
                                                 </td>
                                                 <td>{{ number_format($item->miles / 1000) }} KM</td>

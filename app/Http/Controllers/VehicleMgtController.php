@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
 class VehicleMgtController extends Controller {
     /**
     * Display a listing of the resource.
@@ -14,11 +13,24 @@ class VehicleMgtController extends Controller {
     */
 
     public function index() {
-        $vehicle = DB::table( 'all_vehicle' )->count();
-        $status = DB::table( 'vehicle_status' )->get();
-        $onlineDevice = DB::table( 'vehicle_status' )->where('Dtstatus' , 1)->count();
+        $vehicle = DB::table( 'all_vehicle' )->get();
+        $nodriver  = 0;
+        foreach ( $vehicle as $key => $value ) {
+            if ( $value->driverid == '' || $value->driverid == Null ) {
+                $nodriver++;
+            }
+        }
+        // dd( $nodriver );
 
-        return view( 'vehicle-management' ,['allVehicle' => $vehicle, 'status' => $status ,"onlineDevice" => $onlineDevice ] );
+
+        // $vehicleCount = DB::table( 'all_vehicle' )->count();
+
+        $status = DB::table( 'vehicle_status' )->get();
+        $onlineDevice = DB::table( 'vehicle_status' )->where( 'Dtstatus', 1 )->count();
+        $totalMiles = DB::table( 'vehicle_status' )->sum( 'miles' );
+        // dd( $totalMiles );
+
+        return view( 'vehicle-management', [ 'noDriver' => $nodriver,  'allVehicle' => $vehicle, 'totalMiles' => $totalMiles, 'status' => $status, 'onlineDevice' => $onlineDevice ] );
     }
 
     /**
