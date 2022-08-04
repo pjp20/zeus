@@ -135,12 +135,9 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">RESET</button>
+                                            data-bs-dismiss="modal">CLOSE</button>
                                         <button type="button" class="btn"
-                                            style="background: #4a4aff;
-                                        color: #fff;
-                                        border-radius: 8px;
-                                        font-weight: bold;">SUBMIT</button>
+                                            style="background: #4a4aff;">SUBMIT</button>
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +157,7 @@
                             </div>
 
                             <div class="card-box table-responsive">
-                                <table id="datatable-buttons" class="table table-bordered nowrap"
+                                <table id="datatable" class="table table-bordered nowrap"
                                     style="
                     border-collapse: collapse;
                     border-spacing: 0;

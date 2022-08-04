@@ -11,11 +11,11 @@
                     </div>
                 </div>
                 <ul class="sub-tabs">
-                    <li class="list-finance-overview bbd">
+                    <li class="listFinanceOverview bbd" id="test">
                         General Overview
                     </li>
-                    <li class="list-finance-transaction">Transaction Table</li>
-                    <li class="list-finance-remittance">Remittance Table</li>
+                    <li class="list_finance_transaction">Transaction Table</li>
+                    <li class="list_finance_remittance">Remittance Table</li>
                 </ul>
                 <!-- overview -->
                 <div class="finance_general_overview">

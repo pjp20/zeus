@@ -142,7 +142,7 @@ class ReportModuleController extends Controller {
         foreach ( $result as $value ) {
             $totalAmount +=  $value->needpayment;
         }
-        return view( 'yritical-payments', [ 'totalAmount' => $totalAmount, 'data' => $result ] );
+        return view( 'critical-payments', [ 'totalAmount' => $totalAmount, 'data' => $result ] );
     }
 
     public function codeRed() {

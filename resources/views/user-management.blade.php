@@ -130,7 +130,7 @@
                                                 {{-- <a href="/user/{{ $user->phone }}">
                                                     ENV/{{ $user->id }}
                                                 </a> --}}
-                                                <a href="{{route("user",['phone' => $user->phone])}}">
+                                                <a href="{{ route('user', ['phone' => $user->phone]) }}">
                                                     ENV/{{ $user->id }}
                                                 </a>
                                             </td>
@@ -142,8 +142,19 @@
                                             <td>7</td>
                                             <td>{{ $user->created_at }}</td>
                                             <td>
-                                                <div class="iconBox">
-                                                    <i class="icon-options text-dark pt-2"></i>
+                                                <div class="dropdown">
+                                                    <div class="iconBox">
+                                                        <i class="icon-options text-dark pt-2 dropdown-toggle"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item" href="#">Active</a></li>
+                                                            <li><a class="dropdown-item" href="#">Suspend</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                                                        </ul>
+
+                                                    </div>
+
                                                 </div>
                                             </td>
                                         </tr>
