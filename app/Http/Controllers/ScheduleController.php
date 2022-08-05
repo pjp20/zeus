@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\DB;
 class ScheduleController extends Controller {
 
     public function all() {
-        // $this->userManagement();
-        // $this->reportTask();
-        // $this->allVehicleTask();
-        // $this->TellaPayment();
-        $this->vehicleStatusTask();
+        $this->userManagement();
+        $this->reportTask();
+        $this->allVehicleTask();
+        $this->TellaPayment();
+        // $this->vehicleStatusTask();
     }
 
     public function reportTask() {
