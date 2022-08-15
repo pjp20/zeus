@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/schudule', [App\Http\Controllers\ScheduleController::class, 'all']);
+Route::get('/status', [App\Http\Controllers\ScheduleController::class, 'vehicleStatusTask']);

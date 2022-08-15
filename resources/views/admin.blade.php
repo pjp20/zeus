@@ -13,6 +13,9 @@
                     </div>
                     <button class="addBtn" data-bs-toggle="modal" data-bs-target="#addUser">ADD USER</button>
                 </div>
+                <div class="row">
+                    @include('components.message')
+                </div>
                 <!-- add staff modal -->
                 <!-- Modal -->
                 <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -24,50 +27,49 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="formSec">
-                                    <div class="form-group">
-                                        <label for="">First Name</label>
-                                        <input class="form-control infoInput" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Last Name</label>
-                                        <input class="form-control infoInput" />
-                                    </div>
+                                <form action="{{ route('addAdmin') }}" method="post">
+                                    @csrf
+                                    <div class="formSec">
+                                        <div class="form-group">
+                                            <label for="">Full Name</label>
+                                            <input name="name" value="{{ old('name') }}" class="form-control infoInput"
+                                                required />
+                                        </div>
 
-                                    <div class="form-group">
-                                        <label for="">Phone No.</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text brd-left" id="basic-addon1">+234</span>
-                                            <input type="number" class="form-control infoInput brd-right" />
+                                        <div class="form-group">
+                                            <label for="">Phone No.</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text brd-left" id="basic-addon1">+234</span>
+                                                <input type="number" value="{{ old('phone') }}" name="phone"
+                                                    class="form-control infoInput brd-right" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Email</label>
+                                            <input name="email" value="{{ old('email') }}" class="form-control infoInput"
+                                                required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Department</label>
+                                            <select name="department" class="form-control form-control infoInput">
+                                                <option value="null">--Please Select--</option>
+                                                @foreach ($depart as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->department_name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="">Email</label>
-                                        <input class="form-control infoInput" />
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="">Department</label>
-                                        <select class="form-control form-control infoInput">
-                                            <option value="">--Please Select--</option>
-                                            <option value="Driver">Recovery</option>
-                                        </select>
-                                    </div>
-                                </div>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn w-100"
-                                    style="
-                  height: 60px;
-                  background: #4a4aff;
-                  color: #fff;
-                  border-radius: 8px;
-                  font-weight: bold;
-                ">
+                                <button type="submit" class="btn w-100"
+                                    style=" height: 60px; background: #4a4aff; color: #fff; border-radius: 8px;  font-weight: bold; ">
                                     ADD STAFF
                                 </button>
                             </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -89,7 +91,6 @@
                                         <th>
                                             <input type="checkbox" class="check" />
                                         </th>
-                                        <th>TRANS ID.</th>
                                         <th>FULL NAME</th>
                                         <th>EMAIL</th>
                                         <th>DEPARTMENT</th>
@@ -98,61 +99,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" class="check" />
-                                        </td>
-                                        <td><a href="/staff">lorem</a></td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" class="check" />
-                                        </td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" class="check" />
-                                        </td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" class="check" />
-                                        </td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" class="check" />
-                                        </td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                        <td>lorem</td>
-                                    </tr>
+                                    @foreach ($admin as $item)
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="check" />
+                                            </td>
+                                            <td><a href="/staff">{{ $item->email }}</a></td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->department_name }}</td>
+                                            <td>
+                                                @if ($item->status == 1)
+                                                    <h6 class="text-success"> ACTIVE</h6>
+                                                @else
+                                                    <h6 class="text-danger"> INACTIVE</h6>
+                                                @endif
+                                            </td>
+                                            <td>{{ $item->created_at }}</td>
+                                        </tr>
+                                    @endforeach
+
+
                                 </tbody>
                             </table>
                         </div>

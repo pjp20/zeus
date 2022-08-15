@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string("address")->nullable();
             $table->string("town")->nullable();
             $table->string("package")->nullable();
+            $table->string("gender")->nullable();
             $table->string("acctBal")->nullable();
             $table->string("image")->nullable();
             $table->string("category")->nullable();

@@ -91,7 +91,7 @@ class ReportModuleController extends Controller {
         foreach ( $result as $item ) {
             $totalAmount += $item->amount;
         }
-        // dd( $result );
+        dd( $result );
         return view( 'all-payments', [ 'totalAmount' => $totalAmount, 'data' => $result ] );
     }
 
@@ -185,67 +185,6 @@ class ReportModuleController extends Controller {
         // return view( 'test', [ 'data' => $data ] );
     }
 
-    public function overduePayments( Request $request ) {
-        $date = Carbon::yesterday();
-        $page = 1000;
-        $result = ( new VMSAPI )->getVehicleOverDue( $date->format( 'Y-m-d' ), $page );
-        $totalAmount = 0;
-        foreach ( $result->Data as $value ) {
-            if ( $value->Vehicle->investorname != '' || $value->Vehicle->investorname != null ) {
-                // if ( $value->duetime == $date ) {
-                $resultz[] = $value;
-                // } else {
-                //     $resultz = 'no record Found';
-                // }
-
-                $sql =  DB::table( 'duepayments' )->insert(
-                    [
-                        'investorname' => $value->Vehicle->investorname,
-                        'investoremail' => $value->Vehicle->investoremail,
-                        'investorphone' => $value->Vehicle->investorphone,
-                        'drivername' => $value->Vehicle->drivername,
-                        'driveremail' => $value->Vehicle->driveremail,
-                        'driverphone' => $value->Vehicle->driverphone,
-                        'vehid' => $value->Vehicle->vehid,
-                        'vehno' => $value->Vehicle->vehno,
-                        'systemno' => $value->Vehicle->systemno,
-                        'simid' => $value->Vehicle->simid,
-                        'imei' => $value->Vehicle->imei,
-                        'enginecapacityid' => $value->Vehicle->enginecapacityid,
-                        'enginecapacityname' => $value->Vehicle->enginecapacityname,
-                        'fueltypeid' => $value->Vehicle->fueltypeid,
-                        'fueltypename' => $value->Vehicle->fueltypename,
-                        'bodytypeid' => $value->Vehicle->bodytypeid,
-                        'bodytypename' => $value->Vehicle->bodytypename,
-                        'brandid' => $value->Vehicle->brandid,
-                        'brandname' => $value->Vehicle->brandname,
-                        'colorid' => $value->Vehicle->colorid,
-                        'colorname' => $value->Vehicle->colorname,
-                        'price' => $value->Vehicle->price,
-                        'status' => $value->Vehicle->status,
-                        'v_createtime' =>  $value->Vehicle->createtime,
-                        'expirdate' =>  $value->Vehicle->expirdate,
-                        'investorid' => $value->Vehicle->investorid,
-
-
-                        'orderid' => $value->orderid,
-                        'needpayment' => $value->needpayment,
-                        'rentalprice' => $value->rentalprice,
-                        'outstanding' => $value->outstanding,
-                        'duetime' =>  $value->duetime,
-                        'createtime' =>  $value->createtime,
-                        'created_at' => now(),
-                    ]
-                );
-
-                $totalAmount +=  $value->needpayment;
-            }
-        }
-        return array(
-            'data' => $resultz,
-            'totalAmount' => $totalAmount
-        );
-    }
 
     public function critical( Request $request ) {
         $date = Carbon::now()->subDays( 2 )->format( 'Y-m-d' );
@@ -288,6 +227,7 @@ class ReportModuleController extends Controller {
                 }
             }
         }
+
         // get due payment
         $unpaidAmount = 0;
         $unpaid = $this->DuePayment();

@@ -46,7 +46,7 @@
                             <div class="bottomInfo">
                                 <div class="leftBottom">
                                     <span class="lft1">Total Vehicle(s)</span><br />
-                                    <span class="lft2 text-inter">2,100</span>
+                                    <span class="lft2 text-inter">{{ number_format($totalVehicle) }}</span>
                                 </div>
                                 <span
                                     class="
@@ -73,7 +73,7 @@
                                 <div class="bottomInfo">
                                     <div class="leftBottom">
                                         <span class="lft1 text-light">Total User(s)</span><br />
-                                        <span class="lft2 text-inter text-light">2,400</span>
+                                        <span class="lft2 text-inter text-light">{{ number_format($totalUsers) }}</span>
                                     </div>
                                     <span class="rightBottom bg-light-dark text-light font-weight-bold">
                                         <i class="bx bx-down-arrow-alt"></i>

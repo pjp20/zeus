@@ -28,7 +28,11 @@
                                     <span class="lft1 text-light">Total User(s)</span><br />
                                     <span class="lft2 text-inter text-light">{{ count($users) }}</span>
                                 </div>
+<<<<<<< HEAD
                                 <span class="rightBottom bg-light-dark text-light font-weight-bold">
+=======
+                                <span class="rightBottom  bg-light-dark text-light font-weight-bold ">
+>>>>>>> 2a8a5c7c53a47b8091544e35c04cb7f9151cccda
                                     <i class="bx bx-down-arrow-alt"></i>
                                     <span>22.5%</span> <span>APRIL</span>
                                 </span>
@@ -46,7 +50,7 @@
                             <div class="bottomInfo">
                                 <div class="leftBottom">
                                     <span class="lft1">Total Car Owner(s)</span><br />
-                                    <span class="lft2 text-inter">0</span>
+                                    <span class="lft2 text-inter">{{ count($users) - $driverCount }}</span>
                                 </div>
                                 <span
                                     class="
@@ -72,7 +76,7 @@
                             <div class="bottomInfo">
                                 <div class="leftBottom">
                                     <span class="lft1">Total Drivers(s)</span><br />
-                                    <span class="lft2 text-inter">0</span>
+                                    <span class="lft2 text-inter">{{ $driverCount }}</span>
                                 </div>
                                 <span
                                     class="
@@ -94,10 +98,7 @@
                     <div class="col-12">
                         <div class="card-box table-responsive">
                             <table id="datatable" class="table table-bordered nowrap"
-                                style=" border-collapse: collapse;
-                  border-spacing: 0;
-                  width: 100%;
-                ">
+                                style=" border-collapse: collapse; border-spacing: 0; width: 100%; ">
                                 <thead class="text-inter">
                                     <tr>
                                         <th>

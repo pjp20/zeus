@@ -109,7 +109,13 @@
                                                 </td>
                                                 <td>{{ $item->driverName }}</td>
                                                 <td>{{ $item->driverPhone }}</td>
-                                                <td>ONLINE</td>
+                                                <td>
+                                                    @if (!empty($item->time))
+                                                        {{ \Carbon\Carbon::parse($item->time)->diffForHumans() }}
+                                                    @else
+                                                        UNKNOW
+                                                    @endif
+                                                </td>
                                                 <td><span>&#8358;</span> {{ number_format($item->amount, 2) }}</td>
                                                 <td>{{ $item->reference }}</td>
                                                 <td>{{ $item->created_at }}</td>

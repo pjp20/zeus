@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("/", [HomepageController::class, 'index']);
     Route::get('/users', [HomepageController::class, 'users']);
     Route::get('/user/{phone}', [HomepageController::class, 'user'])->name("user");
+    Route::post('/user', [HomepageController::class, 'editUserAccount'])->name("editUserAccount");
 
     Route::get('track-web', [TrackWebController::class, 'index']);
 
@@ -51,6 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('activity-log', [ActivityLogController::class, 'index']);
     Route::get('admin', [AdminController::class, 'index']);
+    Route::post('create-admin', [AdminController::class, 'store'])->name("addAdmin");
     Route::get('control-panel', [ControlPanelController::class, 'index']);
 
 
@@ -83,7 +85,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/test', [App\Http\Controllers\ScheduleController::class, 'all']);
+Route::get('/check/{no}', [App\Http\Controllers\ScheduleController::class, 'check']);
 Route::get('/userManagement', [App\Http\Controllers\ScheduleController::class, 'userManagement']);
+
+Route::get('/allvehicle', [App\Http\Controllers\ScheduleController::class, 'allVehicleTask']);
 
 
 

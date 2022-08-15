@@ -14,6 +14,7 @@ class UserManagementController extends Controller {
     */
 
     public function index() {
+
         return view( 'user-management' );
     }
 
@@ -30,13 +31,16 @@ class UserManagementController extends Controller {
     }
 
     public function userMgt() {
-
         $users = DB::table( 'user_management' )->get();
-        // dd( $users );
-        // $response = Http::get( 'http://test.mygarage.africa/api/user-record' );
-        // $users = json_decode( $response->body() );
+        // $users = DB::table( 'user_management' )->where("category")->get();
 
-        return view( 'user-management', compact( 'users' ) );
+        $driver = 0;
+        foreach ($users as $key => $value) {
+            if($value->category == "Driver"){
+                $driver++;
+            }
+        }
+        return view( 'user-management',['users' => $users, "driverCount" => $driver] );
     }
 
 }
