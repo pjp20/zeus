@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Alert;
 
-class VehicleMgtController extends Controller
+class TrackWebController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +13,9 @@ class VehicleMgtController extends Controller
      */
     public function index()
     {
-        return view('vehicle-management');
+        return view('track-web');
     }
-    public function addVehicle(){
-        return view('add-vehicle');
-    }
-    public function vehicleInfomation(){
-        return view('vehicle-information');
-    }
-    public function addVehicle2(){
-        // Alert::success('Congrats', 'You\'ve Successfully Registered');
-    }
+
     /**
      * Show the form for creating a new resource.
      *

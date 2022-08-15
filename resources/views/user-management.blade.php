@@ -28,13 +28,7 @@
                                     <span class="lft1 text-light">Total User(s)</span><br />
                                     <span class="lft2 text-inter text-light">{{ count($users) }}</span>
                                 </div>
-                                <span
-                                    class="
-                    rightBottom
-                    bg-light-dark
-                    text-light
-                    font-weight-bold
-                  ">
+                                <span class="rightBottom bg-light-dark text-light font-weight-bold">
                                     <i class="bx bx-down-arrow-alt"></i>
                                     <span>22.5%</span> <span>APRIL</span>
                                 </span>

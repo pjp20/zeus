@@ -48,6 +48,7 @@
 
 <body>
     <div id="wrapper">
+        @include('sweetalert::alert')
         @include('sections.topbar')
         @include('sections.sidebar')
         @yield('content')

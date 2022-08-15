@@ -7,6 +7,7 @@ use App\Http\Controllers\FinanceOfficeController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ReportModuleController;
 use App\Http\Controllers\TaskMgtController;
+use App\Http\Controllers\TrackWebController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\VehicleMgtController;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/users', [HomepageController::class, 'users']);
     Route::get('/user/{phone}', [HomepageController::class, 'user'])->name("user");
 
+    Route::get('track-web', [TrackWebController::class, 'index']);
 
     Route::controller(UserManagementController::class)->group(function () {
         Route::get("user-management",  'userMgt');
@@ -39,6 +41,11 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::get('vehicle-management', [VehicleMgtController::class, 'index']);
+    Route::post('add-vehicle', [VehicleMgtController::class, 'addVehicle2']);
+
+    Route::get('add-vehicle', [VehicleMgtController::class, 'addVehicle']);
+    Route::get('vehicle-information', [VehicleMgtController::class, 'vehicleInfomation']);
+
     Route::get('finance-office', [FinanceOfficeController::class, 'index']);
     Route::get('task-management', [TaskMgtController::class, 'index']);
 

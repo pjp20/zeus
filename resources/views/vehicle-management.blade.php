@@ -11,12 +11,14 @@
                             Vehicle Management
                         </p>
                     </div>
-                    <a href="/add-user" class="addBtn addNew">ADD NEW</a>
+                    <a href="/add-vehicle" class="addBtn addNew">ADD NEW</a>
                 </div>
                 <ul class="sub-tabs">
                     <li class="vehicle-list-overview bbd">Overview</li>
                     <li class="vehicle-list-fleet">Fleet Status</li>
-                    <li class="vehicle-list-track">Track Web</li>
+                    <li class="vehicle-list-track">
+                        <a href="track-web">Track Web</a>
+                    </li>
                 </ul>
 
                 <!-- overview -->
@@ -240,7 +242,9 @@
                                             <td>
                                                 <input type="checkbox" class="check" />
                                             </td>
-                                            <td>1</td>
+                                            <td>
+                                                <a href="vehicle-information">1</a>
+                                            </td>
                                             <td>2</td>
                                             <td>3</td>
                                             <td>4</td>
@@ -299,8 +303,12 @@
 
             <!-- track -->
             <div class="container-fluid mt-3 g-2 track_section">
-                <div class="track-map">
+                {{-- <div class="track-map">
                     <img src="{{ asset('assets/images/big-graph.png') }}" alt="">
+                </div> --}}
+                <div class="main-track-section">
+                    <div class="left-track-cord"></div>
+                    <div class="right-track-map"></div>
                 </div>
             </div>
         </div>

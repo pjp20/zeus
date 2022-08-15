@@ -75,13 +75,7 @@
                                         <span class="lft1 text-light">Total User(s)</span><br />
                                         <span class="lft2 text-inter text-light">2,400</span>
                                     </div>
-                                    <span
-                                        class="
-                    rightBottom
-                    bg-light-dark
-                    text-light
-                    font-weight-bold
-                  ">
+                                    <span class="rightBottom bg-light-dark text-light font-weight-bold">
                                         <i class="bx bx-down-arrow-alt"></i>
                                         <span>22.5%</span> <span>APRIL</span>
                                     </span>
@@ -155,12 +149,7 @@
                                                 <span class="lft2 text-inter">2,100</span>
                                             </div>
                                             <span
-                                                class="
-                          rightBottom
-                          bg-light-green
-                          green-text
-                          font-weight-bold
-                        ">
+                                                class="rightBottom bg-light-green green-text font-weight-bold">
                                                 <i class="bx bx-down-arrow-alt"></i>
                                                 <span>22.5%</span> <span>APRIL</span>
                                             </span>
