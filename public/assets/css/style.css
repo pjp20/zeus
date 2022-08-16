@@ -1267,7 +1267,7 @@ tr {
 
 .top-text {
     font-weight: 600;
-    font-size: 17px;
+    font-size: 15px;
     /* line-height: 24px; */
     font-family: var(--text-inter);
     color: #08102E;
@@ -1348,4 +1348,245 @@ tr {
 .label1 {
     display: none;
     transition: 2s ease;
+}
+
+.finance_section {
+    width: 100%;
+    height: auto;
+    padding: 15px 10px;
+    background: #fff;
+    border: 1px solid #CCCCCC;
+    border-radius: 12px;
+    font-family: var(--text-inter);
+}
+
+.chart_total_deposit {
+    height: 200px;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+
+.notice {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.notice_section {
+    padding: 20px 0 60px 0;
+}
+
+.notice_pink {
+    background: #EB7CA6;
+}
+
+.notice_pink_200 {
+    background: #FFACC8;
+}
+
+.notice_purple {
+    background: #CC6FF8;
+}
+
+.notice_purple_200 {
+    background: #7C5CFC;
+}
+
+.notice_blue {
+    background: #5CAFFC;
+}
+
+.notice_light_blue {
+    background: #A1A9FE;
+}
+
+.notice_desc {
+    margin-left: 10px;
+    width: 60%;
+    color: #596780;
+    font-size: 10px;
+}
+
+.single_deposit_detail {
+    display: flex;
+    align-items: center;
+    padding: 9px 0;
+    font-size: 11px;
+    color: #1A202C;
+    cursor: pointer;
+}
+
+.chart_deposit_statistics {
+    height: 200px;
+    background: #ccc;
+    width: 100%;
+    padding: 10px;
+}
+
+.filter_date_remittance {
+    padding: 2px 40px;
+    border: 1px solid #ccc;
+}
+
+.notice_section img {
+    height: 300px;
+    width: 100%;
+}
+
+.top3 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #1A202C;
+}
+
+.row_top_info {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.deposit_amount {
+    color: #1A202C;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.total_info {
+    color: #888888;
+    font-size: 9px;
+}
+
+.arrow_box {
+    width: 42px;
+    height: 42px;
+    background: #F6F7F9;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.softpurse_contribution_section {
+    display: none;
+    transition: 2s ease;
+}
+
+.union_contribution_section {
+    display: none;
+    transition: 2s ease;
+
+}
+
+.platform_contribution_section {
+    display: none;
+    transition: 2s ease;
+
+}
+
+.maintenance_contribution_section {
+    display: none;
+    transition: 2s ease;
+
+}
+
+.general_remittance_section {
+    display: none;
+    transition: 2s ease;
+
+}
+
+.agent_commission_section {
+    display: none;
+    transition: 2s ease;
+
+}
+
+.top-text img {
+    cursor: pointer;
+}
+
+.titleModal {
+    font-weight: bold;
+    font-size: 22px;
+    display: block;
+}
+
+.modalInfo {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 15px 0px;
+    border-bottom: 1px solid #ccc;
+
+}
+
+.modalInfo:last-child {
+    border-bottom: none;
+}
+
+.modalInfo span:first-child {
+    color: #ccc;
+}
+
+.modalInfo span:last-child {
+    font-weight: bold;
+}
+
+.payout_requests, .payment_console {
+    height: auto;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    border: 1px solid #08102E;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+}
+
+.top_blue {
+    border: 1px solid #ccc;
+    height: 60px;
+    width: 60px;
+    border-radius: 6px;
+    margin-bottom: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blue_shade {
+    background: #4A4AFF;
+    transition: 3s ease;
+}
+.blue_shade_boxshadow{
+
+}
+
+.sky_shade {
+    transition: .3s ease;
+    background: rgba(74, 74, 255, 0.2);
+    border: 1px solid #ccc;
+}
+
+.payout_request_section {
+    display: none;
+}
+
+.payNow {
+    background: #4A4AFF;
+    border-radius: 3px;
+    padding: 4px 20px;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    font-size: 10px;
 }

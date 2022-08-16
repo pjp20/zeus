@@ -1086,7 +1086,7 @@ body.boxed-layout #wrapper {
     margin: 0 auto;
     -webkit-box-shadow: 0 0 35px 0 rgba(154, 161, 171, .15);
     box-shadow: 0 0 35px 0 rgba(154, 161, 171, .15);
-    background-color: #f9f9f9
+    /* background-color: #f9f9f9 */
 }
 
 body.boxed-layout .navbar-custom {
@@ -6610,7 +6610,7 @@ thead {
 .sectionTitle {
     font-family: var(--text-inter);
     font-size: 22px;
-    padding: 15px;
+    padding: 10px 15px;
     color: var(--deepPurple);
 }
 

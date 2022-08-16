@@ -63,12 +63,7 @@
                                             class="lft2 text-inter">{{ number_format(count($allVehicle) - $noDriver) }}</span>
                                     </div>
                                     <span
-                                        class="
-                      rightBottom
-                      bg-light-green
-                      green-text
-                      font-weight-bold
-                    ">
+                                        class="rightBottom bg-light-green green-text font-weight-bold">
                                         <i class="bx bx-down-arrow-alt"></i>
                                         <span>22.5%</span> <span>APRIL</span>
                                     </span>
@@ -89,12 +84,7 @@
                                         <span class="lft2 text-inter">{{ number_format($noDriver) }}</span>
                                     </div>
                                     <span
-                                        class="
-                      rightBottom
-                      bg-light-green
-                      green-text
-                      font-weight-bold
-                    ">
+                                        class="rightBottom bg-light-green green-text font-weight-bold">
                                         <i class="bx bx-down-arrow-alt"></i>
                                         <span>22.5%</span> <span>APRIL</span>
                                     </span>
@@ -171,12 +161,7 @@
                                         <span class="lft2 text-inter">23</span>
                                     </div>
                                     <span
-                                        class="
-                      rightBottom
-                      bg-light-red
-                      red-text
-                      font-weight-bold
-                    ">
+                                        class="rightBottom  bg-light-red  red-text font-weight-bold">
                                         <i class="bx bx-down-arrow-alt"></i>
                                         <span>22.5%</span> <span>APRIL</span>
                                     </span>
@@ -210,9 +195,7 @@
                         <div class="col-12">
                             <div class="card-box table-responsive">
                                 <table id="datatable-buttons" class="table table-bordered nowrap"
-                                    style=" border-collapse: collapse;  border-spacing: 0;
-                    width: 100%;
-                  ">
+                                    style=" border-collapse: collapse;  border-spacing: 0; width: 100%;">
                                     <thead class="text-inter">
                                         <tr>
                                             <th>

@@ -15,7 +15,12 @@ class FinanceOfficeController extends Controller
     {
         return view('finance-office');
     }
-
+    public function payoutManager(){
+        return view('payout-manager');
+    }
+    public function depositModule(){
+        return view('deposit-module');
+    }
     /**
      * Show the form for creating a new resource.
      *

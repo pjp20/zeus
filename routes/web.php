@@ -48,6 +48,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('vehicle-information', [VehicleMgtController::class, 'vehicleInfomation']);
 
     Route::get('finance-office', [FinanceOfficeController::class, 'index']);
+    Route::get('payout-manager', [FinanceOfficeController::class, 'payoutManager']);
+    Route::get('deposit-module', [FinanceOfficeController::class, 'depositModule']);
+
+
     Route::get('task-management', [TaskMgtController::class, 'index']);
 
     Route::get('activity-log', [ActivityLogController::class, 'index']);
