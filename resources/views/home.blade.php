@@ -6,7 +6,7 @@
             <div class="container-fluid mt-10">
                 <!-- text-inter -->
                 <div class="row g-2">
-                    <div class="col-sm-6 col-md-6 col-lg-4">
+                    <div class="col-sm-6 col-md-12 col-lg-4">
                         <a href="finance-office">
                             <div class="boxInfo">
                                 <div class="topInfo">
@@ -21,13 +21,7 @@
                                         <span class="lft1">Account Balance</span><br />
                                         <span class="lft2 text-inter">$5,600,000</span>
                                     </div>
-                                    <span
-                                        class="
-                    rightBottom
-                    bg-light-red
-                    red-text
-                    font-weight-bold
-                  ">
+                                    <span class="rightBottom bg-light-red red-text font-weight-bold">
                                         <i class="bx bx-down-arrow-alt"></i>
                                         <span>22.5%</span> <span>APRIL</span>
                                     </span>
@@ -35,7 +29,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-6 col-md-6 col-lg-4">
+                    <div class="col-sm-6 col-md-12 col-lg-4">
                         <div class="boxInfo">
                             <div class="topInfo">
                                 <div class="vectorBox">
@@ -48,20 +42,14 @@
                                     <span class="lft1">Total Vehicle(s)</span><br />
                                     <span class="lft2 text-inter">{{ number_format($totalVehicle) }}</span>
                                 </div>
-                                <span
-                                    class="
-                    rightBottom
-                    bg-light-red
-                    red-text
-                    font-weight-bold
-                  ">
+                                <span class="rightBottom bg-light-red red-text font-weight-bold">
                                     <i class="bx bx-down-arrow-alt"></i>
                                     <span>22.5%</span> <span>APRIL</span>
                                 </span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 col-lg-4">
+                    <div class="col-sm-6 col-md-12 col-lg-4">
                         <a href="user-management">
                             <div class="boxInfo bg-blk text-light">
                                 <div class="topInfo">
@@ -132,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-sm-6 col-md-6 col-lg-4">
+                    <div class="col-sm-6 col-md-12 col-lg-4">
                         <div class="bottom-row border-none">
                             <div class="row">
                                 <div class="col-sm-6 col-md-12">
@@ -165,7 +153,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="col-sm-6 col-md-6 col-lg-4">
                         <div class="bottom-row">
                         </div>

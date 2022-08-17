@@ -212,7 +212,7 @@
                                         alt="" />General
                                     Remmittance</span>
                                 <div class="chart_total_deposit mb-3 mt-3">
-
+                                    <div id="donut_single" style="width: 180px; height: 180px;"></div>
                                 </div>
                                 <span class="top-text mt-3">
                                     Deposit by Trend
@@ -650,9 +650,28 @@
                                 <span class="top-text mt-3">
                                     Deposit by Trend
                                 </span>
-                                {{-- <span class="filter_date_remittance"></span> --}}
                                 <div class="notice_section">
-                                    <img src="{{ asset('assets/images/side_bar.svg') }}" alt="">
+                                    <div class="deposit_details_info">
+                                        <div class="single_deposit_detail sd1">
+                                            <span class="notice notice_pink"></span>
+                                            <span class="notice_desc">Total Softpurse Credit</span>
+                                            <span class="notice_amount">N30,000,000.00</span>
+                                        </div>
+                                    </div>
+                                    <div class="deposit_details_info">
+                                        <div class="single_deposit_detail sd2">
+                                            <span class="notice notice_pink_200"></span>
+                                            <span class="notice_desc">Softpurse Repaid</span>
+                                            <span class="notice_amount">N30,000,000.00</span>
+                                        </div>
+                                    </div>
+                                    <div class="deposit_details_info">
+                                        <div class="single_deposit_detail sd3">
+                                            <span class="notice notice_purple"></span>
+                                            <span class="notice_desc">Pending Softpurse</span>
+                                            <span class="notice_amount">N30,000,000.00</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -889,5 +908,32 @@
             agent_commission_section.style.display = 'flex';
             index_finance_transaction_section.style.display = 'none';
         });
+    </script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Effort', 'Amount given'],
+                ['My all', 100],
+            ]);
+
+            var options = {
+                pieHole: 0.8,
+                pieSliceTextStyle: {
+                    color: 'black',
+                },
+                legend: 'none'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+            chart.draw(data, options);
+        }
     </script>
 @endsection

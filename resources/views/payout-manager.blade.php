@@ -28,8 +28,8 @@
                         <div class="col-sm-6 col-md-12 col-lg-3 mb-2">
                             <div class="row">
                                 <div class="col-sm-6 col-md-12 mb-2">
-                                    <div class="payment_console">
-                                        <div class="top_blue blue_shade" id="tb1">
+                                    <div class="payment_console blue_shade">
+                                        <div class="top_blue sky_shade" id="tb1">
                                             <img src="{{ asset('assets/images/logout.svg') }}" alt="">
                                         </div>
                                         <div class="desc_payment">
@@ -625,18 +625,25 @@
 
 
         payment_console.addEventListener('click', () => {
-            tb1.classList.add('blue_shade');
-            tb1.classList.remove('sky_shade');
-            tb2.classList.add('sky_shade');
-            tb2.classList.remove('blue_shade');
+            payment_console.classList.add('blue_shade');
+            payout_requests.classList.remove('blue_shade');
+
+            // tb1.classList.add('blue_shade');
+            // tb1.classList.remove('sky_shade');
+            // tb2.classList.add('sky_shade');
+            // tb2.classList.remove('blue_shade');
             payout_manager_section.style.display = 'block';
             payout_request_section.style.display = 'none';
         });
         payout_requests.addEventListener('click', () => {
-            tb2.classList.add('blue_shade');
-            tb2.classList.remove('sky_shade');
-            tb1.classList.remove('blue_shade');
-            tb1.classList.add('sky_shade');
+            // tb2.classList.add('blue_shade');
+            // tb2.classList.remove('sky_shade');
+            // tb1.classList.remove('blue_shade');
+            // tb1.classList.add('sky_shade');
+            payment_console.classList.remove('blue_shade');
+            payout_requests.classList.add('blue_shade');
+
+
             payout_manager_section.style.display = 'none';
             payout_request_section.style.display = 'block';
         });

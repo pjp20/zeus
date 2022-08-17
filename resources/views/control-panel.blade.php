@@ -63,7 +63,7 @@
 
                         <div class="modal fade" id="createNew" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">MAINTENANCE COST</h5>
@@ -136,8 +136,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">CLOSE</button>
-                                        <button type="button" class="btn"
-                                            style="background: #4a4aff;">SUBMIT</button>
+                                        <button type="button" class="btn" style="background: #4a4aff;">SUBMIT</button>
                                     </div>
                                 </div>
                             </div>
@@ -158,11 +157,7 @@
 
                             <div class="card-box table-responsive">
                                 <table id="datatable" class="table table-bordered nowrap"
-                                    style="
-                    border-collapse: collapse;
-                    border-spacing: 0;
-                    width: 100%;
-                  ">
+                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead class="text-inter">
                                         <tr>
                                             <th>
@@ -176,13 +171,76 @@
                                             <th>PAYEE</th>
                                         </tr>
                                     </thead>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="requestPayment" tabindex="-1"
+                                        aria-labelledby="requestPaymentLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="requestPaymentLabel">MAINTENANCE COST
+                                                        DETAILS
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="everyInfo">
+                                                        <p class="info-text-top">
+                                                            GENERATED FROM MOTORAFRICA ON 12-09-2022 12:49
+                                                        </p>
+                                                        <div class="formSec container-fluid"
+                                                            style="background: #fafafa; border-radius: 6px; height: auto">
+                                                            <div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-6 side1">Date</div>
+                                                                    <div class="col-6 side2">30 Sep, 2022</div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-6 side1">Amount</div>
+                                                                    <div class="col-6 side2">N1,500</div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-6 side1">Fleet</div>
+                                                                    <div class="col-6 side2">MyGarage</div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-6 side1">Package</div>
+                                                                    <div class="col-6 side2">Hire Purchase</div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-6 side1">Payee</div>
+                                                                    <div class="col-6 side2">Driver</div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-6 side1">Workshop</div>
+                                                                    <div class="col-6 side2">AutoChek Lugbe Centre</div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-6 side1">Reference</div>
+                                                                    <div class="col-6 side2">3456WTY</div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="main2">
+                                                        <div class="form-group mt-3">
+                                                            <button class="submitBtn btn">SUMBIT</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <tbody>
                                         <tr>
                                             <td>
                                                 <input type="checkbox" class="check" />
                                             </td>
                                             <td>
-                                                <span class="text-primary">lorem</span>
+                                                <span class="text-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#requestPayment">lorem</span>
                                             </td>
                                             <td>lorem</td>
                                             <td>lorem</td>
@@ -214,6 +272,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>

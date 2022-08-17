@@ -17,20 +17,24 @@
                                 <div class="vectorBox2">
                                     <img src="{{ asset('assets/images/white-vector.svg') }}" alt="" />
                                 </div>
-                                <i class="bx bx-dots-vertical-rounded adjust"></i>
+                                <div class="dropstart m-0 p-0">
+                                    <i class="bx bx-dots-vertical-rounded" data-bs-toggle="dropdown"
+                                        aria-expanded="false"></i>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Default/Live</a></li>
+                                        <li><a class="dropdown-item" href="#">Last Month</a></li>
+                                        <li><a class="dropdown-item" href="#">Last 90 days</a></li>
+                                        <li><a class="dropdown-item" href="#">Last 6 Months</a></li>
+                                        <li><a class="dropdown-item" href="#">Last Year</a></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="bottomInfo">
                                 <div class="leftBottom">
                                     <span class="lft1 text-light">ACCOUNT BALANCE</span><br />
                                     <span class="lft2 text-inter text-light">$60,400</span>
                                 </div>
-                                <span
-                                    class="
-                    rightBottom
-                    bg-light-dark
-                    text-light
-                    font-weight-bold
-                  ">
+                                <span class="rightBottom bg-light-dark text-light font-weight-bold">
                                     <i class="bx bx-down-arrow-alt"></i>
                                     <span>22.5%</span> <span>APRIL</span>
                                 </span>
@@ -43,20 +47,24 @@
                                 <div class="vectorBox">
                                     <img src="{{ asset('assets/images/deep-vector.svg') }}" alt="" />
                                 </div>
-                                <i class="bx bx-dots-vertical-rounded adjust"></i>
+                                <div class="dropstart m-0 p-0">
+                                    <i class="bx bx-dots-vertical-rounded" data-bs-toggle="dropdown"
+                                        aria-expanded="false"></i>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Default/Live</a></li>
+                                        <li><a class="dropdown-item" href="#">Last Month</a></li>
+                                        <li><a class="dropdown-item" href="#">Last 90 days</a></li>
+                                        <li><a class="dropdown-item" href="#">Last 6 Months</a></li>
+                                        <li><a class="dropdown-item" href="#">Last Year</a></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="bottomInfo">
                                 <div class="leftBottom">
                                     <span class="lft1">TOTAL TICKET</span><br />
                                     <span class="lft2 text-inter">521</span>
                                 </div>
-                                <span
-                                    class="
-                    rightBottom
-                    bg-light-green
-                    green-text
-                    font-weight-bold
-                  ">
+                                <span class="rightBottom bg-light-green green-text font-weight-bold">
                                     <i class="bx bx-up-arrow-alt"></i>
                                     <span>22.5%</span> <span>APRIL</span>
                                 </span>
@@ -67,7 +75,7 @@
                         <div class="boxInfo">
                             <div class="topInfo">
                                 <div class="vectorBox">
-                                    <img src="{{asset('assets/images/deep-vector.svg')}}" alt="" />
+                                    <img src="{{ asset('assets/images/deep-vector.svg') }}" alt="" />
                                 </div>
                             </div>
                             <div class="bottomInfo">
@@ -82,7 +90,7 @@
                         <div class="boxInfo">
                             <div class="topInfo">
                                 <div class="vectorBox">
-                                    <img src="{{asset('assets/images/deep-vector.svg')}}" alt="" />
+                                    <img src="{{ asset('assets/images/deep-vector.svg') }}" alt="" />
                                 </div>
                             </div>
                             <div class="bottomInfo">
@@ -100,11 +108,7 @@
                     <div class="col-12">
                         <div class="card-box table-responsive">
                             <table id="datatable-buttons" class="table table-bordered nowrap"
-                                style="
-                  border-collapse: collapse;
-                  border-spacing: 0;
-                  width: 100%;
-                ">
+                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead class="text-inter">
                                     <tr>
                                         <th>

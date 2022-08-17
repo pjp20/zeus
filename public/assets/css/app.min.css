@@ -6456,11 +6456,13 @@ thead {
 }
 
 .h-30 {
-    height: 168px;
+    height: 157px;
 }
-.h-50{
+
+.h-50 {
     height: 200px;
 }
+
 .mt-10 {
     margin-top: 30px;
 }
@@ -6609,7 +6611,7 @@ thead {
 
 .sectionTitle {
     font-family: var(--text-inter);
-    font-size: 22px;
+    font-size: 15px;
     padding: 10px 15px;
     color: var(--deepPurple);
 }
@@ -6617,9 +6619,12 @@ thead {
 .sectionTitle img {
     cursor: pointer;
 }
-
+.bx-dots-vertical-rounded{
+    font-size: 19px;
+    cursor: pointer;
+}
 .subTitle {
-    font-size: 14px;
+    font-size: 11px;
     color: var(--deepPurple);
     font-weight: bold;
 }
@@ -6801,7 +6806,7 @@ label {
 .sub-tabs {
     display: flex;
     width: 100%;
-    /* border-bottom: 1px solid #C6C2DE; */
+    border-bottom: 1px solid #C6C2DE;
     text-align: center;
     margin-top: 2px;
     margin-bottom: 20px;
@@ -6823,7 +6828,7 @@ label {
 }
 
 .bbd {
-    font-weight: bold;
+    font-weight: bolder;
     border-bottom: 3px solid #000;
     color: #000 !important;
 }
@@ -6846,9 +6851,10 @@ label {
     height: 340px;
     border: 1px solid #ccc;
     background: #fff;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    padding: 20px;
 }
 
 .graph-section img {
@@ -6883,7 +6889,7 @@ label {
     height: auto;
     flex-direction: column;
     /* background: red; */
-    padding: 15px 0;
+    /* padding: 15px 0; */
     width: 100%;
 }
 

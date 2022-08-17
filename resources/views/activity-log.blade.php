@@ -14,8 +14,8 @@
                     <div class="col-sm-6 col-md-12 col-lg-8">
                         <div class="activity-left mb-3">
                             <div class="side-activity">
-                                <p class="week-day">Wednesday</p>
-                                <p class="month-day">December 18</p>
+                                <span class="week-day">Wednesday</span>
+                                <span class="month-day">December 18</span>
                             </div>
                             <div class="info-activity">
                                 <div class="info-info">
@@ -25,10 +25,10 @@
                                         </div>
                                     </div>
                                     <div class="info-desc">
-                                        <p class="infoTop">
+                                        <span class="infoTop">
                                             GPS device connection lost for RBC123XC
-                                        </p>
-                                        <p class="infoButtom">16 May, 2022 @ 04:35</p>
+                                        </span>
+                                        <span class="infoButtom">16 May, 2022 @ 04:35</span>
                                     </div>
                                 </div>
                                 <div class="info-info">
@@ -38,10 +38,10 @@
                                         </div>
                                     </div>
                                     <div class="info-desc">
-                                        <p class="infoTop">
+                                        <span class="infoTop">
                                             GPS device connection lost for RBC123XC
-                                        </p>
-                                        <p class="infoButtom">16 May, 2022 @ 04:35</p>
+                                        </span>
+                                        <span class="infoButtom">16 May, 2022 @ 04:35</span>
                                     </div>
                                 </div>
                                 <div class="info-info">
@@ -51,10 +51,10 @@
                                         </div>
                                     </div>
                                     <div class="info-desc">
-                                        <p class="infoTop">
+                                        <span class="infoTop">
                                             GPS device connection lost for RBC123XC
-                                        </p>
-                                        <p class="infoButtom">16 May, 2022 @ 04:35</p>
+                                        </span>
+                                        <span class="infoButtom">16 May, 2022 @ 04:35</span>
                                     </div>
                                 </div>
                             </div>
@@ -62,8 +62,8 @@
 
                         <div class="activity-left mb-3">
                             <div class="side-activity">
-                                <p class="week-day">Wednesday</p>
-                                <p class="month-day">December 18</p>
+                                <span class="week-day">Wednesday</span>
+                                <span class="month-day">December 18</span>
                             </div>
                             <div class="info-activity">
                                 <div class="info-info">
@@ -73,10 +73,10 @@
                                         </div>
                                     </div>
                                     <div class="info-desc">
-                                        <p class="infoTop">
+                                        <span class="infoTop">
                                             GPS device connection lost for RBC123XC
-                                        </p>
-                                        <p class="infoButtom">16 May, 2022 @ 04:35</p>
+                                        </span>
+                                        <span class="infoButtom">16 May, 2022 @ 04:35</span>
                                     </div>
                                 </div>
                             </div>
@@ -84,8 +84,8 @@
 
                         <div class="activity-left mb-3">
                             <div class="side-activity">
-                                <p class="week-day">Wednesday</p>
-                                <p class="month-day">December 18</p>
+                                <span class="week-day">Wednesday</span>
+                                <span class="month-day">December 18</span>
                             </div>
                             <div class="info-activity">
                                 <div class="info-info">
@@ -95,10 +95,10 @@
                                         </div>
                                     </div>
                                     <div class="info-desc">
-                                        <p class="infoTop">
+                                        <span class="infoTop">
                                             GPS device connection lost for RBC123XC
-                                        </p>
-                                        <p class="infoButtom">16 May, 2022 @ 04:35</p>
+                                        </span>
+                                        <span class="infoButtom">16 May, 2022 @ 04:35</span>
                                     </div>
                                 </div>
                                 <div class="info-info">
@@ -108,10 +108,10 @@
                                         </div>
                                     </div>
                                     <div class="info-desc">
-                                        <p class="infoTop">
+                                        <span class="infoTop">
                                             GPS device connection lost for RBC123XC
-                                        </p>
-                                        <p class="infoButtom">16 May, 2022 @ 04:35</p>
+                                        </span>
+                                        <span class="infoButtom">16 May, 2022 @ 04:35</span>
                                     </div>
                                 </div>
                             </div>

@@ -32,7 +32,7 @@
                 <li>
                     <a class="sideLink" href="/task-management">
                         <img src="{{ asset('assets/images/thick.png') }}" alt="" />
-                        <span>Task Management</span>
+                        <span>Workshop</span>
                     </a>
                 </li>
 

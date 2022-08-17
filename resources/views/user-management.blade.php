@@ -28,14 +28,11 @@
                                     <span class="lft1 text-light">Total User(s)</span><br />
                                     <span class="lft2 text-inter text-light">{{ count($users) }}</span>
                                 </div>
-<<<<<<< HEAD
                                 <span class="rightBottom bg-light-dark text-light font-weight-bold">
-=======
-                                <span class="rightBottom  bg-light-dark text-light font-weight-bold ">
->>>>>>> 2a8a5c7c53a47b8091544e35c04cb7f9151cccda
-                                    <i class="bx bx-down-arrow-alt"></i>
-                                    <span>22.5%</span> <span>APRIL</span>
-                                </span>
+                                    <span class="rightBottom  bg-light-dark text-light font-weight-bold ">
+                                        <i class="bx bx-down-arrow-alt"></i>
+                                        <span>22.5%</span> <span>APRIL</span>
+                                    </span>
                             </div>
                         </div>
                     </div>
@@ -45,20 +42,24 @@
                                 <div class="vectorBox3">
                                     <img src="{{ asset('assets/images/vector3.svg') }}" alt="" />
                                 </div>
-                                <i class="bx bx-dots-vertical-rounded adjust"></i>
+                                <div class="dropstart m-0 p-0">
+                                    <i class="bx bx-dots-vertical-rounded" data-bs-toggle="dropdown"
+                                        aria-expanded="false"></i>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Default/Live</a></li>
+                                        <li><a class="dropdown-item" href="#">Last Month</a></li>
+                                        <li><a class="dropdown-item" href="#">Last 90 days</a></li>
+                                        <li><a class="dropdown-item" href="#">Last 6 Months</a></li>
+                                        <li><a class="dropdown-item" href="#">Last Year</a></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="bottomInfo">
                                 <div class="leftBottom">
                                     <span class="lft1">Total Car Owner(s)</span><br />
                                     <span class="lft2 text-inter">{{ count($users) - $driverCount }}</span>
                                 </div>
-                                <span
-                                    class="
-                    rightBottom
-                    bg-light-red
-                    red-text
-                    font-weight-bold
-                  ">
+                                <span class="rightBottom bg-light-red red-text font-weight-bold">
                                     <i class="bx bx-down-arrow-alt"></i>
                                     <span>22.5%</span> <span>APRIL</span>
                                 </span>
@@ -78,13 +79,7 @@
                                     <span class="lft1">Total Drivers(s)</span><br />
                                     <span class="lft2 text-inter">{{ $driverCount }}</span>
                                 </div>
-                                <span
-                                    class="
-                    rightBottom
-                    bg-light-green
-                    green-text
-                    font-weight-bold
-                  ">
+                                <span class="rightBottom bg-light-green green-text font-weight-bold">
                                     <i class="bx bx-down-arrow-alt"></i>
                                     <span>22.5%</span> <span>APRIL</span>
                                 </span>
