@@ -21,6 +21,37 @@
         <div class="alert alert-success">
             <strong>{{ session()->get('success') }}</strong>
         </div>
+        {{-- <div class="modal fade" id="success" tabindex="-1" aria-labelledby="success" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" style="width: 400px">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="success-info">
+                            <div class="cover-circle">
+                                <div class="circle-success">
+                                    <svg width="32" height="20" viewBox="0 0 51 35" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M47.8215 3L17.9403 31.5228L3 17.2614" stroke="#4A4AFF" stroke-width="6"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <span class="success-info" style="font-size: 15px; margin:15px 0; padding:0;">OPERATION
+                                SUCCESSFUL</span>
+                            <span>
+                                <strong>{{ session()->get('success') }}</strong>
+                            </span>
+                            <button type="button" class="btn  addBtn" data-dismiss="modal" aria-label="Close">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#success').modal('show')
+        </script> --}}
         <!-- Modal -->
     @endif
 

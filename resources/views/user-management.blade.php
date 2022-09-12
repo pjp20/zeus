@@ -7,10 +7,8 @@
                 <!-- text-inter -->
                 <div class="top-row">
                     <div>
-                        <p class="sectionTitle text-inter pb-0 pl-0">User Management</p>
-                        <p class="subTitle">
-                            A very random description of this module.
-                        </p>
+                        <p class="sectionTitle text-inter pb-0 pl-0" style="font-size:22px;" > <b> User Account Management </b></p>
+
                     </div>
                     <a href="/add-user" class="addBtn">ADD USER</a>
                 </div>
@@ -57,7 +55,7 @@
                             <div class="bottomInfo">
                                 <div class="leftBottom">
                                     <span class="lft1">Total Car Owner(s)</span><br />
-                                    <span class="lft2 text-inter">{{ count($users) - $driverCount }}</span>
+                                    <span class="lft2 text-inter">{{ count($users) - $users->where('category','Driver')->count() }}</span>
                                 </div>
                                 <span class="rightBottom bg-light-red red-text font-weight-bold">
                                     <i class="bx bx-down-arrow-alt"></i>
@@ -77,7 +75,7 @@
                             <div class="bottomInfo">
                                 <div class="leftBottom">
                                     <span class="lft1">Total Drivers(s)</span><br />
-                                    <span class="lft2 text-inter">{{ $driverCount }}</span>
+                                    <span class="lft2 text-inter">{{ $users->where('category' , 'Driver')->count()  }}</span>
                                 </div>
                                 <span class="rightBottom bg-light-green green-text font-weight-bold">
                                     <i class="bx bx-down-arrow-alt"></i>
@@ -104,7 +102,7 @@
                                         <th>FULL NAME</th>
                                         <th>PHONE NUMBER</th>
                                         <th>EMAIL</th>
-                                        <th>FLEET</th>
+                                        {{-- <th>FLEET</th> --}}
                                         <th>STATUS</th>
                                         <th>DATE CREATED</th>
                                         <th></th>
@@ -128,7 +126,7 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->phone }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>6</td>
+                                            {{-- <td>6</td> --}}
                                             <td>
                                                 @if ($user->status == 1)
                                                     <span class="pending">Pending</span>
@@ -169,42 +167,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" class="check" />
-                                        </td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>5</td>
-                                        <td>6</td>
-                                        <td>7</td>
-                                        <td>8</td>
-                                        <td>
-                                            <div class="iconBox">
-                                                <div class="iconBox">
-                                                    {{-- <Dropdown trigger="click" class="pt-2">
-                                                        <a href="javascript:void(0)">
-                                                            <i class="icon-options text-dark pt-2"></i>
-                                                        </a>
-                                                        <DropdownMenu slot="list">
-                                                            <DropdownItem>
-                                                                <span>Process</span>
-                                                            </DropdownItem>
-                                                            <DropdownItem>
-                                                                <span>Active</span>
-                                                            </DropdownItem>
-                                                            <DropdownItem>
-                                                                <span>Deactivate</span>
-                                                            </DropdownItem>
-                                                        </DropdownMenu>
-                                                    </Dropdown> --}}
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>

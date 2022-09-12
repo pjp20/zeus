@@ -10,46 +10,41 @@ use Illuminate\Support\Facades\DB;
 class ReportModuleController extends Controller {
 
     public function index() {
-        $date = Carbon::today()->format( 'Y-m-d' );
+        $users = DB::table( 'transactions' )->select( DB::raw( 'COUNT(*) as count' ) )
+        ->whereIn( 'paymentMethod', [ 'Tella Agent', 'platform', 'Online Payment' ] )
+        ->whereYear( 'created_at', date( 'Y' ) )
+        ->groupBy( DB::raw( 'Month(created_at)' ) )
+        ->pluck( 'count' );
+        $months =  DB::table( 'transactions' )->select( DB::raw( 'Month(created_at) as month' ) )
+        ->whereIn( 'paymentMethod', [ 'Tella Agent', 'platform', 'Online Payment' ] )
+        ->whereYear( 'created_at', date( 'Y' ) )
+        ->groupBy( DB::raw( 'Month(created_at)' ) )
+        ->pluck( 'month' );
+        $paidUserChart = array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0);
+        foreach ( $months as $index => $month ) {
+            $paidUserChart[ $month ] = $users[ $index ];
+        }
+        // dd(
+
+        //     DB::table( 'transactions' )
+        //     ->whereMonth( 'created_at', '9' )
+        //     ->whereYear( 'created_at', "2022" )
+        //     ->latest()->get()
+        // );
+
+        // dd( $paidUserChart );
+
+        $paidUsers = DB::table( 'tella_payment' )->sum( 'amount' );
+
         $weekstart = Carbon::now()->startOfWeek( Carbon::SUNDAY )->format( 'Y-m-d' );
         $weekend =  Carbon::now()->endOfWeek( Carbon::SATURDAY )->format( 'Y-m-d' );
-        // // aLlpayment
+        $projectIncome = DB::table( 'duepayments' )->whereBetween( 'duetime', [ $weekstart, $weekend ] )->sum( 'needpayment' );
 
-        $result = DB::table( 'tella_payment' )->get();
+        $date = Carbon::now()->subDays( 2 )->startOfDay()->format( 'Y-m-d H:i:s' );
+        $depot = DB::table( 'duepayments' )->where( 'duetime', '<=', $date )->sum( 'needpayment' );
 
-        // $result =  ( new ApiController )->post( 'https://tella.envio.africa/api/all-payment-date', array(
-        //     'startDate' => Carbon::now()->startOfWeek( Carbon::SUNDAY )->format( 'Y-m-d H:i:s' ),
-        //     'endDate' => Carbon::now()->endOfWeek( Carbon::SATURDAY )->format( 'Y-m-d H:i:s' ),
-        // ) );
-
-        $paidUsers = 0;
-        foreach ( $result as $item ) {
-            $paidUsers += $item->amount;
-        }
-        // return $paidUsers;
-
-        $depotx = ( new VMSAPI )->getVehicleOverDue( $weekend, 1000 );
-
-        // return $depotx;
-        $depot = 0;
-        // $overdueOneWeek = Carbon::now()->subDays( +7 )->startOfDay()->format( 'Y-m-d' );
-        foreach ( $depotx->Data as $value ) {
-            if ( $value->Vehicle->investorname != '' || $value->Vehicle->investorname != null ) {
-                if ( $value->duetime >= $weekstart ) {
-                    // from sunday till today
-                    $depot += $value->needpayment;
-                    // $arr[] = $value->duetime ;
-                }
-            }
-        }
-        // return $arr;
-        // get due payment
-        $unpaid = $this->DuePayment();
-        $unpaidAmount = $unpaid[ 'totalAmount' ];
-
-        $income  = $paidUsers + $depot;
-        // $depot =  $depot + $unpaidAmount;
-        return view( 'report-module', [ 'paid' => $paidUsers, 'unpaid' => $depot, 'income' => $income, 'depot' => $unpaidAmount +$depot ] );
+        $unpaid  = $projectIncome- $paidUsers;
+        return view( 'report-module', [ 'paidUserChart' => $paidUserChart, 'paid' => $paidUsers, 'unpaid' => $unpaid, 'income' => $projectIncome, 'depot' => $depot ] );
     }
 
     public function allPayments() {
@@ -69,7 +64,6 @@ class ReportModuleController extends Controller {
     }
 
     public function allPaymentFilter( Request $request ) {
-
         $result =  ( new ApiController )->post( 'https://tella.envio.africa/api/all-payment-date', array(
             'startDate' => $request->startDate,
             'endDate' => $request->endDate
@@ -78,7 +72,6 @@ class ReportModuleController extends Controller {
         foreach ( $result as $item ) {
             $totalAmount += $item->amount;
         }
-
         return view( 'all-payments', [ 'totalAmount' => $totalAmount, 'data' => $result ] );
     }
 
@@ -262,6 +255,7 @@ class ReportModuleController extends Controller {
         }
         // return $arr;
         // get due payment
+
         $unpaid = $this->DuePayment();
         $unpaidAmount = $unpaid[ 'totalAmount' ];
         return array(
@@ -281,6 +275,7 @@ class ReportModuleController extends Controller {
             'startDate' => $startDate,
             'endDate' => $endDate
         ) );
+        
         $paidUsers = 0;
         foreach ( $result as $item ) {
             $paidUsers += $item->amount;
@@ -351,21 +346,40 @@ class ReportModuleController extends Controller {
         // $plate = 'BWR971XE';
         // dd( $phone );
         $str = ltrim( $phone, '0' );
-
         $grantor = DB::table( 'gurantors_info' )->where( 'Driver_PHONE', $str )->first();
+        $driverInfo = DB::table( 'user_management' )->where( 'phone', $phone )->first();
 
+        // dd( $driverInfo );
         $driverDetails = ( new VMSAPI )->getDriverInfo( $phone );
         $vehicleDetails = ( new VMSAPI )->getVehicleRecord( $plate );
+
+        $car_fleet = DB::table( 'car_fleet' )->where( 'vehiclePlateNo', $plate )->first();
+
+        // dd( $car_fleet );
+
         if ( !empty( $vehicleDetails ) ) {
             $vehicleLocation = ( new VMSAPI )->getVehiclePosition( $vehicleDetails->Data->systemno );
         }
+        // foreach ( $vehicleLocation as $key => $value ) {
+        //     $latitude =
+        // }
+
+        $latitude = $vehicleLocation->Data[ 0 ]->Latitude;
+        $longitude = $vehicleLocation->Data[ 0 ]->Longitude;
+
+        $res =  ( new ApiController )->get( 'https://api.maptiler.com/geocoding/' . $longitude . ', ' . $latitude . '.json?key=y42GKPcp1uzNrN1f0T7N' );
+        $label = $res->features[ 0 ]->place_name;
+
         $investorInfo = ( new VMSAPI )->getInvestorInfo( $investorphone );
         $result = array(
             'driverDetail' => ( !empty( $driverDetails ) ) ? $driverDetails->Data : 'null',
+            'driverInfo' => ( !empty( $driverInfo ) ) ? $driverInfo : 'null',
             'vehicleDetails' => ( !empty( $vehicleDetails ) ) ? $vehicleDetails->Data : 'null',
             'vehicleLocation' => ( !empty( $vehicleLocation ) ) ? $vehicleLocation->Data[ 0 ] : 'null',
             'investorInfo' => ( !empty( $investorInfo ) ) ? $investorInfo->Data : 'null',
             'garantor' => ( !empty( $grantor ) ) ? $grantor : 'null',
+            'location' => ( !empty( $label ) ) ? $label : 'null',
+            'carFleet' => ( !empty( $car_fleet ) ) ? $car_fleet : 'null',
         );
 
         // dd( $result );

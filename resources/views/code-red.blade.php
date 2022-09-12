@@ -17,7 +17,6 @@
                                 <span class="ml-2">
                                     ( {{ number_format(count($data)) }} )
                                 </span>
-
                             </p>
                         </div>
                         <div class="filter-calender reportModuleFilter">
@@ -32,14 +31,14 @@
                         <div class="filterModal">
                             <div class="topFilter">
                                 <h3>Super Filter</h3>
-                                <span class="closeBtn">X</span>
+                                <span class="closeBtn" id="closeBtn">X</span>
                             </div>
                             <ul class="filterList">
-                                <li> <a href="{{route("code-red")}}">  Default / Live </a></li>
-                                <li> <a href="{{route("codeRedFilter2",['date' => "30"])}}"> Past 30 days </a> </li>
-                                <li> <a href="{{route("codeRedFilter2",['date' => "90"])}}"> Last 3 months </a> </li>
-                                <li> <a href="{{route("codeRedFilter2",['date' => "180"])}}"> Last 6 months </a> </li>
-                                <li> <a href="{{route("codeRedFilter2",['date' => "365"])}}"> Last Year </a> </li>
+                                <li> <a href="{{ route('code-red') }}"> Default / Live </a></li>
+                                <li> <a href="{{ route('codeRedFilter2', ['date' => '30']) }}"> Past 30 days </a> </li>
+                                <li> <a href="{{ route('codeRedFilter2', ['date' => '90']) }}"> Last 3 months </a> </li>
+                                <li> <a href="{{ route('codeRedFilter2', ['date' => '180']) }}"> Last 6 months </a> </li>
+                                <li> <a href="{{ route('codeRedFilter2', ['date' => '365']) }}"> Last Year </a> </li>
 
 
                             </ul>
@@ -72,6 +71,7 @@
 
                         </div>
                     </div>
+
 
                     <!-- table -->
                     <div class="row pt-2">
@@ -131,19 +131,19 @@
                 <!-- sub tab -->
                 <ul class="sub-tabs pt-2">
                     <li class="list-payment">
-                        <a href="{{route("all-payments")}}">Payments Recieved</a>
+                        <a href="{{ route('all-payments') }}">Payments Recieved</a>
                     </li>
                     <li class="list-due-payment">
-                        <a href="{{route("due-payments")}}">Due Payments</a>
+                        <a href="{{ route('due-payments') }}">Due Payments</a>
                     </li>
                     <li class="list-overdue-payment">
-                        <a href="{{route("overdue-payments")}}">Overdue Payments</a>
+                        <a href="{{ route('overdue-payments') }}">Overdue Payments</a>
                     </li>
                     <li class="list-critical-payment">
-                        <a href="{{route("critical-payments")}}">Critical Payments</a>
+                        <a href="{{ route('critical-payments') }}">Critical Payments</a>
                     </li>
                     <li class="list-color bbd">
-                        <a href="{{route("code-red")}}">Code Red</a>
+                        <a href="{{ route('code-red') }}">Code Red</a>
                     </li>
                 </ul>
             </div>
@@ -151,4 +151,19 @@
         </div>
         <!-- end content -->
     </div>
+
+    <script>
+        let reportModuleFilter = document.querySelector('.reportModuleFilter');
+        let filterModal = document.querySelector('.filterModal');
+        let closeBtn = document.querySelector('#closeBtn');
+
+        reportModuleFilter.addEventListener('click', () => {
+            filterModal.style.display = 'block';
+            // closeBtn.style.display = 'none';
+        });
+        closeBtn.addEventListener('click', () => {
+            filterModal.style.display = 'none';
+            // closeBtn.style.display = 'none';
+        });
+    </script>
 @endsection

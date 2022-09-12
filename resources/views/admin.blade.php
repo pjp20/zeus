@@ -31,9 +31,14 @@
                                     @csrf
                                     <div class="formSec">
                                         <div class="form-group">
-                                            <label for="">Full Name</label>
-                                            <input name="name" value="{{ old('name') }}" class="form-control infoInput"
-                                                required />
+                                            <label for="">First Name</label>
+                                            <input name="first_name" value="{{ old('first_name') }}"
+                                                class="form-control infoInput" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Last Name</label>
+                                            <input name="last_name" value="{{ old('last_name') }}"
+                                                class="form-control infoInput" required />
                                         </div>
 
                                         <div class="form-group">
@@ -91,21 +96,24 @@
                                         <th>
                                             <input type="checkbox" class="check" />
                                         </th>
-                                        <th>FULL NAME</th>
                                         <th>EMAIL</th>
+                                        <th>First NAME</th>
+                                        <th>Last NAME</th>
                                         <th>DEPARTMENT</th>
                                         <th>STATUS</th>
                                         <th>START DATE</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                               
                                     @foreach ($admin as $item)
                                         <tr>
                                             <td>
                                                 <input type="checkbox" class="check" />
                                             </td>
-                                            <td><a href="/staff">{{ $item->email }}</a></td>
-                                            <td>{{ $item->name }}</td>
+                                            <td><a href="{{route("adminInfo",['id' => $item->id])}}">{{ $item->email }}</a></td>
+                                            <td>{{ $item->first_name }}</td>
+                                            <td>{{ $item->last_name }}</td>
                                             <td>{{ $item->department_name }}</td>
                                             <td>
                                                 @if ($item->status == 1)

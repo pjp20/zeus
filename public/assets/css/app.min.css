@@ -1,11 +1,12 @@
 @charset "UTF-8";
+@import url('https://rsms.me/inter/inter.css');
 /* @import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&amp;display=swap); */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 
 :root {
     --deepPurple: #08102E;
     --orange: #fd7e14;
-    --text-inter: 'Inter', sans-serif;
+    --text-inter: 'Inter var', sans-serif;
 }
 
 html {
@@ -6646,11 +6647,11 @@ thead {
 
 .selectBtn {
     font-family: var(--text-inter);
-    background: #FAFAFA;
+    /* background: #FAFAFA; */
     border: 1px solid #EEEEEE;
     border-radius: 6px;
-    height: 40px;
-    width: auto;
+    height: 50px;
+    width: 140px;
     font-weight: bold;
 }
 
@@ -6665,8 +6666,8 @@ thead {
 }
 
 .addBtn:hover {
-    color: #fff;
-    background: #000;
+    color: #000;
+    background: #4a4aff8b;
     border: 1px solid #4A4AFF;
 }
 
@@ -6804,6 +6805,15 @@ label {
 
 /* vehicle management */
 .sub-tabs {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #C6C2DE;
+    text-align: center;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    margin-left: -35px;
+}
+.sub-tabz {
     display: flex;
     width: 100%;
     border-bottom: 1px solid #C6C2DE;

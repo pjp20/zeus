@@ -26,6 +26,7 @@ class HomepageController extends Controller {
         return view( 'user', [ 'user' => $user ] );
     }
 
+
     public function editUserAccount( Request $request ) {
         // dd( $request->all() );
 

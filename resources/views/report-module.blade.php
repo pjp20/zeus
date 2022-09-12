@@ -23,15 +23,17 @@
                         <div class="filterModal">
                             <div class="topFilter">
                                 <h3>Super Filter</h3>
-                                <span class="closeBtn">X</span>
+                                <span class="closeBtn" id="closeBtn">X</span>
                             </div>
                             <ul class="filterList">
-                                <li> <a href="{{route("report-module")}}">  Default / Live </a></li>
-                                <li> <a href="{{route("reportModuleFilter2",['date' => "7"])}}"> Last Week </a> </li>
-                                <li> <a href="{{route("reportModuleFilter2",['date' => "30"])}}"> Past 30 days </a> </li>
-                                <li> <a href="{{route("reportModuleFilter2",['date' => "90"])}}"> Last 3 months </a> </li>
-                                <li> <a href="{{route("reportModuleFilter2",['date' => "180"])}}"> Last 6 months </a> </li>
-                                <li> <a href="{{route("reportModuleFilter2",['date' => "365"])}}"> Last Year </a> </li>
+                                <li> <a href="{{ route('report-module') }}"> Default / Live </a></li>
+                                <li> <a href="{{ route('reportModuleFilter2', ['date' => '7']) }}"> Last Week </a> </li>
+                                <li> <a href="{{ route('reportModuleFilter2', ['date' => '30']) }}"> Past 30 days </a> </li>
+                                <li> <a href="{{ route('reportModuleFilter2', ['date' => '90']) }}"> Last 3 months </a>
+                                </li>
+                                <li> <a href="{{ route('reportModuleFilter2', ['date' => '180']) }}"> Last 6 months </a>
+                                </li>
+                                <li> <a href="{{ route('reportModuleFilter2', ['date' => '365']) }}"> Last Year </a> </li>
                             </ul>
                             <form action="{{ route('reportModuleFilter') }}" method="post">
                                 @csrf
@@ -49,7 +51,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="filterFooter">
                                     <button class="btn text-dark closeBtn"
                                         style=" border: none; background: transparent; font-weight: bold; ">
@@ -60,7 +61,6 @@
                                     </button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                     <div class="row mt-3 g-2">
@@ -136,30 +136,28 @@
                         </div>
                     </div>
                     <!-- graph -->
-                    <div class="graph-section2">
-                        <h4 class="header-title">REVENUE BY TREND</h4>
-
-                        <div id="chart" dir="ltr"></div>
-                        {{-- <img src="{{ asset('assets/images/stats.svg') }}" alt="" /> --}}
+                    <div class="graph-section2 p-3">
+                        {{-- <h4 class="header-title">REVENUE BY TREND</h4> --}}
+                        <div id="barchart_material" style="height: 450px"></div>
                     </div>
                 </div>
 
                 <!-- sub tab -->
                 <ul class="sub-tabs pt-2">
                     <li class="list-payment bbd">
-                        <a href="all-payments">Payments Recieved</a>
+                        <a href="{{ route('all-payments') }}">Payments Recieved</a>
                     </li>
                     <li class="list-due-payment">
-                        <a href="due-payments">Due Payments</a>
+                        <a href="{{ route('due-payments') }}">Due Payments</a>
                     </li>
                     <li class="list-overdue-payment">
-                        <a href="overdue-payments">Overdue Payments</a>
+                        <a href="{{ route('overdue-payments') }}">Overdue Payments</a>
                     </li>
-                    <li class="list-critical-payment">
-                        <a href="critical-payments">Critical Payments</a>
+                    <li class="list-critical-payment ">
+                        <a href="{{ route('critical-payments') }}">Critical Payments</a>
                     </li>
                     <li class="list-color">
-                        <a href="code-red">Code Red</a>
+                        <a href="{{ route('code-red') }}">Code Red</a>
                     </li>
                 </ul>
             </div>
@@ -167,78 +165,57 @@
         </div>
         <!-- end content -->
     </div>
-    {{-- <script>
-        $(document).ready(function() {
-            $('#load').html(
-                '<img src="{{ asset('assets/images/loader.gif') }}" width="25" height="25"/>'
-            );
-            $('#load2').html(
-                '<img src="{{ asset('assets/images/loader.gif') }}" width="25" height="25"/>'
-            );
-            $('#load3').html(
-                '<img src="{{ asset('assets/images/loader.gif') }}" width="25" height="25"/>'
-            );
-            $('#load4').html(
-                '<img src="{{ asset('assets/images/loader.gif') }}" width="25" height="25"/>'
-            );
 
-            jQuery(window).on("load", function() {
-                console.log("hello word");
-                var delay = 2000;
-                $.ajax({
-                    type: "GET",
-                    url: "{{ route('reportModule') }}",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
-                            .attr('content')
-                    },
-                    beforeSend: function() {
-                        // $('#load').html(
-                        //     '<img src="{{ asset('assets/images/loader.gif') }}" width="25" height="25"/>'
-                        // );
-                        // $('#load2').html(
-                        //     '<img src="{{ asset('assets/images/loader.gif') }}" width="25" height="25"/>'
-                        // );
-                        // $('#load3').html(
-                        //     '<img src="{{ asset('assets/images/loader.gif') }}" width="25" height="25"/>'
-                        // );
-                        // $('#load4').html(
-                        //     '<img src="{{ asset('assets/images/loader.gif') }}" width="25" height="25"/>'
-                        // );
-                    },
-                    success: function(data) {
-                        console.log(data);
-                        $('#project').html("<span>&#8358;</span> " + data.income);
-                        $('#paidUser').html("<span>&#8358;</span> " + data.paid);
-                        $('#unpaid').html("<span>&#8358;</span> " + data.unpaid);
-                        $('#depot').html("<span>&#8358;</span> " + data.depot);
-                        // setTimeout(function() {
-                        //     if (data == 1) {
-                        //         $('#pinStatus').html(
-                        //             '<div class = "alert alert-success">Success</div>'
-                        //         );
-                        //         $('#pinChange').text(
-                        //             'submit');
+    <script>
+        let reportModuleFilter = document.querySelector('.reportModuleFilter');
+        let filterModal = document.querySelector('.filterModal');
+        let closeBtn = document.querySelector('#closeBtn');
 
-                        //     } else if (data == 00) {
-                        //         $('#pinStatus').html(
-                        //             '<div class = "alert alert-danger">Password Error</div>'
-                        //         );
-                        //         $('#pinChange').text(
-                        //             'submit');
-                        //         // console.log(data);
-                        //     }
-                        // }, delay);
-
-                    },
-                    error: function(data) {
-                        console.log(
-                            data) //===Show Error Message====
-                    }
-                });
-
-            });
-
+        reportModuleFilter.addEventListener('click', () => {
+            filterModal.style.display = 'block';
+            // closeBtn.style.display = 'none';
         });
-    </script> --}}
+        closeBtn.addEventListener('click', () => {
+            filterModal.style.display = 'none';
+            // closeBtn.style.display = 'none';
+        });
+    </script>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        var datas = <?php echo json_encode($paidUserChart); ?>
+
+        google.charts.load('current', {
+            'packages': ['bar']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Month', 'Paid Users'],
+                ['Jan', datas[1], ],
+                ['Feb', datas[2], ],
+                ['Mar', datas[3], ],
+                ['Apr', datas[4], ],
+                ['May', datas[5], ],
+                ['Jun', datas[6], ],
+                ['Jul', datas[7], ],
+                ['Aug', datas[8], ],
+                ['Sep', datas[9], ],
+                ['Oct', datas[10], ],
+                ['Nov', datas[11],],
+                ['Dec', datas[12],]
+            ]);
+            var options = {
+                chart: {
+                    title: 'Revenue by trend',
+                    subtitle: '2022',
+                },
+                bars: 'vertical' // Required for Material Bar Charts.
+            };
+            var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
 @endsection

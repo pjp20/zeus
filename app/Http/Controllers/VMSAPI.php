@@ -155,5 +155,13 @@ class VMSAPI {
         $sign = 'AccessKeyId=' . $this->AccessKeyId . '&Action=GetVehLastPaymentStatus&Format=json&SignatureMethod=HMAC-SHA1&SignatureNonce=' . $this->f . '&SignatureVersion=1.0&Timestamp=' . $this->utc . '&Version=1.0&vehno=' . $plate;
         return $this->fet( $sign );
     }
+
+      public function get_pay_bill($vehno)
+ {
+        // show record of all payment
+        $sign = 'AccessKeyId=' . $this->AccessKeyId . '&Action=GetDriverPaybill&Format=json&SignatureMethod=HMAC-SHA1&SignatureNonce=' . $this->f . '&SignatureVersion=1.0&Timestamp=' . $this->utc . '&Version=1.0&vehno=' . $vehno;
+        return $this->fet( $sign );
+    }
+
 }
 

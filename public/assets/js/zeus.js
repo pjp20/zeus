@@ -11,25 +11,25 @@ let fleetSec = document.querySelector('.fleet_section');
 let trackSec = document.querySelector('.track_section');
 
 
-// let vehicleOverview = document.querySelector('.vehicle-list-overview');
-// let vehicleFleet = document.querySelector('.vehicle-list-fleet');
-// let vehicleTrack = document.querySelector('.vehicle-list-track');
+let vehicleOverview = document.querySelector('.vehicle-list-overview');
+let vehicleFleet = document.querySelector('.vehicle-list-fleet');
+let vehicleTrack = document.querySelector('.vehicle-list-track');
 
-// vehicleOverview.addEventListener('click', () => {
-//     vehicleOverview.classList.add('bbd');
-//     vehicleFleet.classList.remove('bbd');
-//     vehicleOverviewSec.style.display = 'block';
-//     fleetSec.style.display = 'none';
-//     trackSec.style.display = 'none';
-// });
+vehicleOverview.addEventListener('click', () => {
+    vehicleOverview.classList.add('bbd');
+    vehicleFleet.classList.remove('bbd');
+    vehicleOverviewSec.style.display = 'block';
+    fleetSec.style.display = 'none';
+    trackSec.style.display = 'none';
+});
 
-// vehicleFleet.addEventListener('click', () => {
-//     vehicleOverview.classList.remove('bbd');
-//     vehicleFleet.classList.add('bbd');
-//     vehicleOverviewSec.style.display = 'none';
-//     fleetSec.style.display = 'block';
-//     trackSec.style.display = 'none';
-// });
+vehicleFleet.addEventListener('click', () => {
+    vehicleOverview.classList.remove('bbd');
+    vehicleFleet.classList.add('bbd');
+    vehicleOverviewSec.style.display = 'none';
+    fleetSec.style.display = 'block';
+    trackSec.style.display = 'none';
+});
 
 
 let overviewSection = document.querySelector('.overview_section');

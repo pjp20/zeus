@@ -67,7 +67,7 @@
                     <div class="leftBase">
                         <img src="{{ asset('assets/images/dp.png') }}" alt="" />
                     </div>
-                    <span class="admin-name">{{ auth()->user()->name }}</span>
+                        <span class="admin-name">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</span>
                 </li>
             </a>
         </div>

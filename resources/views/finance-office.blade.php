@@ -12,11 +12,8 @@
                     </div>
                 </div>
                 <ul class="sub-tabs">
-                    <li class="listFinanceOverview bbd">
-                        <a href="finance-office">General Overview</a>
-                    </li>
-                    <li class="list_finance_transaction">
-                        <a href="deposit-module">Deposit Module</a>
+                    <li class="list_finance_transaction bbd">
+                        <a href="finance-office">Deposit Module</a>
                     </li>
                     <li class="list_finance_remittance">
                         <a href="payout-manager">

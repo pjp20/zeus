@@ -7,7 +7,7 @@
                 <!-- text-inter -->
                 <div class="top-row">
                     <div>
-                        <p class="sectionTitle text-inter pb-0 pl-0">Track web</p>
+                        <p class="sectionTitle text-inter pl-2">Track web</p>
                     </div>
                 </div>
                 <div class="main-track-section">
@@ -24,135 +24,69 @@
                         </div>
 
                         <ul class="sub-tabs2 mt-4">
-                            <li class="total-vehicles bbd">Total vehicles</li>
-                            <li class="online-vehicles">Online vehicles</li>
+                            <li class="total-vehicles bbd">Total vehicles ({{$cars->count()}})</li>
+                            <li class="online-vehicles">Online vehicles ({{$cars->where('offlineStatus', 'Online')->count()}})</li>
                             <li class="offline-vehicles">
-                                Offline vehicles
+                                Offline vehicles ({{$cars->where('offlineStatus', 'Offline')->count()}})
                             </li>
                         </ul>
 
-                        <div class="cars-section">
-                            <div class="car-info-section" id="openSideNav">
-                                <div class="carIcon bg-light-blue">
-                                    <img src="{{ asset('assets/images/blue_car.svg') }}" alt="">
-                                </div>
-                                <div class="plate-number-section">
-                                    <div class="plate-number">ABC123XY</div>
-                                    <div class="message">Today Mileage: 345KM</div>
-                                </div>
-                                <span class="driving text-blue bg-light-blue">Driving: 00:00</span>
-                                <div class="opt">
-                                    <i class='bx bx-dots-vertical-rounded text-dark' data-bs-toggle="dropdown"
-                                        aria-expanded="false"></i>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#"></a></li>
-                                        <li><a class="dropdown-item" href="#"></a>
-                                        </li>
-                                    </ul>
+                        <div class="cars-section all-vehicles-sec">
+                            @php
+                                $x = 0;
+                            @endphp
+                            @foreach ($cars as $item)
+                                @php
+                                    $x++;
+                                    if ($x == 1) {
+                                        $id = 'openSideNav';
+                                    } else {
+                                        $id="";
+                                    }
+                                    // $sub1 = DB::table('vehicle_status')->where('vehno', $item->vehno)->first();
+                                @endphp
+                                <a href="track-web2/{{ $item->vehno }}"></a>
+                                <div class="car-info-section" id="{{ $id }}">
+                                    <div class="carIcon bg-light-blue">
+                                        <img src="{{ asset('assets/images/blue_car.svg') }}" alt="">
+                                    </div>
+                                    <div class="plate-number-section">
+                                        <div class="plate-number">{{ $item->vehno }}</div>
+                                        <div class="message">Today Mileage: {{ $item->todayMiles }}KM</div>
+                                    </div>
+                                    <span class="driving text-blue bg-light-blue">Driving: @if ($data['vehicleLocation']->Miles > 0)
+                                        {{$data['vehicleLocation']->Miles}}
+                                    @endif</span>
+                                    <div class="opt">
+                                        <i class='bx bx-dots-vertical-rounded text-dark' data-bs-toggle="dropdown"
+                                            aria-expanded="false"></i>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"></a></li>
+                                            <li><a class="dropdown-item" href="#"></a>
+                                            </li>
+                                        </ul>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="car-info-section">
-                                <div class="carIcon bg-light-grey">
-                                    <img src="{{ asset('assets/images/grey_car.svg') }}" alt="">
-                                </div>
-                                <div class="plate-number-section">
-                                    <div class="plate-number">ABC123XY</div>
-                                    <div class="message">Today Mileage: 345KM</div>
-                                </div>
-                                <span class="driving text-grey bg-light-grey">Driving: 00:00</span>
-                                <div class="opt">
-                                    <i class='bx bx-dots-vertical-rounded text-dark' data-bs-toggle="dropdown"
-                                        aria-expanded="false"></i>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#"></a></li>
-                                        <li><a class="dropdown-item" href="#"></a>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-                            <div class="car-info-section">
-                                <div class="carIcon bg-light-pink">
-                                    <img src="{{ asset('assets/images/pink_car.svg') }}" alt="">
-                                </div>
-                                <div class="plate-number-section">
-                                    <div class="plate-number">ABC123XY</div>
-                                    <div class="message">Today Mileage: 345KM</div>
-                                </div>
-                                <span class="driving text-pink bg-light-pink">Driving: 00:00</span>
-                                <div class="opt">
-                                    <i class='bx bx-dots-vertical-rounded text-dark' data-bs-toggle="dropdown"
-                                        aria-expanded="false"></i>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#"></a></li>
-                                        <li><a class="dropdown-item" href="#"></a>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
+
+
+
                     </div>
                     <div class="right-track-info">
-                        <img src="{{ asset('assets/images/big-graph.png') }}" alt="">
+                        <div id="map" style="width:75%; height:100%"></div>
                         <span class="backArrow">
                             <i class='bx bxs-chevrons-left'></i>
                         </span>
+                        {{-- <img src="{{asset('assets/images/car_direct2.png')}}" class="car_track" alt=""> --}}
                     </div>
                     <div class="side-track-info">
                         <div class="side-region">
                             <p class="sub-title2">Date Added: 23 <span class="text-bold">August, 2022</span></p>
-                            <div class="car-slider">
-                                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="{{ asset('assets/images/car-red.png') }}" class="d-block w-100"
-                                                alt="...">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="{{ asset('assets/images/car-red.png') }}" class="d-block w-100"
-                                                alt="...">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="{{ asset('assets/images/car-red.png') }}" class="d-block w-100"
-                                                alt="...">
-                                        </div>
-                                    </div>
-                                    <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>
-                                {{-- <img src="{{ asset('assets/images/car-red.png') }}" alt=""> --}}
-                            </div>
 
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                            aria-expanded="false" aria-controls="flush-collapseOne">
-                                            <img src="{{ asset('assets/images/driver_info.svg') }}" alt="">
-                                            <div class="mid-info">
-                                                <span class="t1">Driver Information</span>
-                                                <span class="t2">This is a summary of the vehicle operator.</span>
-                                            </div>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is
-                                            intended to demonstrate the <code>.accordion-flush</code> class. This is the
-                                            first item's accordion body.</div>
-                                    </div>
-                                </div>
+                            {{-- right side accordion --}}
+                            <div class="mt-4 accordion accordion-flush" id="accordionFlushExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="flush-headingTwo">
                                         <button class="accordion-button collapsed" type="button"
@@ -166,14 +100,201 @@
                                             </div>
                                         </button>
                                     </h2>
-                                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                    <div id="flush-collapseTwo" class="accordion-collapse accordion-section collapse"
                                         aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is
-                                            intended to demonstrate the <code>.accordion-flush</code> class. This is the
-                                            second item's accordion body. Let's imagine this being filled with some actual
-                                            content.</div>
+                                        <div class="accordion-body">
+                                            <div class="car-slider">
+                                                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                                                    <div class="carousel-inner">
+                                                        <div class="carousel-item active">
+                                                            {{-- <img src="{{ asset('assets/images/car-red.png') }}" class="d-block w-100"
+                                                                alt="..."> --}}
+                                                        </div>
+                                                        <div class="carousel-item">
+                                                            {{-- <img src="{{ asset('assets/images/car-red.png') }}" class="d-block w-100"
+                                                                alt="..."> --}}
+                                                        </div>
+                                                        <div class="carousel-item">
+                                                            {{-- <img src="{{ asset('assets/images/car-red.png') }}" class="d-block w-100"
+                                                                alt="..."> --}}
+                                                        </div>
+                                                    </div>
+                                                    <button class="carousel-control-prev" type="button"
+                                                        data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Previous</span>
+                                                    </button>
+                                                    <button class="carousel-control-next" type="button"
+                                                        data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Next</span>
+                                                    </button>
+                                                </div>
+                                                {{-- <img src="{{ asset('assets/images/car-red.png') }}" alt=""> --}}
+                                            </div>
+
+                                            <div class="info-main">
+                                                <div class="user-info2">
+                                                    <div class="left-info2">LICENCE PLATE:</div>
+                                                    <div class="right-info2"> {{ $cars[0]->vehno }}</div>
+                                                </div>
+                                                <div class="user-info2">
+                                                    <div class="left-info2">TYPE:</div>
+                                                    <div class="right-info2"> {{ $data['vehicleDetails']->brandname }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="user-info2">
+                                                    <div class="left-info2">YEAR</div>
+                                                    <div class="right-info2">
+                                                        {{ "Not Available"
+                                                    }}                                                     </div>
+                                                </div>
+                                                <div class="user-info2">
+                                                    <div class="left-info2">BODY:</div>
+                                                    <div class="right-info2">                                            {{ $data['vehicleDetails']->bodytypename  ?? "Not Available"}}
+                                                    </div>
+                                                </div>
+                                                <div class="user-info2">
+                                                    <div class="left-info2">ENGINE:</div>
+                                            {{ $data['vehicleDetails']->enginecapacityname }}
+                                            <div class="right-info2"></div>
+                                                </div>
+                                                <div class="user-info2">
+                                                    <div class="left-info2">TRANSMISSION:</div>
+                                                    <div class="right-info2">Not Availiable</div>
+                                                </div>
+                                                <div class="user-info2">
+                                                    <div class="left-info2">COLOR:</div>
+                                                    <div class="right-info2">                                            {{ $data['vehicleDetails']->colorname   }}
+                                                    </div>
+                                                </div>
+                                                <div class="user-info2">
+                                                    <div class="left-info2">PACKAGE:</div>
+                                                    <div class="right-info2">{{ $data['vehicleDetails']->bodytypename  ?? "Not Available"}}</div>
+                                                </div>
+                                                <div class="user-info2">
+                                                    <div class="left-info2">DATE ADDED:</div>
+
+
+                                                    <div class="right-info2"> {{ $data['vehicleDetails']->createtime }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                            aria-controls="flush-collapseOne">
+                                            <img src="{{ asset('assets/images/driver_info.svg') }}" alt="">
+                                            <div class="mid-info">
+                                                <span class="t1">Driver Information</span>
+                                                <span class="t2">This is a summary of the vehicle operator.</span>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse accordion-section collapse"
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="accordion-main">
+                                                <div class="user-img2">
+                                                    <img src="{{ asset('assets/images/deen.png') }}" alt="">
+                                                </div>
+                                                <div class="info-main">
+                                                    <div class="user-info2">
+                                                        <div class="left-info2">NAME:</div>
+                                                        <div class="right-info2">{{ $cars[0]->drivername }}</div>
+                                                    </div>
+                                                    <div class="user-info2">
+                                                        <div class="left-info2">PHONE NO:</div>
+                                                        <div class="right-info2">{{ $cars[0]->driverphone }}</div>
+                                                    </div>
+                                                    <div class="user-info2">
+                                                        <div class="left-info2">EMAIL:</div>
+                                                        <div class="right-info2">{{ $cars[0]->driverphone }}</div>
+                                                    </div>
+                                                    <div class="user-info2">
+                                                        <div class="left-info2">START DATE:</div>
+                                                        <div class="right-info2">
+                                                            {{-- {{$otherDetails->startDate}} --}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="user-info2">
+                                                        <div class="left-info2">PAYMENT GOAL:</div>
+                                                        <div class="right-info2">{{$otherDetails->hirePurchaseValue}}</div>
+                                                    </div>
+                                                    <div class="user-info2">
+                                                        <div class="left-info2">TOTAL CONTRIBUTED:</div>
+                                                        <div class="right-info2">{{$otherDetails->totalContributed}}</div>
+                                                    </div>
+                                                    <div class="user-info2">
+                                                        <div class="left-info2">NEXT PAYMENT:</div>
+                                                        <div class="right-info2">{{$otherDetails->nextPaymentDate}}</div>
+                                                    </div>
+                                                </div>
+
+                                                <span class="top-accordion-text">Driver rating</span>
+                                                <div class="rating-level">
+                                                    <span class="rating-percent">{{$otherDetails->driverRating}}</span>
+                                                    <span class="rating-status">{{$otherDetails->driverRating}}</span>
+                                                </div>
+
+                                                <span class="top-accordion-text">Key Indicators</span>
+                                                <div class="indictor-section">
+                                                    <div class="indicator-row">
+                                                        <div class="indicator-img bg-light-green200">
+                                                            <img src="{{ asset('assets/images/greenr2.svg') }}"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="indicator-info">
+                                                            <span class="distance"><span class="text-dark">{{$otherDetails->avgSpeed}}</span>
+                                                                </span>
+                                                            <span class="avg-speed">Avg Speed</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="indicator-row">
+                                                        <div class="indicator-img bg-light-orange200">
+                                                            <img src="{{ asset('assets/images/time.svg') }}"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="indicator-info">
+                                                            <span class="distance"><span class="text-dark">{{$otherDetails->driveTime}}</span>
+                                                              </span>
+                                                            <span class="avg-speed">Drive time</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="indicator-row">
+                                                        <div class="indicator-img bg-light-blue200">
+                                                            <img src="{{ asset('assets/images/exclaim.png') }}"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="indicator-info">
+                                                            <span class="distance"><span class="text-dark">{{$otherDetails->maintenanceScore}}</span> </span>
+                                                            <span class="avg-speed">Maintenace score</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="indicator-row">
+                                                        <div class="indicator-img bg-light-pink200">
+                                                            <img src="{{ asset('assets/images/card.svg') }}"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="indicator-info">
+                                                            <span class="distance"><span class="text-dark">Not Available</span>
+                                                                </span>
+                                                            <span class="avg-speed">Remittance</span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="flush-headingThree">
                                         <button class="accordion-button collapsed" type="button"
@@ -186,20 +307,83 @@
                                             </div>
                                         </button>
                                     </h2>
-                                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                    <div id="flush-collapseThree" class="accordion-collapse accordion-section collapse"
                                         aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is
-                                            intended to demonstrate the <code>.accordion-flush</code> class. This is the
-                                            third item's accordion body. Nothing more exciting happening here in terms of
-                                            content, but just filling up the space to make it look, at least at first
-                                            glance, a bit more representative of how this would look in a real-world
-                                            application.</div>
+                                        <div class="accordion-body">
+                                            <span class="top-accordion-text">GPS DATA</span>
+                                            <div class="info-main">
+                                                <div class="user-info2">
+                                                    <div class="left-info2">TIME:</div>
+                                                    <div class="right-info2">                                            {{ $data['vehicleLocation']->Time }}
+                                                    </div>
+                                                </div>
+                                                <div class="user-info2">
+                                                    <div class="left-info2">IGNITION:</div>
+                                                    @if ($data['vehicleLocation']->DtStatus == 1)
+                                                <div class="right-info2">ON</div>
+                                            @else
+                                            <div class="right-info2">off</div>
+                                            @endif
+                                                </div>
+                                                <div class="user-info2">
+                                                    <div class="left-info2">TOTAL MILLEAGE (KM):</div>
+                                                    <div class="right-info2">{{ $data['vehicleLocation']->Miles / 1000 }} KM</div>
+                                                </div>
+                                                <div class="user-info2">
+                                                    <div class="left-info2">LONGTITUDE:</div>
+                                                    <div class="right-info2 text-dcr">{{ $data['vehicleLocation']->Longitude }}</div>
+                                                </div>
+                                                <div class="user-info2">
+                                                    <div class="left-info2">LATITITUDE:</div>
+                                                    <div class="right-info2 text-dcr">{{ $data['vehicleLocation']->Latitude }}</div>
+                                                </div>
+                                                <div class="user-info2">
+                                                    <div class="left-info2">ADDRESS:</div>
+                                                    <div class="right-info2">NO 26, 69 ROAD, 6TH AVE, GWARINPA - ABUJA
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <span class="top-accordion-text">Drive-train Analytic(s)</span>
+                                            <div class="traffic-info mt-2">
+                                                <div class="traffic-info1">
+                                                    <div class="top-circle tc1">
+                                                        <img src="{{ asset('assets/images/yellow_pin.svg') }}"
+                                                            alt="">
+                                                    </div>
+                                                    <span class="info-desc1">35.3km</span>
+                                                    <span class="info-desc2">Mileage</span>
+                                                </div>
+                                                <div class="traffic-info1">
+                                                    <div class="top-circle tc2">
+                                                        <img src="{{ asset('assets/images/blue_circle.svg') }}"
+                                                            alt="">
+                                                    </div>
+                                                    <span class="info-desc1">85.5km/h</span>
+                                                    <span class="info-desc2">Avg. Speed</span>
+                                                </div>
+                                                <div class="traffic-info1">
+                                                    <div class="top-circle tc3">
+                                                        <img src="{{ asset('assets/images/blue_clock.svg') }}"
+                                                            alt="">
+                                                    </div>
+                                                    <span class="info-desc1">02h:27m</span>
+                                                    <span class="info-desc2">Drive Time</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="graph-accordion">
+
+                                            </div>
+
+                                            <button class="btn-more">See more</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingThree">
+                                    <h2 class="accordion-header" id="flush-headingFour">
                                         <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
                                             aria-expanded="false" aria-controls="flush-collapseThree">
                                             <img src="{{ asset('assets/images/heartbreak.svg') }}" alt="">
                                             <div class="mid-info">
@@ -208,21 +392,16 @@
                                             </div>
                                         </button>
                                     </h2>
-                                    <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is
-                                            intended to demonstrate the <code>.accordion-flush</code> class. This is the
-                                            third item's accordion body. Nothing more exciting happening here in terms of
-                                            content, but just filling up the space to make it look, at least at first
-                                            glance, a bit more representative of how this would look in a real-world
-                                            application.</div>
+                                    <div id="flush-collapseThree" class="accordion-collapse accordion-section collapse"
+                                        aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body"></div>
                                     </div>
                                 </div>
                                 <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingThree">
+                                    <h2 class="accordion-header" id="flush-headingFive">
                                         <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-                                            aria-expanded="false" aria-controls="flush-collapseThree">
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseFive"
+                                            aria-expanded="false" aria-controls="flush-collapseFive">
                                             <img src="{{ asset('assets/images/bag_purple.svg') }}" alt="">
                                             <div class="mid-info">
                                                 <span class="t1">Fleet & Payment</span>
@@ -231,17 +410,11 @@
                                             </div>
                                         </button>
                                     </h2>
-                                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                    <div id="flush-collapseThree" class="accordion-collapse accordion-section collapse"
                                         aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is
-                                            intended to demonstrate the <code>.accordion-flush</code> class. This is the
-                                            third item's accordion body. Nothing more exciting happening here in terms of
-                                            content, but just filling up the space to make it look, at least at first
-                                            glance, a bit more representative of how this would look in a real-world
-                                            application.</div>
+                                        <div class="accordion-body"></div>
                                     </div>
                                 </div>
-
                             </div>
 
 
@@ -265,6 +438,40 @@
         let openSideNavBtn = document.querySelector('#openSideNav');
         let sideNav = document.querySelector('.side-track-info');
         let rightArrow = document.querySelector('.frontArrow');
+        let totalVehicles = document.querySelector('.total-vehicles');
+        let onlineVehicles = document.querySelector('.online-vehicles');
+        let offlineVehicels = document.querySelector('.offline-vehicles');
+
+        let allVehiclesSec = document.querySelector('.all-vehicles-sec');
+        let offlineVehiclesSec = document.querySelector('.offline-vehicles-sec');
+        let onlineVehiclesSec = document.querySelector('.online-vehicles-sec');
+
+        totalVehicles.addEventListener('click', () => {
+            totalVehicles.classList.add('bbd');
+            onlineVehicles.classList.remove('bbd');
+            offlineVehicels.classList.remove('bbd');
+            allVehiclesSec.style.display = 'block';
+            offlineVehiclesSec.style.display = 'none';
+            onlineVehiclesSec.style.display = 'none';
+        })
+
+        onlineVehicles.addEventListener('click', () => {
+            onlineVehicles.classList.add('bbd');
+            totalVehicles.classList.remove('bbd');
+            offlineVehicels.classList.remove('bbd');
+            allVehiclesSec.style.display = 'none';
+            offlineVehiclesSec.style.display = 'none';
+            onlineVehiclesSec.style.display = 'block';
+        })
+
+        offlineVehicels.addEventListener('click', () => {
+            totalVehicles.classList.remove('bbd');
+            onlineVehicles.classList.remove('bbd');
+            offlineVehicels.classList.add('bbd');
+            allVehiclesSec.style.display = 'none';
+            offlineVehiclesSec.style.display = 'block';
+            onlineVehiclesSec.style.display = 'none';
+        })
 
         openSideNavBtn.addEventListener('click', () => {
             sideNav.classList.toggle("showNav");

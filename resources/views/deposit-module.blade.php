@@ -12,11 +12,8 @@
                     </div>
                 </div>
                 <ul class="sub-tabs">
-                    <li class="listFinanceOverview ">
-                        <a href="finance-office">General Overview</a>
-                    </li>
                     <li class="list_finance_transaction bbd">
-                        <a href="deposit-module">Deposit Module</a>
+                        <a href="finance-office">Deposit Module</a>
                     </li>
                     <li class="list_finance_remittance">
                         <a href="payout-manager">
@@ -31,53 +28,88 @@
                         <div class="col-sm-6 col-md-12 col-lg-3 mb-2">
                             <div class="finance_section">
                                 <span class="top-text">Deposit by category</span>
-                                <div class="chart_total_deposit mb-3 mt-3">
-
+                                <div class="chart_total_deposit mb-2 mt-1">
                                 </div>
-                                <span class="top-text mt-3">
+                                <span class="top-text mt-2">
                                     Deposit Details
                                 </span>
                                 <div class="notice_section">
                                     <div class="deposit_details_info">
                                         <div class="single_deposit_detail sd1">
                                             <span class="notice notice_pink"></span>
-                                            <span class="notice_desc">General Remittance</span>
-                                            <span class="notice_amount">N30,000,000.00</span>
+                                            <div class="notice_desc">
+                                                <span>General Remittance</span>
+                                                <span class="notice_amount">N30,000,000.00</span>
+                                            </div>
+                                            <span class="small_arrow">
+                                                <img src="{{ asset('assets/images/arrow-small-right.svg') }}"
+                                                    alt="">
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="deposit_details_info">
                                         <div class="single_deposit_detail sd2">
                                             <span class="notice notice_pink_200"></span>
-                                            <span class="notice_desc">Maintenance Contr.</span>
-                                            <span class="notice_amount">N30,000,000.00</span>
+                                            <div class="notice_desc">
+                                                <span>Maintenance Contr.</span>
+                                                <span class="notice_amount">N30,000,000.00</span>
+                                            </div>
+                                            <span class="small_arrow">
+                                                <img src="{{ asset('assets/images/arrow-small-right.svg') }}"
+                                                    alt="">
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="deposit_details_info">
                                         <div class="single_deposit_detail sd3">
                                             <span class="notice notice_purple"></span>
-                                            <span class="notice_desc">Platform Commission</span>
-                                            <span class="notice_amount">N30,000,000.00</span>
+                                            <div class="notice_desc">
+                                                <span>Platform Commission</span>
+                                                <span class="notice_amount">N30,000,000.00</span>
+                                            </div>
+                                            <span class="small_arrow">
+                                                <img src="{{ asset('assets/images/arrow-small-right.svg') }}"
+                                                    alt="">
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="deposit_details_info">
                                         <div class="single_deposit_detail sd4">
                                             <span class="notice notice_purple_200"></span>
-                                            <span class="notice_desc">Union Due/Fees</span>
-                                            <span class="notice_amount">N30,000,000.00</span>
+                                            <div class="notice_desc">
+                                                <span>Union Due/Fees</span>
+                                                <span class="notice_amount">N30,000,000.00</span>
+                                            </div>
+                                            <span class="small_arrow">
+                                                <img src="{{ asset('assets/images/arrow-small-right.svg') }}"
+                                                    alt="">
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="deposit_details_info">
                                         <div class="single_deposit_detail sd5">
                                             <span class="notice notice_blue"></span>
-                                            <span class="notice_desc">Softpurse Repayment</span>
-                                            <span class="notice_amount">N30,000,000.00</span>
+                                            <div class="notice_desc">
+                                                <span>Softpurse Repayment</span>
+                                                <span class="notice_amount">N30,000,000.00</span>
+                                            </div>
+                                            <span class="small_arrow">
+                                                <img src="{{ asset('assets/images/arrow-small-right.svg') }}"
+                                                    alt="">
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="deposit_details_info">
                                         <div class="single_deposit_detail sd6">
                                             <span class="notice notice_light_blue"></span>
-                                            <span class="notice_desc">Agent Commission</span>
-                                            <span class="notice_amount">N30,000,000.00</span>
+                                            <div class="notice_desc">
+                                                <span>Agent Commission</span>
+                                                <span class="notice_amount">N30,000,000.00</span>
+                                            </div>
+                                            <span class="small_arrow">
+                                                <img src="{{ asset('assets/images/arrow-small-right.svg') }}"
+                                                    alt="">
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -87,115 +119,16 @@
                             <div class="row">
                                 <div class="col-sm-6 col-md-12 mb-2">
                                     <div class="finance_section">
-                                        <div class="chart_deposit_statistics"></div>
+                                        <div class="chart_deposit_statistics">
+                                            <div id="top_x_div" style="width: 100%; height: 100%;"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-12">
                                     <div class="finance_section">
                                         <div class="card-box table-responsive">
-                                            <table id="datatable" class="table table-bordered nowrap"
-                                                style=" border-collapse: collapse;  border-spacing: 0; width: 100%;">
-                                                <thead class="text-inter">
-                                                    <tr>
-                                                        <th>
-                                                            <input type="checkbox" class="check" />
-                                                        </th>
-                                                        <th>PLATE NO.</th>
-                                                        <th>DRIVER NAME</th>
-                                                        <th>FLEET</th>
-                                                        <th>AMOUNT</th>
-                                                        <th>REFERENCE</th>
-                                                        <th>DATE</th>
-                                                        <th>REASON </th>
-                                                        <th>STATUS</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr data-bs-toggle="modal" data-bs-target="#singleRecord">
-                                                        <td>
-                                                            <input type="checkbox" class="check" />
-                                                        </td>
-                                                        <td>
-                                                            RBC123XY
-                                                        </td>
-                                                        <td>dEMAJI BANKOLE</td>
-                                                        <td>BREKETE, NG</td>
-                                                        <td>₦35,000.00</td>
-                                                        <td>DX23RM345</td>
-                                                        <td>23 Feb, 2021</td>
-                                                        <td>Remittance</td>
-                                                        <td>SUCCESS</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="checkbox" class="check" />
-                                                        </td>
-                                                        <td>
-                                                            RBC123XY
-                                                        </td>
-                                                        <td>dEMAJI BANKOLE</td>
-                                                        <td>BREKETE, NG</td>
-                                                        <td>₦35,000.00</td>
-                                                        <td>DX23RM345</td>
-                                                        <td>23 Feb, 2021</td>
-                                                        <td>Remittance</td>
-                                                        <td>SUCCESS</td>
-                                                    </tr>
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="singleRecord" tabindex="-1"
-                                                        aria-labelledby="singleRecordLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header"
-                                                                    style="background: #F5F5F5; padding: 30px;">
-                                                                    <div class="d-flex align-items-center modal-title"
-                                                                        id="singleRecordLabel">
-                                                                        <img src="{{ asset('assets/images/logo.jpeg') }}"
-                                                                            alt="" width="50" height="50">
-                                                                        <div class="ml-2">
-                                                                            <span class="titleModal">Zeus Systems</span>
-                                                                            <span class="font-weight-bold">Transaction
-                                                                                Details</span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="modalInfo">
-                                                                        <span>Trans ID:</span>
-                                                                        <span>#1234WSD</span>
-                                                                    </div>
-                                                                    <div class="modalInfo">
-                                                                        <span>Date:</span>
-                                                                        <span>23 Feb, 2021 - 05:35PM</span>
-                                                                    </div>
-                                                                    <div class="modalInfo">
-                                                                        <span>Channel:</span>
-                                                                        <span>USSD</span>
-                                                                    </div>
-                                                                    <div class="modalInfo">
-                                                                        <span>Amount:</span>
-                                                                        <span>₦25,450.00</span>
-                                                                    </div>
-                                                                    <div class="modalInfo">
-                                                                        <span>Description:</span>
-                                                                        <span>CR: Transfer from Seun Akinlola</span>
-                                                                    </div>
-                                                                    <div class="modalInfo">
-                                                                        <span>Platform Commission:</span>
-                                                                        <span>₦450.00</span>
-                                                                    </div>
-                                                                    <div class="modalInfo">
-                                                                        <span>Status:</span>
-                                                                        <span class="text-success">Successful</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </tbody>
-                                            </table>
+                                            @include('components.payoutManager.table')
+
                                         </div>
                                     </div>
                                 </div>
@@ -263,7 +196,8 @@
                                             <div class="top3">
                                                 <span>Pending User(s)</span>
                                                 <span class="arrow_box">
-                                                    <img src="{{ asset('assets/images/arrow-down.svg') }}" alt="">
+                                                    <img src="{{ asset('assets/images/arrow-down.svg') }}"
+                                                        alt="">
                                                 </span>
                                             </div>
                                             <span class="deposit_amount">
@@ -381,7 +315,8 @@
                                             <div class="top3">
                                                 <span>Paid Users</span>
                                                 <span class="arrow_box">
-                                                    <img src="{{ asset('assets/images/arrow-down.svg') }}" alt="">
+                                                    <img src="{{ asset('assets/images/arrow-down.svg') }}"
+                                                        alt="">
                                                 </span>
                                             </div>
                                             <span class="deposit_amount">
@@ -935,5 +870,57 @@
             var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
             chart.draw(data, options);
         }
+    </script>
+
+    <script type="text/javascript">
+     var datas = <?php echo json_encode($data); ?>
+
+        google.charts.load('current', {
+            'packages': ['bar']
+        });
+        google.charts.setOnLoadCallback(drawStuff);
+
+        function drawStuff() {
+            var data = new google.visualization.arrayToDataTable([
+                ['Month', 'total'],
+                ["JAN", datas[1]],
+                ["FEB", datas[2]],
+                ["MAR", datas[3]],
+                ["APR", datas[4]],
+                ['MAY', datas[5]],
+                ['JUN', datas[6]],
+                ['JUL', datas[7]],
+                ['AUG', datas[8]],
+                ['SEP', datas[9]],
+                ['OCT', datas[10]],
+                ['NOV', datas[11]],
+                ['DEC', datas[12]],
+            ]);
+            var options = {
+                // width: 1024,
+                legend: {
+                    position: 'none'
+                },
+                chart: {
+                    title: 'Deposit Statistics',
+                    subtitle: 'by Total'
+                },
+                axes: {
+                    x: {
+                        0: {
+                            side: 'bottom',
+                            label: 'All Transaction'
+                        } // Top x-axis.
+                    }
+                },
+                bar: {
+                    groupWidth: "30%"
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+            // Convert the Classic options to Material options.
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        };
     </script>
 @endsection
