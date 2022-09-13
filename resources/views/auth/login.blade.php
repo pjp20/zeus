@@ -9,7 +9,7 @@
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{asset('assets/images/logo.jpeg')}}">
     <!-- App css -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"
         id="bootstrap-stylesheet" />
@@ -30,7 +30,7 @@
                         style="border-radius: 5px" />
                     <p class="admin_title text-inter">Zeus console Login</p>
                     <p class="subtitleText text-center">
-                        Enter your details to sign in <br />to your account
+                        Enter your details to sign in to your account
                     </p>
                 </div>
                 <form action="{{ route('login') }}" method="post">

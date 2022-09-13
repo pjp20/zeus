@@ -7,6 +7,7 @@
 /* @import url('https://rsms.me/inter/inter.css'); */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 :root {
     --deepPurple: #08102E;
     --orange: #fd7e14;
@@ -633,6 +634,7 @@ table {
 }
 
 @media screen and (max-width: 900px) {
+
     .fixedbanner,
     .fixedbanner2 {
         /* padding: 20px; */
@@ -642,9 +644,11 @@ table {
         left: 0;
         top: unset;
     }
+
     .info-section {
         padding: 0 !important;
     }
+
     .sideProfile {
         position: relative;
         width: 100%;
@@ -993,7 +997,7 @@ tr {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-bottom: 30px;
+    /* padding-bottom: 30px; */
 }
 
 .zeus-logo-form {
@@ -1054,9 +1058,11 @@ tr {
     .left-form-section {
         display: none;
     }
+
     .right-form-section {
         width: 100%;
     }
+
     .formBox {
         width: 400px;
         transform: translateX(0px);
@@ -1067,9 +1073,11 @@ tr {
     .left-form-section {
         display: none;
     }
+
     .right-form-section {
         width: 100%;
     }
+
     .formBox {
         width: 335px;
         transform: translateX(0px);
@@ -1175,18 +1183,22 @@ tr {
         top: 0px;
         left: 20px;
     }
+
     25% {
         top: 80px;
         left: 200px;
     }
+
     50% {
         top: 300px;
         left: 200px;
     }
+
     75% {
         top: 400px;
         left: 0px;
     }
+
     100% {
         top: 0px;
         left: 0px;
@@ -2824,41 +2836,51 @@ select {
     .sideLine {
         display: none;
     }
+
     .mobile-profile-unstyle {
         display: block;
     }
+
     .mobile-profile-unstyle .dropdown-toggle::after {
         display: none !important;
     }
+
     .topnav-menu {
         display: none;
     }
+
     .logo-box {
         background: transparent;
         width: 100%;
         justify-content: space-between;
         align-items: center;
     }
+
     .zeus-text {
         color: #120046 !important;
         font-weight: bold;
         display: block;
     }
+
     .zeus-text-desktop {
         display: none;
     }
+
     .logo {
         padding: 16px 0;
     }
+
     .profile-dropdown-mobile {
         display: block;
     }
+
     .links-mobile-main {
         position: fixed;
         bottom: 10px;
         right: 10px;
         display: block;
     }
+
     .links-mobile {
         width: 60px;
         height: 60px;
@@ -2871,6 +2893,7 @@ select {
         font-size: 40px;
         color: #fff;
     }
+
     .links-mobile-main li {
         list-style: none;
         background: #fff;
@@ -3126,4 +3149,36 @@ select {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+
+.revenue-balance {
+    display: flex;
+    justify-content: space-between;
+    color: #1A202C;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.first-col-100 {
+    position: relative;
+}
+
+.sideLine-col::after {
+    display: block;
+    content: "";
+    width: 1px;
+    height: 50px;
+    background: #ccc;
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+
+@media screen and (max-width:800px)  {
+    .sideLine-col::after{
+        display: none;
+    }
+
 }
