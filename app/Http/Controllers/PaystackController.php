@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PaystackController extends Controller {
 
-    public $livekey =  'sk_live_12e6c31bcde127cf59c5d5cb0a340c47c217d4c6';
+    public $livekey =  '';
 
     public function checkAccountNumber( $accountNumber, $bankCode ) {
         $url = "https://api.paystack.co/bank/resolve?account_number=$accountNumber&bank_code=$bankCode";
